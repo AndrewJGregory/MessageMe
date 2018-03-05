@@ -10,6 +10,6 @@
 #
 
 class User < ApplicationRecord
-  validates :email, presence: true
+  validates :username, presence: true
   devise :database_authenticatable
 end
