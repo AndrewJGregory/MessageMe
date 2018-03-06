@@ -1,10 +1,15 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import SignInContainer from "./SignInContainer";
+import SignInContainer from "./SignInContainer.js";
+import MainContainer from "./MainContainer.js";
+import { AuthRoute, ProtectedRoute } from "../util/route";
 
 const App = () => (
   <main id="app">
-    <Route path="/:category" component={SignInContainer} />
+    <Switch>
+      <ProtectedRoute path="/messages" component={MainContainer} />
+      <AuthRoute path="/:category" component={SignInContainer} />
+    </Switch>
   </main>
 );
 
