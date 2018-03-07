@@ -12,4 +12,36 @@
  *
  *= require_tree .
  *= require_self
+ *= require font-awesome
  */
+
+.center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+html,
+#root,
+body,
+#app {
+  height: 100%;
+}
+
+.fa-bolt {
+  color: yellow;
+  font-size: 200px !important;
+}
+
+.clickable {
+  cursor: pointer;
+}
+
+button:focus {
+  outline: 0;
+}
+
+input:focus {
+  outline: 0;
+}

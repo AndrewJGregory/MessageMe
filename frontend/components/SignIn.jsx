@@ -25,28 +25,35 @@ export default class SignIn extends React.Component {
   render() {
     let otherFormText, otherFormPath;
     if (this.props.buttonText === "sign in") {
-      otherFormText = "sign up";
+      otherFormText = "Don't have an account?";
       otherFormPath = "signup";
     } else {
-      otherFormText = "sign in";
+      otherFormText = "Already have an account?";
       otherFormPath = "signin";
     }
+
     return (
-      <main className="form-container">
-        <form onSubmit={this.submitForm}>
-          <input
-            type="text"
-            placeholder="Username"
-            onChange={this.updateField("username")}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            onChange={this.updateField("password")}
-          />
-          <button>{this.props.buttonText}</button>
-          <Link to={otherFormPath}>{otherFormText}</Link>
-        </form>
+      <main className="session-main center">
+        <div className="image-and-form-container center">
+          <i className="fa fa-bolt" />
+          <h3 className="message-me-header">MessageMe</h3>
+          <div className="form-container">
+            <form onSubmit={this.submitForm} className="signin-form center">
+              <input
+                type="text"
+                placeholder="Username"
+                onChange={this.updateField("username")}
+              />
+              <input
+                type="password"
+                placeholder="Password"
+                onChange={this.updateField("password")}
+              />
+              <button className="clickable">{this.props.buttonText}</button>
+              <Link to={otherFormPath}>{otherFormText}</Link>
+            </form>
+          </div>
+        </div>
       </main>
     );
   }
