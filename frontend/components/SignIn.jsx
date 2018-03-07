@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default class SignIn extends React.Component {
   constructor(props) {
@@ -22,6 +23,14 @@ export default class SignIn extends React.Component {
   }
 
   render() {
+    let otherFormText, otherFormPath;
+    if (this.props.buttonText === "sign in") {
+      otherFormText = "sign up";
+      otherFormPath = "signup";
+    } else {
+      otherFormText = "sign in";
+      otherFormPath = "signin";
+    }
     return (
       <main className="form-container">
         <form onSubmit={this.submitForm}>
@@ -36,6 +45,7 @@ export default class SignIn extends React.Component {
             onChange={this.updateField("password")}
           />
           <button>{this.props.buttonText}</button>
+          <Link to={otherFormPath}>{otherFormText}</Link>
         </form>
       </main>
     );
