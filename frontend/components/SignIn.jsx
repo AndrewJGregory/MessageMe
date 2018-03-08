@@ -19,10 +19,8 @@ export default class SignIn extends React.Component {
   submitForm(e) {
     e.preventDefault();
     const user = Object.assign({}, this.state);
-    delete user[inputType];
-    this.props.submitForm(user).then(() => {
-      this.props.history.push("/messages");
-    });
+    delete user["inputType"];
+    this.props.submitForm(user);
   }
 
   toggleInputType(e) {

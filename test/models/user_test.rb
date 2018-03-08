@@ -2,11 +2,12 @@
 #
 # Table name: users
 #
-#  id                 :integer          not null, primary key
-#  username           :string           default(""), not null
-#  encrypted_password :string           default(""), not null
-#  created_at         :datetime         not null
-#  updated_at         :datetime         not null
+#  id              :integer          not null, primary key
+#  username        :string           default(""), not null
+#  password_digest :string           default(""), not null
+#  created_at      :datetime         not null
+#  updated_at      :datetime         not null
+#  session_token   :string
 #
 
 require 'test_helper'

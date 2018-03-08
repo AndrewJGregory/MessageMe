@@ -39,7 +39,6 @@ group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'capybara', '~> 2.13'
-  gem 'devise'
   gem 'jquery-rails'
   gem 'pry-rails'
   gem 'selenium-webdriver'
