@@ -4,9 +4,10 @@ import { Link } from "react-router-dom";
 export default class SignIn extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { username: "", password: "" };
+    this.state = { username: "", password: "", inputType: "password" };
     this.updateField = this.updateField.bind(this);
     this.submitForm = this.submitForm.bind(this);
+    this.toggleInputType = this.toggleInputType.bind(this);
   }
 
   updateField(type) {
@@ -17,13 +18,21 @@ export default class SignIn extends React.Component {
 
   submitForm(e) {
     e.preventDefault();
-    this.props.submitForm(this.state).then(() => {
+    const user = Object.assign({}, this.state);
+    delete user[inputType];
+    this.props.submitForm(user).then(() => {
       this.props.history.push("/messages");
     });
   }
 
+  toggleInputType(e) {
+    e.preventDefault();
+    const inputType = this.state.inputType === "password" ? "text" : "password";
+    this.setState({ inputType });
+  }
+
   render() {
-    let otherFormText, otherFormPath;
+    let otherFormText, otherFormPath, eyeClass;
     if (this.props.buttonText === "sign in") {
       otherFormText = "Don't have an account?";
       otherFormPath = "signup";
@@ -31,6 +40,8 @@ export default class SignIn extends React.Component {
       otherFormText = "Already have an account?";
       otherFormPath = "signin";
     }
+
+    eyeClass = this.state.inputType === "password" ? "fa-eye" : "fa-eye-slash";
 
     return (
       <main className="session-main center">
@@ -44,8 +55,14 @@ export default class SignIn extends React.Component {
                 placeholder="Username"
                 onChange={this.updateField("username")}
               />
+              <div className="eye-icon-container">
+                <i
+                  onClick={this.toggleInputType}
+                  className={`fa ${eyeClass} clickable`}
+                />
+              </div>
               <input
-                type="password"
+                type={this.state.inputType}
                 placeholder="Password"
                 onChange={this.updateField("password")}
               />
