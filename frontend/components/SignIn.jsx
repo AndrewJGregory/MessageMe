@@ -10,6 +10,14 @@ export default class SignIn extends React.Component {
     this.toggleInputType = this.toggleInputType.bind(this);
   }
 
+  componentDidMount() {
+    const validPaths = ["signin", "signup"];
+    if (!validPaths.includes(this.props.match.params.category)) {
+      console.log("in here");
+      this.props.history.push("/signin");
+    }
+  }
+
   updateField(type) {
     return e => {
       this.setState({ [type]: e.target.value });
