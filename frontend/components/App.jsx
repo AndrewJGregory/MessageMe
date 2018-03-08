@@ -9,6 +9,7 @@ const App = () => (
     <Switch>
       <ProtectedRoute path="/messages" component={MainContainer} />
       <AuthRoute path="/:category" component={SignInContainer} />
+      <AuthRoute path="/" component={SignInContainer} />
     </Switch>
   </main>
 );
