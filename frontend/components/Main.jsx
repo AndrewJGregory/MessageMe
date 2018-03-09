@@ -9,7 +9,7 @@ export default class Main extends React.Component {
     return (
       <main>
         You're logged in {this.props.username}
-        <button onClick={this.props.signOut}>Sign out</button>
+        <button onClick={this.props.signOut}>Sign Out</button>
       </main>
     );
   }
