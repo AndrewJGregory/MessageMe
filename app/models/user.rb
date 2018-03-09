@@ -10,7 +10,6 @@
 #  session_token   :string
 
 class User < ApplicationRecord
-  validates :username, presence: true
   validates :password_digest, :session_token, presence: true
   validates :username, presence: { message: 'Please enter your username.' }, uniqueness: { message: 'Username has already been taken. Try another username.' }
   validates :password, length: { minimum: 6, allow_nil: true, message: 'Your password is too short. Minimum is 6 characters.' }
