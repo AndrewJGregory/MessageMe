@@ -3,11 +3,19 @@
   <head>
     <title>MessageMe</title>
     <%= csrf_meta_tags %>
-
+    <link href="https://fonts.googleapis.com/css?family=Lemon|Catamaran:400" rel="stylesheet">
     <%= stylesheet_link_tag    'application', media: 'all' %>
     <%= javascript_include_tag 'application' %>
   </head>
+  <script type="text/javascript">
+<% if logged_in? %>
+window.currentUser = <%= render(
+  "api/users/user.json.jbuilder",
+  user: current_user
+).html_safe %>
+<% end %>
 
+</script>
   <body>
     <%= yield %>
   </body>
