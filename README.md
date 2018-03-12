@@ -1,24 +1,16 @@
-# README
+# MessageMe
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+MessageMe is a single page web app inspired by Facebook Messenger. Built with Ruby on Rails, PostgreSQL, and React/Redux, it just might be the best messaging ever.
 
-Things you may want to cover:
+## MVPs
 
-* Ruby version
+* Search all available users
+* Direct, real time messaging
+* Group messages
+* Users can friend/unfriend other users
 
-* System dependencies
+### Bonuses
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Emoji support
+* Video and voice sharing
+* Send voice messages
