@@ -1,0 +1,69 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<main
+  className="session-main center"
+>
+  <div
+    className="image-and-form-container center"
+  >
+    <i
+      className="fa fa-bolt"
+    />
+    <h3
+      className="message-me-header"
+    >
+      MessageMe
+    </h3>
+    <div
+      className="form-container center"
+    >
+      <h3
+        className="error"
+      />
+      <h3
+        className="error"
+      />
+      <h3
+        className="error"
+      />
+      <form
+        className="signin-form center"
+        onSubmit={[Function]}
+      >
+        <input
+          onChange={[Function]}
+          placeholder="Username"
+          type="text"
+          value=""
+        />
+        <div
+          className="eye-icon-container"
+        >
+          <i
+            className="fa fa-eye clickable"
+            onClick={[Function]}
+          />
+        </div>
+        <input
+          onChange={[Function]}
+          placeholder="Password"
+          type="password"
+          value=""
+        />
+        <button
+          className="clickable"
+        >
+          sign in
+        </button>
+        <a
+          href="#/signup"
+          onClick={[Function]}
+        >
+          Don't have an account?
+        </a>
+      </form>
+    </div>
+  </div>
+</main>
+`;

@@ -1,0 +1,60 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<main>
+  You're logged in as 
+  andrew
+  <button
+    className="sign-out-btn clickable"
+    onClick={undefined}
+  >
+    Sign Out
+  </button>
+  <div
+    className="under-construction-info"
+  >
+    <p
+      className="other-text"
+    >
+      This is currently under construction. While you're here, check out what else I've done:
+    </p>
+    <ul
+      className="links"
+    >
+      <li>
+        <a
+          href="https://www.linkedin.com/in/andrewjgregoryajg/"
+        >
+          <i
+            aria-hidden="true"
+            className="fa fa-2x fa-linkedin"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="http://www.andrewjgregoryajg.com"
+        >
+          <i
+            aria-hidden="true"
+            className="fa fa-2x fa-globe"
+          />
+        </a>
+      </li>
+      <li>
+        <a
+          href="https://github.com/AndrewJGregory/"
+        >
+          <i
+            aria-hidden="true"
+            className="fa fa-2x fa-github"
+          />
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div
+    className="under-construction-img"
+  />
+</main>
+`;
