@@ -1,4 +1,4 @@
-# MessageMe
+# [MessageMe](http://messagemeajg.herokuapp.com)
 
 MessageMe is a single page web app inspired by Facebook Messenger. Built with Ruby on Rails, PostgreSQL, and React/Redux, it just might be the best messaging ever.
 
