@@ -11,17 +11,16 @@ export default class SignIn extends React.Component {
     this.props.clearErrors();
   }
 
-  componentDidMount() {
-    const validPaths = ["signin", "signup"];
-    if (!validPaths.includes(this.props.match.params.category)) {
-      this.props.history.push("/signin");
-    }
-  }
-
   componentWillReceiveProps(nextProps) {
     if (nextProps.match.params.category !== this.props.match.params.category) {
       this.props.clearErrors();
       this.setState({ username: "", password: "" });
+    }
+
+    const validPaths = ["signin", "signup"];
+
+    if (!validPaths.includes(nextProps.match.params.category)) {
+      this.props.history.push("/signin");
     }
   }
 
@@ -64,6 +63,7 @@ export default class SignIn extends React.Component {
           <div className="form-container center">
             <h3 className="error">{this.props.errors.username}</h3>
             <h3 className="error">{this.props.errors.password}</h3>
+            <h3 className="error">{this.props.errors.credentials}</h3>
             <form onSubmit={this.submitForm} className="signin-form center">
               <input
                 value={this.state.username}
