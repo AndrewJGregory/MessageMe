@@ -2,33 +2,49 @@ main {
   background-color: burlywood;
   font-family: sans-serif;
   font-size: 24px;
+  height: 100%;
+  display: flex;
+  width: 100%;
 }
 
-.under-construction-info {
-  display: flex;
+.sidebar {
+  width: 15%;
+  height: 100%;
 }
 
-.links {
-  margin-top: -15px;
-  display: flex;
-  padding-left: 20px;
+.messages {
+  width: 85%;
+}
+
+.user-search-results {
   li {
-    padding: 0 10px;
+    padding: 10px 0 10px 15px;
+    &:hover {
+      background-color: #856e51;
+    }
   }
 }
 
-.sign-out-btn {
-  width: 100px;
-  height: 50px;
-  font-size: 20px;
-  border-radius: 5px;
-  margin: 20px;
-  border: 0;
-  background-color: red;
+.user-search-input-container {
+  display: flex;
+  padding-top: 10px;
+  input {
+    border: 0;
+    background-color: black;
+    text-align: center;
+    width: 90%;
+    color: white;
+    font-size: 14px;
+  }
 }
 
-.under-construction-img {
-  background-image: image_url("under-construction.png");
-  height: 300px;
-  background-repeat: no-repeat;
+#left-text-align {
+  text-align: left;
+}
+
+.fa-search {
+  width: 10%;
+  background-color: black;
+  color: yellow;
+  padding: 5px;
 }
