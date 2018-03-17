@@ -1,3 +1,5 @@
+@import "base/colors.scss";
+
 main {
   background-color: burlywood;
   font-family: sans-serif;
@@ -20,7 +22,7 @@ main {
   li {
     padding: 10px 0 10px 15px;
     &:hover {
-      background-color: #856e51;
+      background-color: $darker-burlywood;
     }
   }
 }
