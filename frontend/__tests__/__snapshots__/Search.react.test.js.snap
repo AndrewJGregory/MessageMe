@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  className="search"
+>
+  <div
+    className="user-search-input-container"
+  >
+    <i
+      className="fa fa-search"
+    />
+    <input
+      className="user-search-input"
+      id=""
+      onBlur={[Function]}
+      onChange={[Function]}
+      onFocus={[Function]}
+      placeholder="Search MessageMe"
+      type="text"
+      value=""
+    />
+  </div>
+  <ul
+    className="user-search-results"
+  />
+</div>
+`;

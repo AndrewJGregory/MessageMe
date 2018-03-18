@@ -1,8 +1,8 @@
 import React from "react";
-import Main from "../components/Main";
+import MessagesAndInput from "../components/MessagesAndInput";
 import renderer from "react-test-renderer";
 
 it("renders correctly", () => {
-  const tree = renderer.create(<Main username={"andrew"} />).toJSON();
+  const tree = renderer.create(<MessagesAndInput />).toJSON();
   expect(tree).toMatchSnapshot();
 });
