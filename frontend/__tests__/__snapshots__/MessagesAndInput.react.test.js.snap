@@ -1,22 +1,20 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`renders correctly 1`] = `
-<main>
-  You're logged in as 
-  andrew
-  <button
-    className="sign-out-btn clickable"
-    onClick={undefined}
-  >
-    Sign Out
-  </button>
+<section
+  className="messages"
+>
   <div
     className="under-construction-info"
   >
     <p
       className="other-text"
     >
-      This is currently under construction. While you're here, check out what else I've done:
+      Most recent completed feature: searching users 
+      <br />
+      Next up: direct messages 
+      <br />
+       This is currently under construction. While you're here, check out what else I've done:
     </p>
     <ul
       className="links"
@@ -56,5 +54,5 @@ exports[`renders correctly 1`] = `
   <div
     className="under-construction-img"
   />
-</main>
+</section>
 `;

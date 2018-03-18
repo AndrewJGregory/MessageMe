@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+
+used_names = []
+new_name = nil
+
+User.create!(username: 'andrew', password: 'password')
+10.times do
+  new_name = Faker::Seinfeld.character
+  while used_names.include?(new_name) do
+    new_name = Faker::Seinfeld.character
+  end
+  User.create!(username: new_name, password: 'password')
+  used_names.push(new_name)
+end
