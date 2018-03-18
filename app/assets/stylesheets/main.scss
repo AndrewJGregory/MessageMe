@@ -50,3 +50,33 @@ main {
   color: yellow;
   padding: 5px;
 }
+
+.under-construction-info {
+  padding-top: 50px;
+  display: flex;
+}
+
+.links {
+  margin-top: 30px;
+  display: flex;
+  padding-left: 20px;
+  li {
+    padding: 0 10px;
+  }
+}
+
+.sign-out-btn {
+  width: 100px;
+  height: 50px;
+  font-size: 20px;
+  border-radius: 5px;
+  margin: 20px;
+  border: 0;
+  background-color: red;
+}
+
+.under-construction-img {
+  background-image: image_url("under-construction.png");
+  height: 300px;
+  background-repeat: no-repeat;
+}
