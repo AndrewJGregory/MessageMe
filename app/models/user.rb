@@ -17,6 +17,18 @@ class User < ApplicationRecord
   attr_reader :password
   after_initialize :ensure_session_token
 
+  def get_chat(other_user)
+    user_id_one = self.id
+    user_id_two = other_user.id
+    result = Chat.find_by_sql("SELECT * FROM chats WHERE user_id_one = #{user_id_one} AND user_id_two = #{user_id_two}")
+    result = Chat.find_by_sql("SELECT * FROM chats WHERE user_id_one = #{user_id_two} AND user_id_two = #{user_id_one}") if result.empty?
+    result
+  end
+
+  def get_messages_with(other_user)
+    self.get_chat(other_user)[0].get_messages(self)
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil
