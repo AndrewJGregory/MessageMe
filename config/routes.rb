@@ -3,6 +3,8 @@ Rails.application.routes.draw do
     resource :session, only: %i[create destroy]
     resources :users, only: [:create]
     resources :searches, only: [:create]
+    resources :chats, only: %i[create show]
+    resources :messages, only: [:create]
   end
 
   root to: 'static_pages#root'
