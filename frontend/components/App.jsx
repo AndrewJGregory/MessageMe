@@ -7,7 +7,8 @@ import { AuthRoute, ProtectedRoute } from "../util/route";
 const App = () => (
   <main id="app">
     <Switch>
-      <ProtectedRoute path="/messages" component={Main} />
+      <ProtectedRoute path="/messages/:userId" component={Main} />
+      <ProtectedRoute path="/messages/" component={Main} />
       <AuthRoute path="/:category" component={SignInContainer} />
       <AuthRoute path="/" component={SignInContainer} />
     </Switch>

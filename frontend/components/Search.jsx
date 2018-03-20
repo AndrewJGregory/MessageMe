@@ -1,6 +1,8 @@
 import React from "react";
+import UserSearchResult from "./UserSearchResult";
+import { withRouter } from "react-router-dom";
 
-export default class Search extends React.Component {
+class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -11,6 +13,7 @@ export default class Search extends React.Component {
     this.updateInput = this.updateInput.bind(this);
     this.leftAlignText = this.leftAlignText.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
   updateInput(e) {
@@ -36,21 +39,21 @@ export default class Search extends React.Component {
     this.setState({ textAlignment: "", shouldUsersBeDisplayed: false });
   }
 
+  handleClick(e) {
+    e.preventDefault();
+    const id = e.target.dataset.userId;
+    this.props.history.push(`/messages/${id}`);
+  }
+
   render() {
     const regExp = new RegExp(`${this.state.query}`);
     let users = null;
-    if (this.state.shouldUsersBeDisplayed) {
-      users = this.props.userResults.reduce((users, user) => {
-        if (regExp.test(user.username)) {
-          users.push(
-            <li key={user.id} className="user-search-result clickable">
-              {user.username}
-            </li>
-          );
-        }
-        return users;
-      }, []);
-    }
+    users = this.props.userResults.reduce((users, user) => {
+      if (regExp.test(user.username)) {
+        users.push(<UserSearchResult user={user} key={user.id} />);
+      }
+      return users;
+    }, []);
 
     return (
       <div className="search">
@@ -67,8 +70,12 @@ export default class Search extends React.Component {
             onBlur={this.handleOnBlur}
           />
         </div>
-        <ul className="user-search-results">{users}</ul>
+        <ul className="user-search-results" onClick={this.handleClick}>
+          {users}
+        </ul>
       </div>
     );
   }
 }
+
+export default withRouter(Search);

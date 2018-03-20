@@ -1,12 +1,14 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import MessagesAndInput from "./MessagesAndInput";
+import Messages from "./Messages";
+import MessageHeaderContainer from "./MessageHeaderContainer";
 
 const Main = () => {
   return (
     <main className="main-container">
       <Sidebar />
-      <MessagesAndInput />
+      <MessageHeaderContainer />
+      <Messages />
     </main>
   );
 };
