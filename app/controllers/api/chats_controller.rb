@@ -3,7 +3,7 @@ class Api::ChatsController < ApplicationController
     @possible_chat = Chat.find_chat(chat_params[:user_sender_id], chat_params[:user_receiver_id])
 
     if !@possible_chat
-      @possible_chat = Chat.new(user_sender_id: chat_params[:user_sender_id], user_id_two: chat_params[:user_receiver_id])
+      @possible_chat = Chat.new(user_id_one: chat_params[:user_sender_id], user_id_two: chat_params[:user_receiver_id])
       if !@possible_chat.save
         render json: @possible_chat.errors, status: 422
       end

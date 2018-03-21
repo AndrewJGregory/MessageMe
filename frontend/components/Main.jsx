@@ -7,8 +7,10 @@ const Main = () => {
   return (
     <main className="main-container">
       <Sidebar />
-      <MessageHeaderContainer />
-      <Messages />
+      <div className="right-collection">
+        <MessageHeaderContainer />
+        <Messages />
+      </div>
     </main>
   );
 };

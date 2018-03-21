@@ -43,6 +43,7 @@ class Search extends React.Component {
     e.preventDefault();
     const id = e.target.dataset.userId;
     this.props.history.push(`/messages/${id}`);
+    this.props.createChat(this.props.currentUserId, id);
   }
 
   render() {
