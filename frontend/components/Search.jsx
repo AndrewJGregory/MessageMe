@@ -24,6 +24,10 @@ class Search extends React.Component {
 
   componentDidMount() {
     this.props.fetchUsers("");
+    this.props.createChat(
+      this.props.currentUserId,
+      this.props.match.params.userId
+    );
   }
 
   leftAlignText(e) {
