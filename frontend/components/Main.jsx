@@ -2,6 +2,7 @@ import React from "react";
 import Sidebar from "./Sidebar";
 import Messages from "./Messages";
 import MessageHeaderContainer from "./MessageHeaderContainer";
+import MessageInputContainer from "./MessageInputContainer";
 
 const Main = () => {
   return (
@@ -10,6 +11,7 @@ const Main = () => {
       <div className="right-collection">
         <MessageHeaderContainer />
         <Messages />
+        <MessageInputContainer />
       </div>
     </main>
   );
