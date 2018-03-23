@@ -16,6 +16,12 @@ class Chat < ApplicationRecord
     Message.find_by_sql("SELECT * FROM chats INNER JOIN messages ON chat_id = #{self.id} AND user_id = #{user_id}")
   end
 
+  def get_all_messages
+    first_messages = self.get_messages(self.user_id_one)
+    second_messages = self.get_messages(self.user_id_two)
+    [first_messages, second_messages]
+  end
+  
   def self.find_chat(user_id_one, user_id_two)
     result = Chat.find_by_sql("SELECT * FROM chats WHERE user_id_one = #{user_id_one} AND user_id_two = #{user_id_two}")
     result = Chat.find_by_sql("SELECT * FROM chats WHERE user_id_one = #{user_id_two} AND user_id_two = #{user_id_one}") if result.empty?
