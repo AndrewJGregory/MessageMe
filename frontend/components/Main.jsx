@@ -1,6 +1,6 @@
 import React from "react";
 import Sidebar from "./Sidebar";
-import Messages from "./Messages";
+import MessageContainer from "./MessageContainer";
 import MessageHeaderContainer from "./MessageHeaderContainer";
 import MessageInputContainer from "./MessageInputContainer";
 
@@ -10,7 +10,7 @@ const Main = () => {
       <Sidebar />
       <div className="right-collection">
         <MessageHeaderContainer />
-        <Messages />
+        <MessageContainer />
         <MessageInputContainer />
       </div>
     </main>
