@@ -1,11 +1,30 @@
 import React from "react";
 
-export default class Messages extends React.Component {
-  componentWillReceiveProps(nextProps) {
-    if (nextProps.chatId) nextProps.fetchMessages(nextProps.chatId);
-  }
+const Messages = props => {
+  const currentUserMessages = props.currentUserMessages.map(message => {
+    return (
+      <li key={message.id} className="current-user-msg">
+        {message.content}
+      </li>
+    );
+  });
 
-  render() {
-    return <section className="messages" />;
-  }
-}
+  const otherUserMessages = props.otherUserMessages.map(message => {
+    return (
+      <li key={message.id} className="other-user-msg">
+        {message.content}
+      </li>
+    );
+  });
+
+  return (
+    <section className="messages">
+      <ul>
+        {currentUserMessages}
+        {otherUserMessages}
+      </ul>
+    </section>
+  );
+};
+
+export default Messages;

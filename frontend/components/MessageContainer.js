@@ -1,12 +1,13 @@
 import { connect } from "react-redux";
 import Message from "./Message";
-import { fetchMessages } from "../actions/message";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
   const userId = parseInt(ownProps.match.params.userId);
   const currentUserId = parseInt(state.session.currentUser.id);
-  let chatId = null;
+  let chatId = 0;
+  let currentUserMessages = [];
+  let otherUserMessages = [];
   Object.values(state.entities.chats).forEach(chat => {
     if (
       (chat.user_id_one === userId && chat.user_id_two === currentUserId) ||
@@ -16,15 +17,17 @@ const mapStateToProps = (state, ownProps) => {
     }
   });
 
-  return { chatId };
+  if (chatId) {
+    Object.values(state.entities.messages).forEach(message => {
+      if (message.chat_id === chatId && message.user_id === currentUserId) {
+        currentUserMessages.push(message);
+      } else if (message.chat_id === chatId && message.user_id === userId) {
+        otherUserMessages.push(message);
+      }
+    });
+  }
+
+  return { chatId, currentUserMessages, otherUserMessages };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    fetchMessages: chatId => dispatch(fetchMessages(chatId))
-  };
-};
-
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(Message)
-);
+export default withRouter(connect(mapStateToProps, null)(Message));

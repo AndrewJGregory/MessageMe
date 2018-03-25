@@ -24,10 +24,13 @@ class Search extends React.Component {
 
   componentDidMount() {
     this.props.fetchUsers("");
-    this.props.createChat(
-      this.props.currentUserId,
-      this.props.match.params.userId
-    );
+    let chatId = null;
+    this.props
+      .createChat(this.props.currentUserId, this.props.match.params.userId)
+      .then(chat => {
+        chatId = Object.keys(chat);
+        this.props.fetchMessages(chatId);
+      });
   }
 
   leftAlignText(e) {
@@ -46,8 +49,12 @@ class Search extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const id = e.target.dataset.userId;
+    let chatId = null;
     this.props.history.push(`/messages/${id}`);
-    this.props.createChat(this.props.currentUserId, id);
+    this.props.createChat(this.props.currentUserId, id).then(chat => {
+      chatId = Object.keys(chat);
+      this.props.fetchMessages(chatId);
+    });
   }
 
   render() {
