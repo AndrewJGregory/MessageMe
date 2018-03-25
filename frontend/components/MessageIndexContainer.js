@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import Message from "./Message";
+import MessageIndex from "./MessageIndex";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
@@ -30,4 +30,4 @@ const mapStateToProps = (state, ownProps) => {
   return { chatId, currentUserMessages, otherUserMessages };
 };
 
-export default withRouter(connect(mapStateToProps, null)(Message));
+export default withRouter(connect(mapStateToProps, null)(MessageIndex));

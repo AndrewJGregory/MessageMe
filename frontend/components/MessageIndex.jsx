@@ -1,19 +1,16 @@
 import React from "react";
+import MessageIndexItem from "./MessageIndexItem";
 
-const Messages = props => {
+const MessageIndex = props => {
   const currentUserMessages = props.currentUserMessages.map(message => {
     return (
-      <li key={message.id} className="current-user-msg">
-        {message.content}
-      </li>
+      <MessageIndexItem key={message.id} type={"current"} message={message} />
     );
   });
 
   const otherUserMessages = props.otherUserMessages.map(message => {
     return (
-      <li key={message.id} className="other-user-msg">
-        {message.content}
-      </li>
+      <MessageIndexItem key={message.id} type={"other"} message={message} />
     );
   });
 
@@ -27,4 +24,4 @@ const Messages = props => {
   );
 };
 
-export default Messages;
+export default MessageIndex;
