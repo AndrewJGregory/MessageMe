@@ -23,13 +23,15 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchUsers("");
-    let chatId = null;
+    let firstUserId = null;
     this.props
-      .createChat(this.props.currentUserId, this.props.match.params.userId)
-      .then(chat => {
-        chatId = Object.keys(chat);
-        this.props.fetchMessages(chatId);
+      .fetchUsers("")
+      .then(users => {
+        firstUserId = Object.values(users)[0].id;
+        this.props.history.push(`/messages/${firstUserId}`);
+      })
+      .then(() => {
+        this.createChatAndFetchMessages(firstUserId);
       });
   }
 
@@ -38,6 +40,16 @@ class Search extends React.Component {
     this.setState({
       textAlignment: "left-text-align",
       shouldUsersBeDisplayed: true
+    });
+  }
+
+  createChatAndFetchMessages(
+    otherUserId,
+    currentUserId = this.props.currentUserId
+  ) {
+    this.props.createChat(currentUserId, otherUserId).then(chat => {
+      let chatId = Object.keys(chat);
+      this.props.fetchMessages(chatId);
     });
   }
 
@@ -51,10 +63,7 @@ class Search extends React.Component {
     const id = e.target.dataset.userId;
     let chatId = null;
     this.props.history.push(`/messages/${id}`);
-    this.props.createChat(this.props.currentUserId, id).then(chat => {
-      chatId = Object.keys(chat);
-      this.props.fetchMessages(chatId);
-    });
+    this.createChatAndFetchMessages(id);
   }
 
   render() {
