@@ -23,15 +23,19 @@ class Search extends React.Component {
   }
 
   componentDidMount() {
-    let firstUserId = null;
+    let otherUserId = null;
     this.props
       .fetchUsers("")
       .then(users => {
-        firstUserId = Object.values(users)[0].id;
-        this.props.history.push(`/messages/${firstUserId}`);
+        otherUserId = Object.values(users)[0].id;
+        if (this.props.match.params.userId) {
+          otherUserId = this.props.match.params.userId;
+        } else {
+          this.props.history.push(`/messages/${otherUserId}`);
+        }
       })
       .then(() => {
-        this.createChatAndFetchMessages(firstUserId);
+        this.createChatAndFetchMessages(otherUserId);
       });
   }
 
