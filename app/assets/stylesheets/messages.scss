@@ -38,10 +38,12 @@
 .other-user-msg {
   background-color: grey;
   align-self: flex-start;
+  margin-left: 10px;
 }
 
 .current-user-msg {
   color: white;
   background-color: blue;
   align-self: flex-end;
+  margin-right: 10px;
 }
