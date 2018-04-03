@@ -11,28 +11,37 @@
 .messages {
   height: 80%;
   border: 1px solid blue;
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .message-form-container {
   height: 10%;
   border: 1px solid green;
-  form {
-    textarea {
-      width: 90%;
-      height: 100%;
-      resize: none;
-      padding: 15px 0 0 15px;
-    }
-
-    button {
-    }
+  textarea {
+    width: 90%;
+    height: 100%;
+    resize: none;
+    padding: 15px 0 0 15px;
   }
 }
 
+.other-user-msg,
+.current-user-msg {
+  border-radius: 5px;
+  padding: 5px;
+  margin: 5px 0;
+}
+
 .other-user-msg {
-  color: green;
+  background-color: grey;
+  align-self: flex-start;
 }
 
 .current-user-msg {
-  color: blue;
+  color: white;
+  background-color: blue;
+  align-self: flex-end;
 }
