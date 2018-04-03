@@ -5,9 +5,19 @@ import { withRouter } from "react-router-dom";
 const mapStateToProps = (state, ownProps) => {
   const userId = parseInt(ownProps.match.params.userId);
   const currentUserId = parseInt(state.session.currentUser.id);
+  let chatId = findChatId(state, userId, currentUserId);
+  let messages = [];
+
+  if (chatId) {
+    messages = findMessages(state, userId, currentUserId, chatId);
+  }
+
+  sortByDate(messages);
+  return { messages };
+};
+
+const findChatId = (state, userId, currentUserId) => {
   let chatId = 0;
-  let currentUserMessages = [];
-  let otherUserMessages = [];
   Object.values(state.entities.chats).forEach(chat => {
     if (
       (chat.user_id_one === userId && chat.user_id_two === currentUserId) ||
@@ -16,18 +26,31 @@ const mapStateToProps = (state, ownProps) => {
       chatId = chat.id;
     }
   });
+  return chatId;
+};
 
-  if (chatId) {
-    Object.values(state.entities.messages).forEach(message => {
-      if (message.chat_id === chatId && message.user_id === currentUserId) {
-        currentUserMessages.push(message);
-      } else if (message.chat_id === chatId && message.user_id === userId) {
-        otherUserMessages.push(message);
-      }
-    });
-  }
+const findMessages = (state, userId, currentUserId, chatId) => {
+  let messages = [];
+  let newMessage = null;
+  Object.values(state.entities.messages).forEach(message => {
+    newMessage = null;
+    if (message.chat_id === chatId && message.user_id === currentUserId) {
+      newMessage = Object.assign({}, message, {
+        isCurrentUserMessage: true
+      });
+    } else if (message.chat_id === chatId && message.user_id === userId)
+      newMessage = Object.assign({}, message, {
+        isCurrentUserMessage: false
+      });
+    if (newMessage) messages.push(newMessage);
+  });
+  return messages;
+};
 
-  return { chatId, currentUserMessages, otherUserMessages };
+const sortByDate = messages => {
+  return messages.sort(
+    (dateOne, dateTwo) => new Date(dateOne) > new Date(dateTwo)
+  );
 };
 
 export default withRouter(connect(mapStateToProps, null)(MessageIndex));
