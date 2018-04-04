@@ -2,20 +2,6 @@ import { connect } from "react-redux";
 import MessageIndex from "./MessageIndex";
 import { withRouter } from "react-router-dom";
 
-const mapStateToProps = (state, ownProps) => {
-  const userId = parseInt(ownProps.match.params.userId);
-  const currentUserId = parseInt(state.session.currentUser.id);
-  let chatId = findChatId(state, userId, currentUserId);
-  let messages = [];
-
-  if (chatId) {
-    messages = findMessages(state, userId, currentUserId, chatId);
-  }
-
-  sortByDate(messages);
-  return { messages };
-};
-
 const findChatId = (state, userId, currentUserId) => {
   let chatId = 0;
   Object.values(state.entities.chats).forEach(chat => {
@@ -51,6 +37,20 @@ const sortByDate = messages => {
   return messages.sort(
     (dateOne, dateTwo) => new Date(dateOne) > new Date(dateTwo)
   );
+};
+
+const mapStateToProps = (state, ownProps) => {
+  const userId = parseInt(ownProps.match.params.userId);
+  const currentUserId = parseInt(state.session.currentUser.id);
+  let chatId = findChatId(state, userId, currentUserId);
+  let messages = [];
+
+  if (chatId) {
+    messages = findMessages(state, userId, currentUserId, chatId);
+  }
+
+  sortByDate(messages);
+  return { messages, chatId };
 };
 
 export default withRouter(connect(mapStateToProps, null)(MessageIndex));
