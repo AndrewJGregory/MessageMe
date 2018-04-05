@@ -35,7 +35,7 @@ const findMessages = (state, userId, currentUserId, chatId) => {
 
 const sortByDate = messages => {
   return messages.sort(
-    (dateOne, dateTwo) => new Date(dateOne) > new Date(dateTwo)
+    (messageOne, messageTwo) => (messageOne.id < messageTwo.id ? -1 : 1)
   );
 };
 
@@ -49,7 +49,7 @@ const mapStateToProps = (state, ownProps) => {
     messages = findMessages(state, userId, currentUserId, chatId);
   }
 
-  sortByDate(messages);
+  messages = sortByDate(messages);
   return { messages, chatId };
 };
 
