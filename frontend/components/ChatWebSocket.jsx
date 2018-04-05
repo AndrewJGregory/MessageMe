@@ -10,7 +10,6 @@ class ChatWebSocket extends React.Component {
         },
         {
           received: newData => {
-            console.log(newData.message);
             nextProps.receiveMessage(newData.message);
           }
         }

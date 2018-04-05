@@ -20,11 +20,19 @@ export default class MessageInput extends React.Component {
 
   updateMessage(e) {
     e.preventDefault();
-    const content = e.target.value;
-    this.setState({ content });
+    const lastChar = e.target.value[e.target.value.length - 1];
+    if (lastChar === "\n") {
+      this.sendMessage(e);
+    } else {
+      const content = e.target.value;
+      this.setState({ content });
+    }
   }
 
   render() {
+    const sendButton = this.state.content ? (
+      <button type="submit">Send</button>
+    ) : null;
     return (
       <div className="message-form-container">
         <form onSubmit={this.sendMessage}>
@@ -34,7 +42,7 @@ export default class MessageInput extends React.Component {
             onChange={this.updateMessage}
             placeholder="Type a message..."
           />
-          <button>Send</button>
+          {sendButton}
         </form>
       </div>
     );
