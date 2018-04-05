@@ -2,7 +2,7 @@
   "name": "MessageMe",
   "private": true,
   "dependencies": {
-    "actioncable": "^5.1.5",
+    "actioncable": "^5.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.3",
     "lodash": "^4.17.5",

@@ -1,5 +1,6 @@
 import React from "react";
 import MessageIndexItem from "./MessageIndexItem";
+import ChatWebSocketContainer from "./ChatWebSocketContainer";
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -49,6 +50,7 @@ class MessageIndex extends React.Component {
           <div className={`${isLoadingClass}`} />
           <h6>{content}</h6>
         </div>
+        <ChatWebSocketContainer cableApp={this.props.cableApp} />
       </section>
     );
   }

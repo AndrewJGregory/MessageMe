@@ -80,6 +80,10 @@ Rails.application.configure do
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
 
+  config.action_cable.mount_path = '/cable'
+  config.action_cable.url = 'wss://localhost:3000/cable'
+  config.action_cable.allowed_request_origins = [ /http:\/\/localhost:*/ ]
+
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)
     logger.formatter = config.log_formatter
