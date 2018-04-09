@@ -1,6 +1,6 @@
 import React from "react";
 
-const UserSearchResult = ({ user }) => {
+const UserSearchIndexItem = ({ user }) => {
   return (
     <li
       className="user-search-result clickable truncate"
@@ -11,4 +11,4 @@ const UserSearchResult = ({ user }) => {
   );
 };
 
-export default UserSearchResult;
+export default UserSearchIndexItem;

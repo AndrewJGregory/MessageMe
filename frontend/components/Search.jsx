@@ -1,19 +1,17 @@
 import React from "react";
-import UserSearchResult from "./UserSearchResult";
 import { withRouter } from "react-router-dom";
+import UserSearchIndexContainer from "./UserSearchIndexContainer";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       query: "",
-      textAlignment: "",
-      shouldUsersBeDisplayed: false
+      textAlignment: ""
     };
     this.updateInput = this.updateInput.bind(this);
     this.leftAlignText = this.leftAlignText.bind(this);
     this.handleOnBlur = this.handleOnBlur.bind(this);
-    this.handleClick = this.handleClick.bind(this);
   }
 
   updateInput(e) {
@@ -39,14 +37,6 @@ class Search extends React.Component {
       });
   }
 
-  leftAlignText(e) {
-    e.preventDefault();
-    this.setState({
-      textAlignment: "left-text-align",
-      shouldUsersBeDisplayed: true
-    });
-  }
-
   createChatAndFetchMessages(
     otherUserId,
     currentUserId = this.props.currentUserId
@@ -57,29 +47,19 @@ class Search extends React.Component {
     });
   }
 
-  handleOnBlur(e) {
+  leftAlignText(e) {
     e.preventDefault();
-    this.setState({ textAlignment: "", shouldUsersBeDisplayed: false });
+    this.setState({
+      textAlignment: "left-text-align"
+    });
   }
 
-  handleClick(e) {
+  handleOnBlur(e) {
     e.preventDefault();
-    const id = e.target.dataset.userId;
-    let chatId = null;
-    this.props.history.push(`/messages/${id}`);
-    this.createChatAndFetchMessages(id);
+    this.setState({ textAlignment: "" });
   }
 
   render() {
-    const regExp = new RegExp(`${this.state.query}`);
-    let users = null;
-    users = this.props.userResults.reduce((users, user) => {
-      if (regExp.test(user.username)) {
-        users.push(<UserSearchResult user={user} key={user.id} />);
-      }
-      return users;
-    }, []);
-
     return (
       <div className="search">
         <div className="user-search-input-container">
@@ -95,9 +75,7 @@ class Search extends React.Component {
             onBlur={this.handleOnBlur}
           />
         </div>
-        <ul className="user-search-results" onClick={this.handleClick}>
-          {users}
-        </ul>
+        <UserSearchIndexContainer query={this.state.query} />
       </div>
     );
   }
