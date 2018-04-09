@@ -4,7 +4,7 @@ import SearchContainer from "./SearchContainer";
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <div className="sidebar__header center">MessageMe</div>
+      <div className="sidebar__header center truncate">MessageMe</div>
       <SearchContainer />
     </aside>
   );
