@@ -1,16 +1,18 @@
 .right-collection {
   width: 85%;
+  height: 100vh;
 }
 
 .message-header {
   width: 100%;
   height: 10%;
-  border: 1px solid red;
+  border: 1px solid gray;
+  border-bottom: none;
 }
 
 .messages {
-  height: 80%;
-  border: 1px solid blue;
+  height: 85%;
+  border: 1px solid gray;
   ul {
     display: flex;
     flex-direction: column;
@@ -18,14 +20,15 @@
   overflow-y: auto;
 }
 
-.message-form-container {
-  height: 10%;
-  border: 1px solid green;
+.lower-container {
+  border: 1px solid gray;
+  border-top: none;
   textarea {
-    width: 90%;
+    width: 100%;
     height: 100%;
     resize: none;
     padding: 15px 0 0 15px;
+    border: 0;
   }
 }
 
@@ -47,4 +50,17 @@
   background-color: blue;
   align-self: flex-end;
   margin-right: 10px;
+}
+
+.btn-and-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.send-btn {
+  background-color: white;
+  border: 0;
+  font-weight: bolder;
+  color: black;
+  font-size: 32px;
 }

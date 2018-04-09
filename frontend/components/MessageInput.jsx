@@ -31,11 +31,17 @@ export default class MessageInput extends React.Component {
 
   render() {
     const sendButton = this.state.content ? (
-      <button type="submit">Send</button>
+      <button
+        className="send-btn clickable"
+        type="submit"
+        onClick={this.sendMessage}
+      >
+        Send
+      </button>
     ) : null;
     return (
-      <div className="message-form-container">
-        <form onSubmit={this.sendMessage}>
+      <div className="lower-container">
+        <div className="btn-and-input-container">
           <textarea
             type="text"
             value={this.state.content}
@@ -43,7 +49,7 @@ export default class MessageInput extends React.Component {
             placeholder="Type a message..."
           />
           {sendButton}
-        </form>
+        </div>
       </div>
     );
   }
