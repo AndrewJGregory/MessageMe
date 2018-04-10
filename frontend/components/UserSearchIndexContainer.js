@@ -2,11 +2,14 @@ import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import UserSearchIndex from "./UserSearchIndex";
 import { createChatAndFetchMessages } from "../actions/chat";
+import { sortByMostRecentlyMessaged } from "../util/message";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
+  const userResults = Object.values(state.search.users);
+  sortByMostRecentlyMessaged(state, userResults);
   return {
-    userResults: Object.values(state.search.users),
+    userResults,
     currentUserId
   };
 };
