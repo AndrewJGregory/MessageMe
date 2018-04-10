@@ -12,17 +12,7 @@ class UserSearchIndex extends React.Component {
     const id = e.target.dataset.userId;
     let chatId = null;
     this.props.history.push(`/messages/${id}`);
-    this.createChatAndFetchMessages(id);
-  }
-
-  createChatAndFetchMessages(
-    otherUserId,
-    currentUserId = this.props.currentUserId
-  ) {
-    this.props.createChat(currentUserId, otherUserId).then(chat => {
-      let chatId = Object.keys(chat);
-      this.props.fetchMessages(chatId);
-    });
+    this.props.createChatAndFetchMessages(id);
   }
 
   render() {

@@ -33,18 +33,8 @@ class Search extends React.Component {
         }
       })
       .then(() => {
-        this.createChatAndFetchMessages(otherUserId);
+        this.props.createChatAndFetchMessages(otherUserId);
       });
-  }
-
-  createChatAndFetchMessages(
-    otherUserId,
-    currentUserId = this.props.currentUserId
-  ) {
-    this.props.createChat(currentUserId, otherUserId).then(chat => {
-      let chatId = Object.keys(chat);
-      this.props.fetchMessages(chatId);
-    });
   }
 
   leftAlignText(e) {

@@ -1,22 +1,17 @@
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import UserSearchIndex from "./UserSearchIndex";
-import { createChat, createChatAndFetchMessages } from "../actions/chat";
-import { fetchMessages } from "../actions/message";
+import { createChatAndFetchMessages } from "../actions/chat";
 
 const mapStateToProps = state => {
-  const currentUserId = state.session.currentUser.id;
   return {
-    userResults: Object.values(state.search.users),
-    currentUserId
+    userResults: Object.values(state.search.users)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    createChat: (userIdOne, userIdTwo) =>
-      dispatch(createChat(userIdOne, userIdTwo)),
-    fetchMessages: chatId => dispatch(fetchMessages(chatId))
+    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id))
   };
 };
 

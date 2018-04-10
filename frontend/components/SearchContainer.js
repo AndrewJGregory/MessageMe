@@ -1,23 +1,18 @@
 import { connect } from "react-redux";
 import Search from "./Search";
 import { fetchUsers } from "../actions/search";
-import { createChat } from "../actions/chat";
-import { fetchMessages } from "../actions/message";
+import { createChatAndFetchMessages } from "../actions/chat";
 
 const mapStateToProps = state => {
-  const currentUserId = state.session.currentUser.id;
   return {
-    userResults: Object.values(state.search.users),
-    currentUserId
+    userResults: Object.values(state.search.users)
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchUsers: query => dispatch(fetchUsers(query)),
-    createChat: (userIdOne, userIdTwo) =>
-      dispatch(createChat(userIdOne, userIdTwo)),
-    fetchMessages: chatId => dispatch(fetchMessages(chatId))
+    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
+    fetchUsers: query => dispatch(fetchUsers(query))
   };
 };
 
