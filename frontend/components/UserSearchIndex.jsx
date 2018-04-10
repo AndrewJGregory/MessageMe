@@ -15,11 +15,15 @@ class UserSearchIndex extends React.Component {
     this.props.createChatAndFetchMessages(id);
   }
 
-  render() {
+  doesUsernameMatchQuery(username) {
     const regExp = new RegExp(`${this.props.query}`);
+    return regExp.test(username.toLowerCase());
+  }
+
+  render() {
     let users = null;
     users = this.props.userResults.reduce((users, user) => {
-      if (regExp.test(user.username.toLowerCase())) {
+      if (this.doesUsernameMatchQuery(user.username)) {
         users.push(<UserSearchIndexItem user={user} key={user.id} />);
       }
       return users;

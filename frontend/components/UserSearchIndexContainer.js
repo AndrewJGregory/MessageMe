@@ -4,8 +4,10 @@ import UserSearchIndex from "./UserSearchIndex";
 import { createChatAndFetchMessages } from "../actions/chat";
 
 const mapStateToProps = state => {
+  const currentUserId = state.session.currentUser.id;
   return {
-    userResults: Object.values(state.search.users)
+    userResults: Object.values(state.search.users),
+    currentUserId
   };
 };
 
