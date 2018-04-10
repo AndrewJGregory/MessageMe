@@ -19,7 +19,7 @@ class UserSearchIndex extends React.Component {
     const regExp = new RegExp(`${this.props.query}`);
     let users = null;
     users = this.props.userResults.reduce((users, user) => {
-      if (regExp.test(user.username)) {
+      if (regExp.test(user.username.toLowerCase())) {
         users.push(<UserSearchIndexItem user={user} key={user.id} />);
       }
       return users;
