@@ -1,6 +1,7 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
 import UserSearchIndexContainer from "./UserSearchIndexContainer";
+import LogoutButtonContainer from "./LogoutButtonContainer";
 
 class Search extends React.Component {
   constructor(props) {
@@ -52,10 +53,15 @@ class Search extends React.Component {
             className="user-search-input"
           />
         </div>
-        <UserSearchIndexContainer
-          clearQuery={this.clearQuery.bind(this)}
-          query={this.state.query}
-        />
+        <div className="results-logout-btn-container">
+          <UserSearchIndexContainer
+            clearQuery={this.clearQuery.bind(this)}
+            query={this.state.query}
+          />
+          <div className="logout-btn-container">
+            <LogoutButtonContainer />
+          </div>
+        </div>
       </div>
     );
   }
