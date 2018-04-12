@@ -19,6 +19,10 @@
     width: 90%;
     color: white;
     font-size: 14px;
+
+    &:focus {
+      text-align: left;
+    }
   }
 }
 

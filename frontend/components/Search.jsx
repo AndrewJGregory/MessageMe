@@ -10,8 +10,6 @@ class Search extends React.Component {
       textAlignment: ""
     };
     this.updateInput = this.updateInput.bind(this);
-    this.leftAlignText = this.leftAlignText.bind(this);
-    this.handleOnBlur = this.handleOnBlur.bind(this);
   }
 
   updateInput(e) {
@@ -37,16 +35,8 @@ class Search extends React.Component {
       });
   }
 
-  leftAlignText(e) {
-    e.preventDefault();
-    this.setState({
-      textAlignment: "left-text-align"
-    });
-  }
-
-  handleOnBlur(e) {
-    e.preventDefault();
-    this.setState({ textAlignment: "" });
+  clearQuery() {
+    this.setState({ query: "" });
   }
 
   render() {
@@ -60,12 +50,12 @@ class Search extends React.Component {
             value={this.state.query}
             placeholder="Search MessageMe"
             className="user-search-input"
-            id={`${this.state.textAlignment}`}
-            onFocus={this.leftAlignText}
-            onBlur={this.handleOnBlur}
           />
         </div>
-        <UserSearchIndexContainer query={this.state.query} />
+        <UserSearchIndexContainer
+          clearQuery={this.clearQuery.bind(this)}
+          query={this.state.query}
+        />
       </div>
     );
   }

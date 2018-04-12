@@ -10,9 +10,11 @@ class UserSearchIndex extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const id = e.target.dataset.userId;
-    let chatId = null;
-    this.props.history.push(`/messages/${id}`);
-    this.props.createChatAndFetchMessages(id);
+    if (id) {
+      this.props.clearQuery();
+      this.props.history.push(`/messages/${id}`);
+      this.props.createChatAndFetchMessages(id);
+    }
   }
 
   doesUsernameMatchQuery(username) {
@@ -28,7 +30,6 @@ class UserSearchIndex extends React.Component {
       }
       return users;
     }, []);
-
     return (
       <ul className="user-search-results" onClick={this.handleClick}>
         {users}
