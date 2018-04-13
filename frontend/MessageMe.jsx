@@ -14,8 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
     store = configureStore();
   }
   const cableApp = {};
-  cableApp.cable = actionCable.createConsumer(
-    `ws://${window.location.hostname}:3000/cable`
-  );
+  const url =
+    process.env.NODE_ENV === "production"
+      ? "wss://messagemeajg.herokuapp.com/cable"
+      : `ws://${window.location.hostname}:3000/cable`;
+  cableApp.cable = actionCable.createConsumer(url);
   ReactDOM.render(<Root store={store} cableApp={cableApp} />, root);
 });
