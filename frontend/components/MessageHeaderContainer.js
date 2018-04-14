@@ -3,12 +3,8 @@ import MessageHeader from "./MessageHeader";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
-  let username;
-  try {
-    username = state.search.users[ownProps.match.params.userId]["username"];
-  } catch (e) {
-    username = null;
-  }
+  const otherUser = state.entities.users[ownProps.match.params.userId];
+  let username = otherUser ? otherUser["username"] : null;
   return {
     username
   };

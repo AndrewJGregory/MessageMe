@@ -5,7 +5,7 @@ import { createChatAndFetchMessages } from "../actions/chat";
 
 const mapStateToProps = state => {
   return {
-    userResults: Object.values(state.search.users)
+    userResults: Object.values(state.entities.users)
   };
 };
 

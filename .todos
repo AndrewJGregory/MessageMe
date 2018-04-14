@@ -1,0 +1,10 @@
+New user creates account. Messages someone. New user needs to 
+show up in search results on the left.
+
+Solution: stream chat_id, current_user, along with message with the chat channel. 
+Populate accordingly. 
+
+No need for search slice of state, move users to entities since filtering is 
+done on the front end anyway
+Initially fetch only the first ten users from database, keep it capped 
+at ten users (or make the user search result scrollable)

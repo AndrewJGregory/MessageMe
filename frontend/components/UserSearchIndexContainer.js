@@ -6,7 +6,7 @@ import { sortByMostRecentlyMessaged } from "../util/message";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
-  const userResults = Object.values(state.search.users);
+  const userResults = Object.values(state.entities.users);
   sortByMostRecentlyMessaged(state, userResults);
   return {
     userResults,
