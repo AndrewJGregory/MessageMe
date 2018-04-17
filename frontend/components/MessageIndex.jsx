@@ -44,7 +44,7 @@ class MessageIndex extends React.Component {
     }
 
     return (
-      <section className="messages">
+      <section className="messages scrollable">
         <ul>{messages}</ul>
         <div className="loader-container center">
           <div className={`${isLoadingClass}`} />

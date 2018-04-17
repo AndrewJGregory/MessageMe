@@ -31,7 +31,7 @@ class UserSearchIndex extends React.Component {
       return users;
     }, []);
     return (
-      <ul className="user-search-results" onClick={this.handleClick}>
+      <ul className="user-search-results scrollable" onClick={this.handleClick}>
         {users}
       </ul>
     );
