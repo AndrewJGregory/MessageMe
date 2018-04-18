@@ -11,7 +11,7 @@ class Api::ChatsController < ApplicationController
   end
 
   def show
-    @sender_messages, @receiver_messages = Chat.find(params[:id]).get_all_messages
+    @messages = Chat.find(params[:id]).messages
   end
 
   private
