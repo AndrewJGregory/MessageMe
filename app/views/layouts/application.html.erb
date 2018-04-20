@@ -12,7 +12,8 @@
 <% if logged_in? %>
 window.currentUser = <%= render(
   "api/users/show.json.jbuilder",
-  user: current_user
+  user: current_user,
+  isCurrentUser: true
 ).html_safe %>
 <% end %>
 
