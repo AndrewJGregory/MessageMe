@@ -5,6 +5,7 @@ export const SIGNUP = "SIGNUP";
 export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
+export const SIGN_OUT_CURRENT_USER = "SIGN_OUT_CURRENT_USER";
 
 export const receiveSessionErrors = errors => {
   return {
@@ -12,10 +13,10 @@ export const receiveSessionErrors = errors => {
     errors
   };
 };
-export const receiveCurrentUser = user => {
+export const receiveCurrentUser = payload => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user
+    payload
   };
 };
 
@@ -26,11 +27,20 @@ export const clearErrors = () => {
   };
 };
 
-export const signOut = () => dispatch => {
+export const signOutActionCreator = () => {
+  return {
+    type: SIGN_OUT_CURRENT_USER,
+    currentUser: null
+  };
+};
+
+export const signOutThunk = () => dispatch => {
+  const noCurrentUserPayload = {
+    users: { "-1": { username: null, id: null, isCurrentUser: true } }
+  };
   return SessionUtil.signOut().then(
     payload => {
-      dispatch(receiveCurrentUser(null));
-      return payload;
+      dispatch(signOutActionCreator());
     },
     errors => {
       dispatch(receiveSessionErrors(errors.responseJSON));

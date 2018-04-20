@@ -19,23 +19,6 @@ class Search extends React.Component {
     this.setState({ query });
   }
 
-  componentDidMount() {
-    let otherUserId = null;
-    this.props
-      .fetchUsers("")
-      .then(users => {
-        otherUserId = Object.values(users)[0].id;
-        if (this.props.match.params.userId) {
-          otherUserId = this.props.match.params.userId;
-        } else {
-          this.props.history.push(`/messages/${otherUserId}`);
-        }
-      })
-      .then(() => {
-        this.props.createChatAndFetchMessages(otherUserId);
-      });
-  }
-
   clearQuery() {
     this.setState({ query: "" });
   }

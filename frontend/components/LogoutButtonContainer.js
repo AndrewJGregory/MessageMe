@@ -1,10 +1,10 @@
 import { connect } from "react-redux";
 import LogoutButton from "./LogoutButton";
-import { signOut } from "../actions/session";
+import { signOutThunk } from "../actions/session";
 
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOutThunk())
   };
 };
 

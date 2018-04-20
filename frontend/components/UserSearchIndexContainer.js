@@ -8,6 +8,7 @@ const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
   const userResults = Object.values(state.entities.users);
   sortByMostRecentlyMessaged(state, userResults);
+  console.log(userResults);
   return {
     userResults,
     currentUserId
