@@ -6,7 +6,7 @@ const chatReducer = (state = {}, action) => {
     case RECEIVE_CHAT:
       return Object.assign({}, state, action.chat);
     case RECEIVE_CURRENT_USER:
-      return Object.assign({}, state, action.chats);
+      return Object.assign({}, state, action.payload.chats);
     default:
       return state;
   }
