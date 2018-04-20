@@ -12,9 +12,21 @@ class UserSearchIndex extends React.Component {
     const id = e.target.dataset.userId;
     if (id) {
       this.props.clearQuery();
-      this.props.history.push(`/messages/${id}`);
-      this.props.createChatAndFetchMessages(id);
+      this.redirectToChat(id);
     }
+  }
+
+  componentDidMount() {
+    const userId = this.props.match.params.userId;
+    if (!userId && this.props.userResults.length > 0) {
+      const mostRecentUserId = this.props.userResults[0].id;
+      this.redirectToChat(mostRecentUserId);
+    }
+  }
+
+  redirectToChat(userId) {
+    this.props.history.push(`/messages/${userId}`);
+    this.props.createChatAndFetchMessages(userId);
   }
 
   doesUsernameMatchQuery(username) {
