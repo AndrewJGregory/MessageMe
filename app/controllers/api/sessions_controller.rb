@@ -19,7 +19,7 @@ class Api::SessionsController < ApplicationController
       @most_recently_messaged_users = Chat.find_recently_messaged_users(@user.id).push(@user)
       @most_recent_chats = Chat.find_most_recent_chats(@user.id)
       @most_recent_messages = Chat.find_recent_messages(@user.id)
-      render 'api/users/show'
+      render 'api/sessions/create'
     else
       errors[:credentials] = 'Incorrect username or password.'
       render json: errors, status: 422
