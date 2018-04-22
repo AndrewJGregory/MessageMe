@@ -1,7 +1,5 @@
-import {
-  RECEIVE_CURRENT_USER,
-  SIGN_OUT_CURRENT_USER
-} from "../actions/session";
+import { RECEIVE_CURRENT_USER } from "../actions/session";
+import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
 
 const initialState = {
   currentUser: null
@@ -10,12 +8,7 @@ const initialState = {
 const sessionReducer = (state = initialState, action) => {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
-      const currentUser = Object.values(action.payload.users).filter(
-        user => user.isCurrentUser
-      )[0];
-      return Object.assign({}, state, { currentUser });
-    case SIGN_OUT_CURRENT_USER:
-      return Object.assign({}, state, { currentUser: action.currentUser });
+      return Object.assign({}, state, { currentUser: action.user });
     default:
       return state;
   }

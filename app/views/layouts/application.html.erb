@@ -11,9 +11,8 @@
 <script type="text/javascript">
 <% if logged_in? %>
 window.currentUser = <%= render(
-  "api/users/show.json.jbuilder",
-  user: current_user,
-  isCurrentUser: true
+  "api/sessions/create.json.jbuilder",
+  user: current_user
 ).html_safe %>
 <% end %>
 

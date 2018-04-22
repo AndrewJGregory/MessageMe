@@ -1,5 +1,5 @@
 import { RECEIVE_MESSAGE, RECEIVE_MESSAGES } from "../actions/message";
-import { RECEIVE_CURRENT_USER } from "../actions/session";
+import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
 
 const messageReducer = (state = {}, action) => {
   switch (action.type) {
@@ -7,7 +7,7 @@ const messageReducer = (state = {}, action) => {
       return Object.assign({}, state, action.message);
     case RECEIVE_MESSAGES:
       return Object.assign({}, state, action.messages);
-    case RECEIVE_CURRENT_USER:
+    case RECEIVE_USER_SIGN_IN_DATA:
       return Object.assign({}, state, action.payload.messages);
     default:
       return state;
