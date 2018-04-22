@@ -8,3 +8,5 @@ Populate accordingly.
 - Fetch the ten most recently messaged users on the backend
 - If searched, populate the left with more results 
 - Still need to fetch on the back AND front end who is most recently messaged
+
+- Initial data is all fetched. Refresh page, everything is lost. 

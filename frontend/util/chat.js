@@ -18,3 +18,8 @@ export const findChatId = (state, userId, currentUserId) => {
   });
   return chatId;
 };
+
+export const redirectToChat = (component, userId) => {
+  component.props.history.push(`/messages/${userId}`);
+  component.props.createChatAndFetchMessages(userId);
+};

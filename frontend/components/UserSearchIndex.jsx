@@ -1,5 +1,6 @@
 import React from "react";
 import UserSearchIndexItem from "./UserSearchIndexItem";
+import { redirectToChat } from "../util/chat";
 
 class UserSearchIndex extends React.Component {
   constructor(props) {
@@ -12,21 +13,8 @@ class UserSearchIndex extends React.Component {
     const id = e.target.dataset.userId;
     if (id) {
       this.props.clearQuery();
-      this.redirectToChat(id);
+      redirectToChat(this, id);
     }
-  }
-
-  componentDidMount() {
-    const userId = this.props.match.params.userId;
-    if (!userId && this.props.userResults.length > 0) {
-      const mostRecentUserId = this.props.userResults[0].id;
-      this.redirectToChat(mostRecentUserId);
-    }
-  }
-
-  redirectToChat(userId) {
-    this.props.history.push(`/messages/${userId}`);
-    this.props.createChatAndFetchMessages(userId);
   }
 
   doesUsernameMatchQuery(username) {
