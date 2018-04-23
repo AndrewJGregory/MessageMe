@@ -30,6 +30,11 @@ class UserSearchIndex extends React.Component {
       }
       return users;
     }, []);
+
+    if (this.props.query.length === 0) {
+      users = users.slice(0, 11);
+    }
+
     return (
       <ul className="user-search-results scrollable" onClick={this.handleClick}>
         {users}
