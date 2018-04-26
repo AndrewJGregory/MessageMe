@@ -38,9 +38,6 @@ class MessageIndex extends React.Component {
     if (this.state.isLoading) {
       isLoadingClass = "loader";
       content = "Fetching messages...";
-    } else {
-      isLoadingClass = "";
-      content = null;
     }
 
     return (
