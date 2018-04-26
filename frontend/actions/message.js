@@ -21,12 +21,7 @@ export const createMessage = (
   user_sender_id,
   user_receiver_id
 ) => dispatch => {
-  return messageUtil
-    .createMessage(content, user_sender_id, user_receiver_id)
-    .then(message => {
-      dispatch(receiveMessage(message));
-      return message;
-    });
+  return messageUtil.createMessage(content, user_sender_id, user_receiver_id);
 };
 
 export const fetchMessages = chatId => dispatch => {
