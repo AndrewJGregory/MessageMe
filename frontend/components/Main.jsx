@@ -18,7 +18,9 @@ class Main extends React.Component {
         const users = Object.values(payload.users);
         sortByMostRecentlyMessaged(state, users);
         const userId = users[0].id;
-        redirectToChat(this, userId);
+        if (!this.props.match.params.userId) {
+          redirectToChat(this, userId);
+        }
       });
   }
 
@@ -29,7 +31,7 @@ class Main extends React.Component {
         <div className="right-collection">
           <MessageHeaderContainer />
           <MessageIndexContainer cableApp={this.props.cableApp} />
-          <MessageInputContainer />
+          <MessageInputContainer cableApp={this.props.cableApp} />
         </div>
       </main>
     );
