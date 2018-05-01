@@ -2,13 +2,10 @@ import { connect } from "react-redux";
 import ChatWebSocket from "./ChatWebSocket";
 import { withRouter } from "react-router-dom";
 import { receiveMessage } from "../actions/message";
-import { findChatId } from "../util/chat";
 
 const mapStateToProps = (state, ownProps) => {
-  const userId = parseInt(ownProps.match.params.userId);
-  const currentUserId = parseInt(state.session.currentUser.id);
-  const chatId = findChatId(state, userId, currentUserId);
-  return { chatId, currentUserId, userId };
+  const chatIds = Object.keys(state.entities.chats);
+  return { chatIds };
 };
 
 const mapDispatchToProps = dispatch => {
