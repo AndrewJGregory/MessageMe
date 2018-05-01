@@ -17,10 +17,10 @@ class Main extends React.Component {
         };
         const users = Object.values(payload.users);
         sortByMostRecentlyMessaged(state, users);
-        const userId = users[0].id;
-        if (!this.props.match.params.userId) {
-          redirectToChat(this, userId);
-        }
+        const userId = this.props.match.params.userId
+          ? this.props.match.params.userId
+          : users[0].id;
+        redirectToChat(this, userId);
       });
   }
 
