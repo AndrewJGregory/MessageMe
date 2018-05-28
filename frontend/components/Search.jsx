@@ -16,7 +16,7 @@ class Search extends React.Component {
   updateInput(e) {
     e.preventDefault();
     const query = e.target.value;
-    this.setState({ query });
+    this.setState({ query }, () => this.props.fetchUsers(query));
   }
 
   clearQuery() {
