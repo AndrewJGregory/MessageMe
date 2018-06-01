@@ -4,10 +4,6 @@ class ChatChannel < ApplicationCable::Channel
     stream_for @chat
   end
 
-  def received(data)
-    ChatChannel.broadcast_to(@chat, { message: @message })
-  end 
-
   def unsubscribed
     # Any cleanup needed when channel is unsubscribed
   end
