@@ -12,8 +12,10 @@ class ChatWebSocket extends React.Component {
             chatId
           },
           {
-            received: newData => {
-              nextProps.receiveMessage(newData.message);
+            received: payload => {
+              nextProps.receiveMessage(payload.message);
+              nextProps.receiveUser(payload.user);
+              nextProps.receiveChat(payload.chat);
             }
           }
         );

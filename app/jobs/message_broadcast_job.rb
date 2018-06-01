@@ -11,8 +11,13 @@ class MessageBroadcastJob < ApplicationJob
     normalized_message = { message.id => message }
     # other user needs to have the chat with themselves. 
     # so create chat with the users self after creation in model (instead of on click in front end)
-    # 
-    ChatChannel.broadcast_to(self_chat, { message: normalized_message })
-    ChatChannel.broadcast_to(original_chat, { message: normalized_message })
+    # THEN, broadcast more than the message:
+    # the normalized_message's chat
+    # the user info: of User.find_by(id: message.user_id)
+    # dispatch appropiate actions in front end
+    normalized_user = { message.user_id => User.find_by(id: message.user_id) }
+    normalized_chat = { original_chat.id => original_chat }
+    ChatChannel.broadcast_to(self_chat, { message: normalized_message, user: normalized_user, chat: normalized_chat } )
+    ChatChannel.broadcast_to(original_chat, { message: normalized_message, user: normalized_user, chat: normalized_chat } )
   end
 end
