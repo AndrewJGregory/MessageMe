@@ -14,9 +14,9 @@ used_names = []
 new_name = nil
 
 User.create!(username: 'andrew', password: 'password')
-100.times do
+20.times do
   new_name = Faker::Name.first_name
-  while used_names.include?(new_name) do
+  while used_names.include?(new_name)
     new_name = Faker::Name.first_name
   end
   User.create!(username: new_name, password: 'password')
@@ -26,6 +26,3 @@ end
 u1 = User.first
 u2 = User.second  
 c1 = Chat.create!(user_id_one: u1.id, user_id_two: u2.id)
-Message.create!(chat_id: c1.id, user_id: u1.id, content: "My very first message")
-Message.create!(chat_id: c1.id, user_id: u1.id, content: "My very second message")
-Message.create!(chat_id: c1.id, user_id: u2.id, content: "My very third message")
