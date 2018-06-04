@@ -10,12 +10,11 @@
 #  updated_at :datetime         not null
 #
 
+
 class Message < ApplicationRecord
   validates :content, :user_id, :chat_id, presence: true
   belongs_to :chat
   belongs_to :user
 
-  after_create_commit do 
-    MessageBroadcastJob.perform_later(self, self.chat.id)
-  end 
+  after_create_commit { MessageBroadcastJob.perform_later(self) }
 end
