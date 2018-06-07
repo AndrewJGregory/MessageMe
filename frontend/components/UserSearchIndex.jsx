@@ -1,22 +1,7 @@
 import React from "react";
-import UserSearchIndexItem from "./UserSearchIndexItem";
-import { redirectToChat } from "../util/chat";
+import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
 
 class UserSearchIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    const id = e.target.dataset.userId;
-    if (id) {
-      this.props.clearQuery();
-      redirectToChat(this, id);
-    }
-  }
-
   doesUsernameMatchQuery(username) {
     const regExp = new RegExp(`${this.props.query}`);
     return regExp.test(username.toLowerCase());
@@ -26,7 +11,13 @@ class UserSearchIndex extends React.Component {
     let users = null;
     users = this.props.userResults.reduce((users, user) => {
       if (this.doesUsernameMatchQuery(user.username)) {
-        users.push(<UserSearchIndexItem user={user} key={user.id} />);
+        users.push(
+          <UserSearchIndexItemContainer
+            user={user}
+            key={user.id}
+            clearQuery={this.props.clearQuery}
+          />
+        );
       }
       return users;
     }, []);
@@ -35,11 +26,7 @@ class UserSearchIndex extends React.Component {
       users = users.slice(0, 11);
     }
 
-    return (
-      <ul className="user-search-results scrollable" onClick={this.handleClick}>
-        {users}
-      </ul>
-    );
+    return <ul className="user-search-results scrollable">{users}</ul>;
   }
 }
 

@@ -1,7 +1,6 @@
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import UserSearchIndex from "./UserSearchIndex";
-import { createChatAndFetchMessages } from "../actions/chat";
 import { sortByMostRecentlyMessaged } from "../util/message";
 
 const mapStateToProps = state => {
@@ -15,12 +14,4 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => {
-  return {
-    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id))
-  };
-};
-
-export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(UserSearchIndex)
-);
+export default withRouter(connect(mapStateToProps, null)(UserSearchIndex));

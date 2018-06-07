@@ -16,12 +16,13 @@ class MessageIndex extends React.Component {
       nextProps.messages.length === 0 &&
       this.props.messages.length === 0 &&
       this.props.chatId === nextProps.chatId;
-    if (hasReceivedMessages || hasZeroMessages) {
-      this.setState({ isLoading: false });
-    }
 
     if (hasChatChanged) {
       this.setState({ isLoading: true });
+    }
+
+    if (hasReceivedMessages || hasZeroMessages) {
+      this.setState({ isLoading: false });
     }
   }
 
