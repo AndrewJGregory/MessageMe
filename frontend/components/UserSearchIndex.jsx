@@ -7,14 +7,17 @@ class UserSearchIndex extends React.Component {
     return regExp.test(username.toLowerCase());
   }
 
-  render() {
-    let users = null;
-    users = this.props.userResults.reduce((users, user) => {
+  filterUserSearchResults() {
+    return this.props.userResults.reduce((users, user) => {
       if (this.doesUsernameMatchQuery(user.username)) {
         users.push(<UserSearchIndexItemContainer user={user} key={user.id} />);
       }
       return users;
     }, []);
+  }
+
+  render() {
+    let users = this.filterUserSearchResults();
 
     if (this.props.searchQuery.length === 0) {
       users = users.slice(0, 11);
