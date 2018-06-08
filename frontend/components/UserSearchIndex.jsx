@@ -3,7 +3,7 @@ import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
 
 class UserSearchIndex extends React.Component {
   doesUsernameMatchQuery(username) {
-    const regExp = new RegExp(`${this.props.searchQuery}`);
+    const regExp = new RegExp(`${this.props.searchQuery.toLowerCase()}`);
     return regExp.test(username.toLowerCase());
   }
 
