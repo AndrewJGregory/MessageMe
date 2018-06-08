@@ -16,7 +16,7 @@ class Search extends React.Component {
     e.preventDefault();
     const searchQuery = e.target.value;
     this.props.setSearchQuery({ searchQuery });
-    this.props.fetchUsers(searchQuery);
+    if (searchQuery) this.props.fetchUsers(searchQuery);
   }
 
   render() {
