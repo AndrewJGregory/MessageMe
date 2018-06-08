@@ -46,3 +46,19 @@
   height: 90%;
   background-color: burlywood;
 }
+
+.gray-text {
+  padding-bottom: 1px; // prevents cutoff of the letter "y"
+  color: gray;
+  font-size: 14px;
+}
+
+.user-search-result-info {
+  position: relative;
+}
+
+.most-recent-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+}

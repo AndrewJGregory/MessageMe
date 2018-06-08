@@ -12,12 +12,9 @@ const mapStateToProps = (state, ownProps) => {
   const chatId = findChatId(state, userId, currentUserId);
   const messages = findMessages(state, userId, currentUserId, chatId);
   sortByDate(messages);
-  const mostRecentMessage = messages[messages.length - 1];
-  const mostRecentMessageContent = mostRecentMessage
-    ? mostRecentMessage.content
-    : null;
+  const mostRecentMessage = messages[messages.length - 1] || {};
   return {
-    mostRecentMessageContent
+    mostRecentMessage
   };
 };
 

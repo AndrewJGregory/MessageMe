@@ -14,12 +14,36 @@ class UserSearchIndexItem extends React.Component {
     redirectToChat(this, userId);
   }
 
+  formatTime() {
+    const timestamp = this.props.mostRecentMessage.created_at;
+    let time = null;
+    if (timestamp) {
+      const milliseconds = Date.parse(timestamp);
+      const date = new Date(milliseconds);
+      let hours = date.getHours();
+      let minutes = date.getMinutes();
+      const ampm = hours >= 12 ? "pm" : "am";
+      hours = hours > 12 ? hours % 12 : hours;
+      minutes = minutes < 10 ? minutes + "0" : minutes;
+      time = `${hours}:${minutes}${ampm}`;
+    }
+    return time;
+  }
+
   render() {
+    const mostRecentMessageTime = this.formatTime();
     return (
       <li>
-        <ul className="clickable" onClick={this.handleClick}>
-          <li>{this.props.user.username}</li>
-          <li className="truncate">{this.props.mostRecentMessageContent}</li>
+        <ul className="user-search-result clickable" onClick={this.handleClick}>
+          <li className="user-search-result-info">
+            <div>{this.props.user.username}</div>
+            <div className="most-recent-time gray-text">
+              {mostRecentMessageTime}
+            </div>
+          </li>
+          <li className="truncate gray-text">
+            {this.props.mostRecentMessage["content"] || null}
+          </li>
         </ul>
       </li>
     );
