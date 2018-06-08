@@ -1,12 +1,10 @@
 @import "base/colors.scss";
 
-.user-search-results {
-  li {
-    padding: 10px 0 10px 15px;
-    box-sizing: border-box;
-    &:hover {
-      background-color: $darker-burlywood;
-    }
+.user-search-results > li {
+  box-sizing: border-box;
+  padding: 10px 0 10px 10px;
+  &:hover {
+    background-color: $darker-burlywood;
   }
 }
 
