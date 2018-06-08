@@ -7,7 +7,6 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      query: "",
       textAlignment: ""
     };
     this.updateInput = this.updateInput.bind(this);
@@ -15,12 +14,9 @@ class Search extends React.Component {
 
   updateInput(e) {
     e.preventDefault();
-    const query = e.target.value;
-    this.setState({ query }, () => this.props.fetchUsers(query));
-  }
-
-  clearQuery() {
-    this.setState({ query: "" });
+    const searchQuery = e.target.value;
+    this.props.setSearchQuery({ searchQuery });
+    this.props.fetchUsers(searchQuery);
   }
 
   render() {
@@ -31,16 +27,13 @@ class Search extends React.Component {
           <input
             type="text"
             onChange={this.updateInput}
-            value={this.state.query}
+            value={this.props.searchQuery}
             placeholder="Search MessageMe"
             className="user-search-input"
           />
         </div>
         <div className="results-logout-btn-container">
-          <UserSearchIndexContainer
-            clearQuery={this.clearQuery.bind(this)}
-            query={this.state.query}
-          />
+          <UserSearchIndexContainer />
           <div className="logout-btn-container">
             <LogoutButtonContainer />
           </div>

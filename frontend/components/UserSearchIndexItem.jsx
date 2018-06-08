@@ -10,7 +10,7 @@ class UserSearchIndexItem extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const userId = this.props.user.id;
-    this.props.clearQuery();
+    this.props.clearSearchQuery();
     redirectToChat(this, userId);
   }
 

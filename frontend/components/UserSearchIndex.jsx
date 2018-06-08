@@ -3,7 +3,7 @@ import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
 
 class UserSearchIndex extends React.Component {
   doesUsernameMatchQuery(username) {
-    const regExp = new RegExp(`${this.props.query}`);
+    const regExp = new RegExp(`${this.props.searchQuery}`);
     return regExp.test(username.toLowerCase());
   }
 
@@ -11,18 +11,12 @@ class UserSearchIndex extends React.Component {
     let users = null;
     users = this.props.userResults.reduce((users, user) => {
       if (this.doesUsernameMatchQuery(user.username)) {
-        users.push(
-          <UserSearchIndexItemContainer
-            user={user}
-            key={user.id}
-            clearQuery={this.props.clearQuery}
-          />
-        );
+        users.push(<UserSearchIndexItemContainer user={user} key={user.id} />);
       }
       return users;
     }, []);
 
-    if (this.props.query.length === 0) {
+    if (this.props.searchQuery.length === 0) {
       users = users.slice(0, 11);
     }
 

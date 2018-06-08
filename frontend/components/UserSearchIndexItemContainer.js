@@ -4,6 +4,7 @@ import { findChatId } from "../util/chat";
 import { findMessages, sortByDate } from "../util/message";
 import { withRouter } from "react-router-dom";
 import { createChatAndFetchMessages } from "../actions/chat";
+import { clearSearchQuery } from "../actions/ui";
 
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.user.id;
@@ -22,10 +23,14 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id))
+    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
+    clearSearchQuery: () => dispatch(clearSearchQuery())
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(UserSearchIndexItem)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(UserSearchIndexItem)
 );
