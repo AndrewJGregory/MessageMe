@@ -90,7 +90,7 @@ export default class SignIn extends React.Component {
               className="clickable"
               onClick={() => this.props.loginAsGuest()}
             >
-              Guest Demo
+              guest demo
             </button>
           </div>
         </div>
