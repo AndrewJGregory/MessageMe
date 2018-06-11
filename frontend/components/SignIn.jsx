@@ -86,6 +86,12 @@ export default class SignIn extends React.Component {
               <button className="clickable">{this.props.buttonText}</button>
               <Link to={otherFormPath}>{otherFormText}</Link>
             </form>
+            <button
+              className="clickable"
+              onClick={() => this.props.loginAsGuest()}
+            >
+              Guest Demo
+            </button>
           </div>
         </div>
       </main>

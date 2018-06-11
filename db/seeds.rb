@@ -14,6 +14,8 @@ used_names = []
 new_name = nil
 
 User.create!(username: 'andrew', password: 'password')
+User.create!(username: 'guest', password: 'secure-password123')
+
 20.times do
   new_name = Faker::Name.first_name
   while used_names.include?(new_name)
