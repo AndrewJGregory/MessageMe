@@ -19,6 +19,11 @@ export const receiveCurrentUser = user => {
   };
 };
 
+export const loginAsGuest = () => dispatch => {
+  const guest = { username: "Guest", password: "secure-password123" };
+  return dispatch(signIn(guest));
+};
+
 export const clearErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS,

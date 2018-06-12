@@ -1,12 +1,10 @@
 @import "base/colors.scss";
 
-.user-search-results {
-  li {
-    padding: 10px 0 10px 15px;
-    box-sizing: border-box;
-    &:hover {
-      background-color: $darker-burlywood;
-    }
+.user-search-results > li {
+  box-sizing: border-box;
+  padding: 10px 0 10px 10px;
+  &:hover {
+    background-color: $darker-burlywood;
   }
 }
 
@@ -47,4 +45,20 @@
 .search {
   height: 90%;
   background-color: burlywood;
+}
+
+.gray-text {
+  padding-bottom: 1px; // prevents cutoff of the letter "y"
+  color: gray;
+  font-size: 14px;
+}
+
+.user-search-result-info {
+  position: relative;
+}
+
+.most-recent-time {
+  position: absolute;
+  bottom: 0;
+  right: 0;
 }

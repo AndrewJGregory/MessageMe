@@ -1,26 +1,24 @@
 import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import UserSearchIndex from "./UserSearchIndex";
-import { createChatAndFetchMessages } from "../actions/chat";
 import { sortByMostRecentlyMessaged } from "../util/message";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
   const userResults = Object.values(state.entities.users);
+  const searchQuery = state.ui.searchQuery;
   sortByMostRecentlyMessaged(state, userResults);
 
   return {
     userResults,
-    currentUserId
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id))
+    currentUserId,
+    searchQuery
   };
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(UserSearchIndex)
+  connect(
+    mapStateToProps,
+    null
+  )(UserSearchIndex)
 );

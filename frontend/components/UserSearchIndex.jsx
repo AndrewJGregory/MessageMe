@@ -1,45 +1,29 @@
 import React from "react";
-import UserSearchIndexItem from "./UserSearchIndexItem";
-import { redirectToChat } from "../util/chat";
+import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
 
 class UserSearchIndex extends React.Component {
-  constructor(props) {
-    super(props);
-    this.handleClick = this.handleClick.bind(this);
-  }
-
-  handleClick(e) {
-    e.preventDefault();
-    const id = e.target.dataset.userId;
-    if (id) {
-      this.props.clearQuery();
-      redirectToChat(this, id);
-    }
-  }
-
   doesUsernameMatchQuery(username) {
-    const regExp = new RegExp(`${this.props.query}`);
+    const regExp = new RegExp(`${this.props.searchQuery.toLowerCase()}`);
     return regExp.test(username.toLowerCase());
   }
 
-  render() {
-    let users = null;
-    users = this.props.userResults.reduce((users, user) => {
+  filterUserSearchResults() {
+    return this.props.userResults.reduce((users, user) => {
       if (this.doesUsernameMatchQuery(user.username)) {
-        users.push(<UserSearchIndexItem user={user} key={user.id} />);
+        users.push(<UserSearchIndexItemContainer user={user} key={user.id} />);
       }
       return users;
     }, []);
+  }
 
-    if (this.props.query.length === 0) {
+  render() {
+    let users = this.filterUserSearchResults();
+
+    if (this.props.searchQuery.length === 0) {
       users = users.slice(0, 11);
     }
 
-    return (
-      <ul className="user-search-results scrollable" onClick={this.handleClick}>
-        {users}
-      </ul>
-    );
+    return <ul className="user-search-results scrollable">{users}</ul>;
   }
 }
 
