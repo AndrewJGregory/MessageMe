@@ -25,3 +25,5 @@ bundle.js.map
 # Ignore test-related files
 /coverage.data
 /coverage/
+
+todos
