@@ -26,12 +26,14 @@ all_users = User.all
 guest_id = guest.id
 
 ### BEGIN MESSAGES ###
+Message.skip_callback(:save, :after, :broadcast_message)
 messages.each_with_index do |message, idx|
   random_user_id = all_users.sample.id
   user_id = idx.even? ? random_user_id : guest_id
   chat = Chat.create(user_id_one: guest_id, user_id_two: random_user_id)
   Message.create(content: message, user_id: user_id, chat_id: chat.id)
 end 
+Message.set_callback(:save, :after, :broadcast_message)
 ### END MESSAGES ###
 
 u1 = User.first

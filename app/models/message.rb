@@ -15,6 +15,9 @@ class Message < ApplicationRecord
   validates :content, :user_id, :chat_id, presence: true
   belongs_to :chat
   belongs_to :user
+  after_save :broadcast_message
 
-  after_create_commit { MessageBroadcastJob.perform_later(self) }
+  def broadcast_message
+    MessageBroadcastJob.perform_now(self)
+  end
 end
