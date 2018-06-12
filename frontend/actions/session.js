@@ -20,7 +20,7 @@ export const receiveCurrentUser = user => {
 };
 
 export const loginAsGuest = () => dispatch => {
-  const guest = { username: "Guest", password: "secure-password123" };
+  const guest = { username: "guest", password: "secure-password123" };
   return dispatch(signIn(guest));
 };
 
