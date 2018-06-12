@@ -24,7 +24,7 @@ class UserSearchIndexItem extends React.Component {
       let minutes = date.getMinutes();
       const ampm = hours >= 12 ? "pm" : "am";
       hours = hours > 12 ? hours % 12 : hours;
-      minutes = minutes < 10 ? minutes + "0" : minutes;
+      minutes = minutes < 10 ? "0" + minutes : minutes;
       time = `${hours}:${minutes}${ampm}`;
     }
     return time;
