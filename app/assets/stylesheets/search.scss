@@ -10,6 +10,7 @@
 
 .user-search-input-container {
   display: flex;
+  height: 35px;
   input {
     border: 0;
     background-color: black;
@@ -17,7 +18,8 @@
     width: 90%;
     color: white;
     font-size: 14px;
-
+    box-sizing: border-box;
+    height: 100%;
     &:focus {
       text-align: left;
     }
