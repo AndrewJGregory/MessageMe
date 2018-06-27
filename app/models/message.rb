@@ -8,8 +8,8 @@
 #  chat_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  is_seen    :boolean          default(FALSE)
 #
-
 
 class Message < ApplicationRecord
   validates :content, :user_id, :chat_id, presence: true
@@ -20,4 +20,12 @@ class Message < ApplicationRecord
   def broadcast_message
     MessageBroadcastJob.perform_now(self)
   end
+
+  def duplicate
+   duped_message = {}
+   Message.column_names.each do |col|
+    duped_message["#{col}"] = self["#{col}"]
+   end 
+   duped_message
+  end 
 end
