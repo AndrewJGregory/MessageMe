@@ -10,6 +10,7 @@ class UserSearchIndexItem extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const userId = this.props.user.id;
+    this.props.seeMessage(this.props.mostRecentMessage);
     this.props.clearSearchQuery();
     redirectToChat(this, userId);
   }
@@ -32,6 +33,7 @@ class UserSearchIndexItem extends React.Component {
 
   render() {
     const mostRecentMessageTime = this.formatTime();
+    const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
     return (
       <li>
         <ul className="user-search-result clickable" onClick={this.handleClick}>
@@ -41,7 +43,7 @@ class UserSearchIndexItem extends React.Component {
               {mostRecentMessageTime}
             </div>
           </li>
-          <li className="truncate gray-text">
+          <li className={`truncate gray-text ${bold}`}>
             {this.props.mostRecentMessage["content"] || null}
           </li>
         </ul>

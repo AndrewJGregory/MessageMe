@@ -4,7 +4,7 @@ Rails.application.routes.draw do
     resources :users, only: %i[create show]
     resources :searches, only: [:create]
     resources :chats, only: %i[create show]
-    resources :messages, only: [:create]
+    resources :messages, only: %i[create update]
   end
 
   root to: 'static_pages#root'

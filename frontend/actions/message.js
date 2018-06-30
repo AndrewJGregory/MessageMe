@@ -30,3 +30,10 @@ export const fetchMessages = chatId => dispatch => {
     return messages;
   });
 };
+
+export const seeMessage = message => dispatch => {
+  return messageUtil.seeMessage(message).then(message => {
+    dispatch(receiveMessage(message));
+    return message;
+  });
+};

@@ -15,6 +15,13 @@ export const fetchMessages = chat_id => {
   });
 };
 
+export const seeMessage = message => {
+  return $.ajax({
+    url: `api/messages/${message.id}`,
+    method: "PATCH"
+  });
+};
+
 export const findMessages = (state, userId, currentUserId, chatId) => {
   let messages = [];
   let newMessage = null;

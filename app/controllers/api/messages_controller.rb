@@ -12,6 +12,13 @@ class Api::MessagesController < ApplicationController
     end 
   end
 
+  def update
+    @message = Message.find(params[:id])
+    @message.is_seen = true
+    @message.save  
+    render 'api/messages/create'
+  end
+
   private
   def message_params
     params.require(:message).permit(:content, :user_sender_id, :user_receiver_id)
