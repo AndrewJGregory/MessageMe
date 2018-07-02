@@ -5,7 +5,7 @@ import { findMessages, sortByDate } from "../util/message";
 import { withRouter } from "react-router-dom";
 import { createChatAndFetchMessages } from "../actions/chat";
 import { clearSearchQuery } from "../actions/ui";
-import { seeMessage } from "../actions/message";
+import { seeMessageBackend } from "../actions/message";
 
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.user.id;
@@ -23,7 +23,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
     clearSearchQuery: () => dispatch(clearSearchQuery()),
-    seeMessage: message => dispatch(seeMessage(message))
+    seeMessage: message => dispatch(seeMessageBackend(message))
   };
 };
 

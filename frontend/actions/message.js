@@ -1,6 +1,7 @@
 import * as messageUtil from "../util/message";
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
+export const SEE_MESSAGE = "SEE_MESSAGE";
 
 export const receiveMessage = message => {
   return {
@@ -13,6 +14,13 @@ const receiveMessages = messages => {
   return {
     type: RECEIVE_MESSAGES,
     messages
+  };
+};
+
+export const seeMessageFrontend = message => {
+  return {
+    type: SEE_MESSAGE,
+    message
   };
 };
 
@@ -31,9 +39,9 @@ export const fetchMessages = chatId => dispatch => {
   });
 };
 
-export const seeMessage = message => dispatch => {
+export const seeMessageBackend = message => dispatch => {
   return messageUtil.seeMessage(message).then(message => {
-    dispatch(receiveMessage(message));
+    dispatch(seeMessageFrontend(message));
     return message;
   });
 };
