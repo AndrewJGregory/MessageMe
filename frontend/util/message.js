@@ -22,6 +22,15 @@ export const seeMessage = message => {
   });
 };
 
+export const findMostRecentMessage = (state, userId) => {
+  const currentUserId = state.session.currentUser.id;
+  const chatId = findChatId(state, userId, currentUserId);
+  const messages = findMessages(state, userId, currentUserId, chatId);
+  sortByDate(messages);
+  const mostRecentMessage = messages[messages.length - 1] || {};
+  return mostRecentMessage;
+};
+
 export const findMessages = (state, userId, currentUserId, chatId) => {
   let messages = [];
   let newMessage = null;
