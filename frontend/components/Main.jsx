@@ -4,7 +4,10 @@ import MessageIndexContainer from "./MessageIndexContainer";
 import MessageHeaderContainer from "./MessageHeaderContainer";
 import MessageInputContainer from "./MessageInputContainer";
 import { redirectToChat } from "../util/chat";
-import { sortByMostRecentlyMessaged } from "../util/message";
+import {
+  sortByMostRecentlyMessaged,
+  findMostRecentMessage
+} from "../util/message";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -21,6 +24,8 @@ class Main extends React.Component {
           ? this.props.match.params.userId
           : users[0].id;
         redirectToChat(this, userId);
+        const mostRecentMessage = findMostRecentMessage(state, userId);
+        this.props.seeMessage(mostRecentMessage);
       });
   }
 
