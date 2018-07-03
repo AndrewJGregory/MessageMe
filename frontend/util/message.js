@@ -28,7 +28,6 @@ export const findMostRecentMessage = (state, userId) => {
   const messages = findMessages(state, userId, currentUserId, chatId);
   sortByDate(messages);
   const mostRecentMessage = messages[messages.length - 1] || {};
-  debugger;
   return mostRecentMessage;
 };
 
