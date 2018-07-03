@@ -10,9 +10,10 @@ class UserSearchIndexItem extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const userId = this.props.user.id;
-    this.props.seeMessage(this.props.mostRecentMessage);
+    this.props
+      .seeMessage(this.props.mostRecentMessage)
+      .then(() => redirectToChat(this, userId));
     this.props.clearSearchQuery();
-    redirectToChat(this, userId);
   }
 
   formatTime() {
