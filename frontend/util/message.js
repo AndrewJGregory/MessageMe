@@ -28,6 +28,7 @@ export const findMostRecentMessage = (state, userId) => {
   const messages = findMessages(state, userId, currentUserId, chatId);
   sortByDate(messages);
   const mostRecentMessage = messages[messages.length - 1] || {};
+  debugger;
   return mostRecentMessage;
 };
 
@@ -36,11 +37,11 @@ export const findMessages = (state, userId, currentUserId, chatId) => {
   let newMessage = null;
   Object.values(state.entities.messages).forEach(message => {
     newMessage = null;
-    if (message.chat_id === chatId && message.user_id === currentUserId) {
+    if (message.chat_id == chatId && message.user_id == currentUserId) {
       newMessage = Object.assign({}, message, {
         isCurrentUserMessage: true
       });
-    } else if (message.chat_id === chatId && message.user_id === userId)
+    } else if (message.chat_id == chatId && message.user_id == userId)
       newMessage = Object.assign({}, message, {
         isCurrentUserMessage: false
       });
