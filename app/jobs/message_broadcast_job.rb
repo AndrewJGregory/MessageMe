@@ -11,7 +11,8 @@ class MessageBroadcastJob < ApplicationJob
     duped_message["is_seen"] = true;
     normalized_sender_message = { message.id => duped_message }
     normalized_sendee_message = { message.id => message }
-    normalized_user = { sender_id => User.find_by(id: sender_id) }
+    user = User.find_by(id: sender_id)
+    normalized_user = { sender_id => { id: user.id, username: user.username } }
     normalized_chat = { sendee_chat.id => sendee_chat }
     sender_payload = { message: normalized_sender_message, user: normalized_user, chat: normalized_chat }
     sendee_payload = { message: normalized_sendee_message, user: normalized_user, chat: normalized_chat }
