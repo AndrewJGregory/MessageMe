@@ -10,8 +10,12 @@ json.chats do
   end 
 end 
 
-json.messages do 
-  @most_recent_messages.each do |message|
-    json.partial! 'api/messages/create', message: message
+if @most_recent_messages.empty?
+  json.messages({}) 
+  else 
+    json.messages do 
+      @most_recent_messages.each do |message|
+        json.partial! 'api/messages/create', message: message
+      end 
   end 
-end 
+end
