@@ -25,7 +25,7 @@ class Main extends React.Component {
           : users[0].id;
         redirectToChat(this, userId);
         const mostRecentMessage = findMostRecentMessage(state, userId);
-        this.props.seeMessage(mostRecentMessage);
+        if (mostRecentMessage.id) this.props.seeMessage(mostRecentMessage);
       });
   }
 
