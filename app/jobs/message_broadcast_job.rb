@@ -5,7 +5,7 @@ class MessageBroadcastJob < ApplicationJob
     sender_id = message.user_id
     sender_chat = Chat.find_by(user_id_one: sender_id, user_id_two: sender_id)
     all_ids = [message.chat.user_id_one, message.chat.user_id_two]
-    sendee_id = all_ids.reject { |id| id == sender_id }.first
+    sendee_id = all_ids.reject { |id| id == sender_id }.first || sender_id
     sendee_chat = Chat.find_by(user_id_one: sendee_id, user_id_two: sendee_id)
     duped_message = message.duplicate
     duped_message["is_seen"] = true;
