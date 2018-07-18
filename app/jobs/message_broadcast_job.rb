@@ -12,8 +12,9 @@ class MessageBroadcastJob < ApplicationJob
     normalized_sender_message = { message.id => duped_message }
     normalized_sendee_message = { message.id => message }
     user = User.find_by(id: sender_id)
+    between_chat = message.chat
     normalized_user = { sender_id => { id: user.id, username: user.username } }
-    normalized_chat = { sendee_chat.id => sendee_chat }
+    normalized_chat = { between_chat.id => between_chat }
     sender_payload = { message: normalized_sender_message, user: normalized_user, chat: normalized_chat }
     sendee_payload = { message: normalized_sendee_message, user: normalized_user, chat: normalized_chat }
     ChatChannel.broadcast_to(sender_chat, sender_payload)
