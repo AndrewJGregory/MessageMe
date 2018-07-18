@@ -40,8 +40,8 @@ class UserSearchIndexItem extends React.Component {
     const mostRecentMessageTime = this.formatTime();
     const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
     return (
-      <li>
-        <ul className="user-search-result clickable" onClick={this.handleClick}>
+      <li className="clickable" onClick={this.handleClick}>
+        <ul className="user-search-result">
           <li className="user-search-result-info">
             <div>{this.props.user.username}</div>
             <div className="most-recent-time gray-text">
