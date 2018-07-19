@@ -2,7 +2,14 @@ import * as messageUtil from "../util/message";
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
 export const SEE_MESSAGE = "SEE_MESSAGE";
+export const RECEIVE_MESSAGE_PAYLOAD = "RECEIVE_MESSAGE_PAYLOAD";
 
+export const receiveMessagePayload = payload => {
+  return {
+    type: RECEIVE_MESSAGE_PAYLOAD,
+    payload
+  };
+};
 export const receiveMessage = message => {
   return {
     type: RECEIVE_MESSAGE,

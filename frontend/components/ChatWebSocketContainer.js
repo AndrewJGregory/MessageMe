@@ -1,7 +1,11 @@
 import { connect } from "react-redux";
 import ChatWebSocket from "./ChatWebSocket";
 import { withRouter } from "react-router-dom";
-import { receiveMessage, seeMessageBackend } from "../actions/message";
+import {
+  receiveMessage,
+  seeMessageBackend,
+  receiveMessagePayload
+} from "../actions/message";
 import { receiveChat } from "../actions/chat";
 import { receiveUser } from "../actions/user";
 
@@ -15,7 +19,8 @@ const mapDispatchToProps = dispatch => {
     receiveMessage: message => dispatch(receiveMessage(message)),
     receiveUser: user => dispatch(receiveUser(user)),
     receiveChat: chat => dispatch(receiveChat(chat)),
-    seeMessage: message => dispatch(seeMessageBackend(message))
+    seeMessage: message => dispatch(seeMessageBackend(message)),
+    receiveMessagePayload: payload => dispatch(receiveMessagePayload(payload))
   };
 };
 

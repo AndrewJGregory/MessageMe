@@ -13,9 +13,7 @@ class ChatWebSocket extends React.Component {
           },
           {
             received: payload => {
-              nextProps.receiveMessage(payload.message);
-              nextProps.receiveUser(payload.user);
-              nextProps.receiveChat(payload.chat);
+              nextProps.receiveMessagePayload(payload);
               const message = Object.values(payload.message)[0];
               const isCurrentlyChattingWithUser =
                 this.props.match.params.userId == Object.keys(payload.user)[0];
