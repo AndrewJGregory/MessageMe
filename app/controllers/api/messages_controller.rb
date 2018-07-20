@@ -6,7 +6,7 @@ class Api::MessagesController < ApplicationController
     content = message_params[:content]
     @message = Message.new(user_id: user_id, chat_id: @chat.id, content: content)
     if @message.save
-      render json: {}
+      render 'api/messages/create' 
     else 
       render json: @message.errors, status: 422
     end 

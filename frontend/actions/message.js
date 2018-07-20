@@ -36,7 +36,11 @@ export const createMessage = (
   user_sender_id,
   user_receiver_id
 ) => dispatch => {
-  return messageUtil.createMessage(content, user_sender_id, user_receiver_id);
+  return messageUtil
+    .createMessage(content, user_sender_id, user_receiver_id)
+    .then(message => {
+      return dispatch(receiveMessage(message));
+    });
 };
 
 export const fetchMessages = chatId => dispatch => {
