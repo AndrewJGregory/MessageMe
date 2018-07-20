@@ -8,10 +8,12 @@ import {
 } from "../actions/message";
 import { receiveChat } from "../actions/chat";
 import { receiveUser } from "../actions/user";
+import { findChatId } from "../util/chat";
 
 const mapStateToProps = (state, ownProps) => {
-  const chatIds = Object.keys(state.entities.chats);
-  return { chatIds };
+  const currentUserId = state.session.currentUser.id;
+  const selfChatId = findChatId(state, currentUserId, currentUserId);
+  return { selfChatId };
 };
 
 const mapDispatchToProps = dispatch => {
