@@ -26,11 +26,11 @@ class Chat < ApplicationRecord
   end 
 
   def self.find_recently_messaged_users(current_user_id, recent_messages)
-    most_recent_users = recent_messages.reduce([]) do |users, message| 
+    most_recent_user_ids = recent_messages.reduce([]) do |user_ids, message| 
       other_user_id = message.chat.user_id_one == current_user_id ? message.chat.user_id_two : message.chat.user_id_one
-      users << User.find(other_user_id)
-      users
+      user_ids << other_user_id
+      user_ids
     end 
-    most_recent_users
+    User.find(most_recent_user_ids)
   end 
 end
