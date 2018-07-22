@@ -14,13 +14,13 @@ class Chat < ApplicationRecord
   has_many :messages
   
   def self.find_chat(user_id_one, user_id_two)
-    result = Chat.find_by_sql("SELECT * FROM chats WHERE user_id_one = #{user_id_one} AND user_id_two = #{user_id_two}")
-    result = Chat.find_by_sql("SELECT * FROM chats WHERE user_id_one = #{user_id_two} AND user_id_two = #{user_id_one}") if result.empty?
+    result = Chat.where("user_id_one = ? AND user_id_two = ?", user_id_one, user_id_two)
+    result = Chat.where("user_id_one = ? AND user_id_two = ?", user_id_two, user_id_one) if result.empty?
     result.first
   end
   
   def self.find_recent_messages(current_user_id)
-    all_current_user_chats = Chat.all.select { |chat| chat.user_id_one == current_user_id || chat.user_id_two == current_user_id }
+    all_current_user_chats = Chat.where(user_id_one: current_user_id).or(Chat.where(user_id_two: current_user_id))
     recent_messages = all_current_user_chats.map { |chat| chat.messages.reset.sort { |message1, message2| message1.id <=> message2.id } }.map(&:last).reject(&:nil?)
     recent_messages
   end 
