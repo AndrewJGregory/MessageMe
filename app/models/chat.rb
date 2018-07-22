@@ -25,8 +25,7 @@ class Chat < ApplicationRecord
     recent_messages
   end 
 
-  def self.find_recently_messaged_users(current_user_id)
-    recent_messages = self.find_recent_messages(current_user_id)
+  def self.find_recently_messaged_users(current_user_id, recent_messages)
     most_recent_users = recent_messages.reduce([]) do |users, message| 
       other_user_id = message.chat.user_id_one == current_user_id ? message.chat.user_id_two : message.chat.user_id_one
       users << User.find(other_user_id)
