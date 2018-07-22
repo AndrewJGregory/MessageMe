@@ -34,8 +34,4 @@ class Chat < ApplicationRecord
     end 
     most_recent_users
   end 
-
-  def self.find_most_recent_chats(current_user_id)
-    self.find_recent_messages(current_user_id).map(&:chat)
-  end 
 end
