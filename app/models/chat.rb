@@ -20,8 +20,13 @@ class Chat < ApplicationRecord
   end
   
   def self.find_recent_messages(current_user_id)
-    all_current_user_chats = Chat.where(user_id_one: current_user_id).or(Chat.where(user_id_two: current_user_id))
-    recent_messages = all_current_user_chats.map { |chat| chat.messages.reset.sort { |message1, message2| message1.id <=> message2.id } }.map(&:last).reject(&:nil?)
+    recent_messages = []
+    [{ user_id_one: current_user_id}, {user_id_two: current_user_id} ].each do |hash|
+      Chat.includes(:messages).where(hash).each do |chat|
+        last_message = chat.messages.sort { |message1, message2| message1.id <=> message2.id }.last
+        recent_messages << last_message unless last_message.nil?
+      end 
+    end
     recent_messages
   end 
 
