@@ -9,16 +9,23 @@ class Search extends React.Component {
     this.state = {
       textAlignment: ""
     };
-    this.updateInput = this.updateInput.bind(this);
+    this.submitSearch = this.submitSearch.bind(this);
   }
 
-  updateInput(e) {
+  submitSearch(e) {
     e.preventDefault();
-    const searchQuery = e.target.value;
-    this.props.setSearchQuery({ searchQuery });
-    if (searchQuery) this.props.fetchUsers(searchQuery);
+    console.log(e.key);
+    if (e.key === "Enter") {
+      this.props.fetchUsers(this.props.searchQuery);
+    } else if (e.key === "Backspace") {
+      const searchQuery = this.props.searchQuery.slice(0, -1);
+      this.props.setSearchQuery({ searchQuery });
+    } else {
+      const letter = e.key;
+      const searchQuery = this.props.searchQuery.concat(letter);
+      this.props.setSearchQuery({ searchQuery });
+    }
   }
-
   render() {
     return (
       <div className="search">
@@ -26,7 +33,7 @@ class Search extends React.Component {
           <i className="fa fa-search" />
           <input
             type="text"
-            onChange={this.updateInput}
+            onKeyDown={this.submitSearch}
             value={this.props.searchQuery}
             placeholder="Search MessageMe"
             className="user-search-input"
