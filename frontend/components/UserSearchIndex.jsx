@@ -18,12 +18,22 @@ class UserSearchIndex extends React.Component {
 
   render() {
     let users = this.filterUserSearchResults();
+    const isInitialRender = this.props.currentUserCount === 0;
+    const doesNoUserMatchSearchQuery = users.length === 0;
+    const shouldMessageBeDisplayed =
+      !isInitialRender && doesNoUserMatchSearchQuery;
+    const altContent = shouldMessageBeDisplayed ? (
+      <li>No users found!</li>
+    ) : null;
 
     if (this.props.searchQuery.length === 0) {
       users = users.slice(0, 11);
     }
-
-    return <ul className="user-search-results scrollable">{users}</ul>;
+    return (
+      <ul className="user-search-results scrollable">
+        {users.length === 0 ? altContent : users}
+      </ul>
+    );
   }
 }
 
