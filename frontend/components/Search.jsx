@@ -14,13 +14,13 @@ class Search extends React.Component {
 
   submitSearch(e) {
     e.preventDefault();
-    console.log(e.key);
+    const isLetter = e.key.length === 1;
     if (e.key === "Enter") {
       this.props.fetchUsers(this.props.searchQuery);
     } else if (e.key === "Backspace") {
       const searchQuery = this.props.searchQuery.slice(0, -1);
       this.props.setSearchQuery({ searchQuery });
-    } else {
+    } else if (isLetter) {
       const letter = e.key;
       const searchQuery = this.props.searchQuery.concat(letter);
       this.props.setSearchQuery({ searchQuery });
