@@ -26,6 +26,11 @@ class Search extends React.Component {
       this.props.setSearchQuery({ searchQuery });
     }
   }
+
+  componentWillUnmount() {
+    this.props.setSearchQuery({ searchQuery: "" });
+  }
+
   render() {
     return (
       <div className="search">
