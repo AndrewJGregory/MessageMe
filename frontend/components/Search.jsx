@@ -10,6 +10,12 @@ class Search extends React.Component {
       textAlignment: ""
     };
     this.submitSearch = this.submitSearch.bind(this);
+    this.searchBar = React.createRef();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.selectedUserIdx === 0) this.searchBar.focus();
+    else this.searchBar.blur();
   }
 
   submitSearch(e) {
@@ -20,6 +26,10 @@ class Search extends React.Component {
     } else if (e.key === "Backspace") {
       const searchQuery = this.props.searchQuery.slice(0, -1);
       this.props.setSearchQuery({ searchQuery });
+    } else if (e.key === "ArrowDown") {
+      this.props.incrementSelectedUserIdx();
+    } else if (e.key === "ArrowUp") {
+      this.props.decrementSelectedUserIdx();
     } else if (isLetter) {
       const letter = e.key;
       const searchQuery = this.props.searchQuery.concat(letter);
@@ -37,6 +47,9 @@ class Search extends React.Component {
         <div className="user-search-input-container">
           <i className="fa fa-search" />
           <input
+            ref={searchBar => {
+              this.searchBar = searchBar;
+            }}
             type="text"
             onKeyDown={this.submitSearch}
             value={this.props.searchQuery}

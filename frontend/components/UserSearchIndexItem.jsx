@@ -4,7 +4,34 @@ import { redirectToChat } from "../util/chat";
 class UserSearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { hovered: "" };
     this.handleClick = this.handleClick.bind(this);
+    this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.userResult = React.createRef();
+  }
+
+  componentDidUpdate(prevProps) {
+    // create illusion: change color(class) and listen for enter in
+    // search bar. if user starts typing, reset the selected user idx
+    // to 0 which removes the fake "selected" appearance
+    if (prevProps.selectedUserIdx !== this.props.selectedUserIdx) {
+      if (this.props.idx === this.props.selectedUserIdx) {
+        this.setState({ hovered: "hovered" });
+        this.userResult.focus();
+      } else {
+        this.setState({ hovered: "" });
+        this.userResult.blur();
+      }
+    }
+  }
+
+  handleKeyDown(e) {
+    e.preventDefault();
+    if (e.key === "ArrowDown") {
+      this.props.incrementSelectedUserIdx();
+    } else if (e.key === "ArrowUp") {
+      this.props.decrementSelectedUserIdx();
+    }
   }
 
   handleClick(e) {
@@ -40,7 +67,18 @@ class UserSearchIndexItem extends React.Component {
     const mostRecentMessageTime = this.formatTime();
     const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
     return (
-      <li className="clickable" onClick={this.handleClick}>
+      <li
+        className={`clickable ${this.state.hovered}`}
+        onClick={this.handleClick}
+      >
+        <input
+          ref={userResult => {
+            this.userResult = userResult;
+          }}
+          type="text"
+          className="hidden-input"
+          onKeyDown={this.handleKeyDown}
+        />
         <ul className="user-search-result">
           <li className="user-search-result-info">
             <div>{this.props.user.username}</div>

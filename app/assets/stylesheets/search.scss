@@ -2,10 +2,21 @@
 
 .user-search-results > li {
   box-sizing: border-box;
-  padding: 10px 0 10px 10px;
+  padding: 0px 5px 10px 10px;
   &:hover {
     background-color: $darker-burlywood;
   }
+}
+
+.hovered {
+  background-color: $darker-burlywood;
+}
+
+.hidden-input {
+  height: 0;
+  width: 0;
+  border: 0;
+  padding: 0;
 }
 
 .user-search-input-container {
