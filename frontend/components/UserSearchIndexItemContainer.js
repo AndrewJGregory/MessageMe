@@ -9,8 +9,10 @@ import { seeMessageBackend } from "../actions/message";
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.user.id;
   const mostRecentMessage = findMostRecentMessage(state, userId);
+  const { selectedUserIdx } = state.ui;
   return {
-    mostRecentMessage
+    mostRecentMessage,
+    selectedUserIdx
   };
 };
 
