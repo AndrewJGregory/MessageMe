@@ -31,11 +31,13 @@ class UserSearchIndexItem extends React.Component {
       this.props.incrementSelectedUserIdx();
     } else if (e.key === "ArrowUp") {
       this.props.decrementSelectedUserIdx();
+    } else if (e.key === "Enter") {
+      this.handleClick();
     }
   }
 
   handleClick(e) {
-    e.preventDefault();
+    if (e) e.preventDefault();
     const userId = this.props.user.id;
     if (this.props.mostRecentMessage.id) {
       this.props
