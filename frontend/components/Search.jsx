@@ -28,8 +28,6 @@ class Search extends React.Component {
       this.props.setSearchQuery({ searchQuery });
     } else if (e.key === "ArrowDown") {
       this.props.incrementSelectedUserIdx();
-    } else if (e.key === "ArrowUp") {
-      this.props.decrementSelectedUserIdx();
     } else if (isLetter) {
       const letter = e.key;
       const searchQuery = this.props.searchQuery.concat(letter);
