@@ -35,9 +35,9 @@ class UserSearchIndexItem extends React.Component {
   handleKeyDown(e) {
     e.preventDefault();
     if (e.key === "ArrowDown") {
-      this.props.incrementSelectedUserIdx();
+      this.props.setSelectedUserIdx(this.props.selectedUserIdx + 1);
     } else if (e.key === "ArrowUp") {
-      this.props.decrementSelectedUserIdx();
+      this.props.setSelectedUserIdx(this.props.selectedUserIdx - 1);
     } else if (e.key === "Enter") {
       this.handleClick();
     }

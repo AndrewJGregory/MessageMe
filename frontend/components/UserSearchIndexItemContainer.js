@@ -3,11 +3,7 @@ import UserSearchIndexItem from "./UserSearchIndexItem";
 import { findMostRecentMessage } from "../util/message";
 import { withRouter } from "react-router-dom";
 import { createChatAndFetchMessages } from "../actions/chat";
-import {
-  clearSearchQuery,
-  incrementSelectedUserIdx,
-  decrementSelectedUserIdx
-} from "../actions/ui";
+import { clearSearchQuery, setSelectedUserIdx } from "../actions/ui";
 import { seeMessageBackend } from "../actions/message";
 
 const mapStateToProps = (state, ownProps) => {
@@ -25,8 +21,7 @@ const mapDispatchToProps = dispatch => {
     createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
     clearSearchQuery: () => dispatch(clearSearchQuery()),
     seeMessage: message => dispatch(seeMessageBackend(message)),
-    incrementSelectedUserIdx: () => dispatch(incrementSelectedUserIdx()),
-    decrementSelectedUserIdx: () => dispatch(decrementSelectedUserIdx())
+    setSelectedUserIdx: idx => dispatch(setSelectedUserIdx(idx))
   };
 };
 
