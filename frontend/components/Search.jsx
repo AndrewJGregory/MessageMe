@@ -10,12 +10,19 @@ class Search extends React.Component {
       textAlignment: ""
     };
     this.submitSearch = this.submitSearch.bind(this);
+    this.handleOnFocus = this.handleOnFocus.bind(this);
     this.searchBar = React.createRef();
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.selectedUserIdx === 0) this.searchBar.focus();
-    else this.searchBar.blur();
+    this.props.selectedUserIdx === 0
+      ? this.searchBar.focus()
+      : this.searchBar.blur();
+  }
+
+  handleOnFocus(e) {
+    e.preventDefault();
+    this.props.resetSelectedUserIdx();
   }
 
   submitSearch(e) {
@@ -53,6 +60,7 @@ class Search extends React.Component {
             value={this.props.searchQuery}
             placeholder="Search MessageMe"
             className="user-search-input"
+            onFocus={this.handleOnFocus}
           />
         </div>
         <div className="results-logout-btn-container">

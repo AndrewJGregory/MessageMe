@@ -7,20 +7,27 @@ class UserSearchIndexItem extends React.Component {
     this.state = { hovered: "" };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
+    this.addBackgroundColor = this.addBackgroundColor.bind(this);
+    this.removeBackgroundColor = this.removeBackgroundColor.bind(this);
     this.userResult = React.createRef();
   }
 
+  addBackgroundColor(e) {
+    this.setState({ hovered: "hovered" });
+  }
+
+  removeBackgroundColor(e) {
+    this.setState({ hovered: "" });
+  }
+
   componentDidUpdate(prevProps) {
-    // create illusion: change color(class) and listen for enter in
-    // search bar. if user starts typing, reset the selected user idx
-    // to 0 which removes the fake "selected" appearance
     if (prevProps.selectedUserIdx !== this.props.selectedUserIdx) {
       if (this.props.idx === this.props.selectedUserIdx) {
-        this.setState({ hovered: "hovered" });
         this.userResult.focus();
+        this.addBackgroundColor();
       } else {
-        this.setState({ hovered: "" });
         this.userResult.blur();
+        this.removeBackgroundColor();
       }
     }
   }
@@ -40,9 +47,10 @@ class UserSearchIndexItem extends React.Component {
     if (e) e.preventDefault();
     const userId = this.props.user.id;
     if (this.props.mostRecentMessage.id) {
-      this.props
-        .seeMessage(this.props.mostRecentMessage)
-        .then(() => redirectToChat(this, userId));
+      this.props.seeMessage(this.props.mostRecentMessage).then(() => {
+        redirectToChat(this, userId);
+        this.removeBackgroundColor();
+      });
     } else {
       redirectToChat(this, userId);
     }
@@ -72,6 +80,8 @@ class UserSearchIndexItem extends React.Component {
       <li
         className={`clickable ${this.state.hovered}`}
         onClick={this.handleClick}
+        onMouseEnter={this.addBackgroundColor}
+        onMouseLeave={this.removeBackgroundColor}
       >
         <input
           ref={userResult => {

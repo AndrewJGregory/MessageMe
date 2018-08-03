@@ -6,6 +6,12 @@ export default class MessageInput extends React.Component {
     this.state = { content: "" };
     this.updateMessage = this.updateMessage.bind(this);
     this.sendMessage = this.sendMessage.bind(this);
+    this.input = React.createRef();
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.userId !== prevProps.match.params.userId)
+      this.input.focus();
   }
 
   sendMessage(e) {
@@ -39,6 +45,7 @@ export default class MessageInput extends React.Component {
         Send
       </button>
     ) : null;
+
     return (
       <div className="lower-container">
         <div className="btn-and-input-container">
@@ -47,6 +54,9 @@ export default class MessageInput extends React.Component {
             value={this.state.content}
             onChange={this.updateMessage}
             placeholder="Type a message..."
+            ref={input => {
+              this.input = input;
+            }}
           />
           {sendButton}
         </div>
