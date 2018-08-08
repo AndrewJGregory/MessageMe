@@ -9,10 +9,18 @@ class UserSearchIndex extends React.Component {
 
   filterUserSearchResults() {
     let idx = 1;
+    const totalUsers = this.props.userResults.filter(user =>
+      this.doesUsernameMatchQuery(user.username)
+    ).length;
     return this.props.userResults.reduce((users, user) => {
       if (this.doesUsernameMatchQuery(user.username)) {
         users.push(
-          <UserSearchIndexItemContainer idx={idx++} user={user} key={user.id} />
+          <UserSearchIndexItemContainer
+            totalUsers={totalUsers}
+            idx={idx++}
+            user={user}
+            key={user.id}
+          />
         );
       }
       return users;
@@ -29,9 +37,6 @@ class UserSearchIndex extends React.Component {
       <li>No users found!</li>
     ) : null;
 
-    if (this.props.searchQuery.length === 0) {
-      users = users.slice(0, 11);
-    }
     return (
       <ul className="user-search-results scrollable">
         {users.length === 0 ? altContent : users}
