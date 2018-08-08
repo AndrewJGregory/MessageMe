@@ -8,14 +8,11 @@ class UserSearchIndex extends React.Component {
   }
 
   filterUserSearchResults() {
-    return this.props.userResults.reduce((users, user, idx) => {
+    let idx = 1;
+    return this.props.userResults.reduce((users, user) => {
       if (this.doesUsernameMatchQuery(user.username)) {
         users.push(
-          <UserSearchIndexItemContainer
-            idx={idx + 1}
-            user={user}
-            key={user.id}
-          />
+          <UserSearchIndexItemContainer idx={idx++} user={user} key={user.id} />
         );
       }
       return users;
