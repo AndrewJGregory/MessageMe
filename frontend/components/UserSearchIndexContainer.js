@@ -9,12 +9,14 @@ const mapStateToProps = state => {
   const searchQuery = state.ui.searchQuery;
   const currentUserCount = Object.keys(state.entities.users).length;
   sortByMostRecentlyMessaged(state, userResults);
+  const { hasSearched } = state.ui;
 
   return {
     userResults,
     currentUserId,
     searchQuery,
-    currentUserCount
+    currentUserCount,
+    hasSearched
   };
 };
 

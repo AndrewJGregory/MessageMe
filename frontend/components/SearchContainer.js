@@ -2,7 +2,11 @@ import { connect } from "react-redux";
 import Search from "./Search";
 import { fetchUsers } from "../actions/search";
 import { createChatAndFetchMessages } from "../actions/chat";
-import { setSearchQuery, setSelectedUserIdx } from "../actions/ui";
+import {
+  setSearchQuery,
+  setSelectedUserIdx,
+  setHasSearched
+} from "../actions/ui";
 
 const mapStateToProps = state => {
   const searchQuery = state.ui.searchQuery;
@@ -19,7 +23,8 @@ const mapDispatchToProps = dispatch => {
     createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
     fetchUsers: query => dispatch(fetchUsers(query)),
     setSearchQuery: query => dispatch(setSearchQuery(query)),
-    setSelectedUserIdx: idx => dispatch(setSelectedUserIdx(idx))
+    setSelectedUserIdx: idx => dispatch(setSelectedUserIdx(idx)),
+    setHasSearched: bool => dispatch(setHasSearched(bool))
   };
 };
 
