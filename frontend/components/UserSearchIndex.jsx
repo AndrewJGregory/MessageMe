@@ -29,7 +29,7 @@ class UserSearchIndex extends React.Component {
 
   render() {
     let users = this.filterUserSearchResults();
-    debugger;
+
     const altContent =
       this.props.hasSearched && users.length === 0 ? (
         <li>No users found</li>
