@@ -1,6 +1,5 @@
 class Api::SessionsController < ApplicationController
   def create
-
     @user = User.find_by_credentials(
       params[:user][:username],
       params[:user][:password]
@@ -10,11 +9,11 @@ class Api::SessionsController < ApplicationController
     if params[:user][:username].empty?
       errors[:username] = 'Please enter your username.'
     end
-    
+
     if params[:user][:password].empty?
       errors[:password] = 'Please enter your password.'
     end
-    
+
     if @user
       login(@user)
       render 'api/sessions/create'

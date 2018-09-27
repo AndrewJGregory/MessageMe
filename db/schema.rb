@@ -10,36 +10,34 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180627144444) do
-
+ActiveRecord::Schema.define(version: 20_180_627_144_444) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "chats", force: :cascade do |t|
-    t.integer "user_id_one", null: false
-    t.integer "user_id_two", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["user_id_one"], name: "index_chats_on_user_id_one"
-    t.index ["user_id_two"], name: "index_chats_on_user_id_two"
+  create_table 'chats', force: :cascade do |t|
+    t.integer 'user_id_one', null: false
+    t.integer 'user_id_two', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.index ['user_id_one'], name: 'index_chats_on_user_id_one'
+    t.index ['user_id_two'], name: 'index_chats_on_user_id_two'
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.text "content", null: false
-    t.integer "user_id", null: false
-    t.integer "chat_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.boolean "is_seen", default: false
+  create_table 'messages', force: :cascade do |t|
+    t.text 'content', null: false
+    t.integer 'user_id', null: false
+    t.integer 'chat_id', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.boolean 'is_seen', default: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string "username", default: "", null: false
-    t.string "password_digest", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string "session_token"
-    t.index ["username"], name: "index_users_on_username", unique: true
+  create_table 'users', force: :cascade do |t|
+    t.string 'username', default: '', null: false
+    t.string 'password_digest', default: '', null: false
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'session_token'
+    t.index ['username'], name: 'index_users_on_username', unique: true
   end
-
 end

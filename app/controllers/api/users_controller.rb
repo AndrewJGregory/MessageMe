@@ -10,7 +10,7 @@ class Api::UsersController < ApplicationController
     end
   end
 
-  def show 
+  def show
     @user = current_user
     self_chat = Chat.find_by(user_id_one: @user.id, user_id_two: @user.id)
     if @user
@@ -18,10 +18,11 @@ class Api::UsersController < ApplicationController
       @most_recently_messaged_users = Chat.find_recently_messaged_users(@user.id, @most_recent_messages).push(@user)
       @most_recent_chats = @most_recent_messages.map(&:chat) << self_chat
       render 'api/users/show'
-    else 
+    else
       render json: {}
-    end 
-  end 
+    end
+  end
+
   private
 
   def user_params

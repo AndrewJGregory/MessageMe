@@ -13,15 +13,15 @@ class User < ApplicationRecord
   validates :password_digest, :session_token, presence: true
   validates :username, presence: { message: 'Please enter your username.' }, uniqueness: { message: 'Username has already been taken. Try another username.' }
   validates :password, length: { minimum: 6, allow_nil: true, message: 'Your password is too short. Minimum is 6 characters.' }
-  has_many :messages 
-  
+  has_many :messages
+
   attr_reader :password
   after_initialize :ensure_session_token
 
   after_create_commit do
-    Chat.create(user_id_one: self.id, user_id_two: self.id)
-  end 
-  
+    Chat.create(user_id_one: id, user_id_two: id)
+  end
+
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
     user && user.is_password?(password) ? user : nil

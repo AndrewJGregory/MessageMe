@@ -22,10 +22,10 @@ class Message < ApplicationRecord
   end
 
   def duplicate
-   duped_message = {}
-   Message.column_names.each do |col|
-    duped_message["#{col}"] = self["#{col}"]
-   end 
-   duped_message
-  end 
+    duped_message = {}
+    Message.column_names.each do |col|
+      duped_message[col.to_s] = self[col.to_s]
+    end
+    duped_message
+  end
 end

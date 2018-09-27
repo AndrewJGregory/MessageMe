@@ -8,7 +8,7 @@ class MessageBroadcastJob < ApplicationJob
     sendee_id = all_ids.reject { |id| id == sender_id }.first || sender_id
     sendee_chat = Chat.find_by(user_id_one: sendee_id, user_id_two: sendee_id)
     duped_message = message.duplicate
-    duped_message["is_seen"] = true;
+    duped_message['is_seen'] = true
     normalized_sendee_message = { message.id => message }
     user = User.find_by(id: sender_id)
     between_chat = message.chat
