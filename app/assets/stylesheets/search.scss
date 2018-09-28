@@ -63,12 +63,21 @@
   font-size: 14px;
 }
 
-.user-search-result-info {
-  position: relative;
+.most-recent-time {
+  margin-top: 5px;
 }
 
-.most-recent-time {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.fa-cog {
+  font-size: 14px !important;
+  color: gray;
+  display: none !important;
+}
+
+.user-search-result li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-search-results li:hover .fa-cog {
+  display: block !important;
 }

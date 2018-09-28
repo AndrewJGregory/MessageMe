@@ -95,14 +95,17 @@ class UserSearchIndexItem extends React.Component {
           onKeyDown={this.handleKeyDown}
         />
         <ul className="user-search-result">
-          <li className="user-search-result-info">
+          <li>
             <div>{this.props.user.username}</div>
             <div className="most-recent-time gray-text">
               {mostRecentMessageTime}
             </div>
           </li>
-          <li className={`truncate gray-text ${bold}`}>
-            {this.props.mostRecentMessage["content"] || null}
+          <li>
+            <p className={`truncate gray-text ${bold}`}>
+              {this.props.mostRecentMessage["content"] || null}
+            </p>
+            <i className="fa fa-cog" />
           </li>
         </ul>
       </li>
