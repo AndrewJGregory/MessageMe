@@ -5,10 +5,6 @@
   padding: 0px 5px 10px 10px;
 }
 
-.hovered {
-  background-color: $darker-burlywood;
-}
-
 .hidden-input {
   height: 0;
   width: 0;
@@ -78,6 +74,11 @@
   justify-content: space-between;
 }
 
-.user-search-results li:hover .fa-cog {
-  display: block !important;
+.user-search-results li {
+  &:hover {
+    background-color: $darker-burlywood;
+    .fa-cog {
+      display: block !important;
+    }
+  }
 }

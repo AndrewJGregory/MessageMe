@@ -4,30 +4,17 @@ import { redirectToChat } from "../util/chat";
 class UserSearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hovered: "" };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
-    this.addBackgroundColor = this.addBackgroundColor.bind(this);
-    this.removeBackgroundColor = this.removeBackgroundColor.bind(this);
     this.userResult = React.createRef();
-  }
-
-  addBackgroundColor(e) {
-    this.setState({ hovered: "hovered" });
-  }
-
-  removeBackgroundColor(e) {
-    this.setState({ hovered: "" });
   }
 
   componentDidUpdate(prevProps) {
     if (prevProps.selectedUserIdx !== this.props.selectedUserIdx) {
       if (this.props.idx === this.props.selectedUserIdx) {
         this.userResult.focus();
-        this.addBackgroundColor();
       } else {
         this.userResult.blur();
-        this.removeBackgroundColor();
       }
     }
   }
@@ -81,7 +68,7 @@ class UserSearchIndexItem extends React.Component {
     const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
     return (
       <li
-        className={`clickable ${this.state.hovered}`}
+        className="clickable"
         onClick={this.handleClick}
         onMouseEnter={this.addBackgroundColor}
         onMouseLeave={this.removeBackgroundColor}
