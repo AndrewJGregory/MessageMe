@@ -12,6 +12,12 @@
 class Chat < ApplicationRecord
   validates_uniqueness_of :user_id_one, scope: [:user_id_two]
   has_many :messages
+  has_many :archive_chats
+
+  after_create_commit do 
+    ArchiveChat.create(user_id: self.user_id_one, chat_id: self.id)
+    ArchiveChat.create(user_id: self.user_id_two, chat_id: self.id)
+  end
 
   def self.find_chat(user_id_one, user_id_two)
     result = Chat.where('user_id_one = ? AND user_id_two = ?', user_id_one, user_id_two)

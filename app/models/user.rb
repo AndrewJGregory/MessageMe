@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :username, presence: { message: 'Please enter your username.' }, uniqueness: { message: 'Username has already been taken. Try another username.' }
   validates :password, length: { minimum: 6, allow_nil: true, message: 'Your password is too short. Minimum is 6 characters.' }
   has_many :messages
-
+  
   attr_reader :password
   after_initialize :ensure_session_token
 
