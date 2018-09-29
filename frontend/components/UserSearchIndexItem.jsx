@@ -29,17 +29,26 @@ class UserSearchIndexItem extends React.Component {
     } else if (e.key === "ArrowUp") {
       this.props.setSelectedUserIdx(this.props.selectedUserIdx - 1);
     } else if (e.key === "Enter") {
-      this.handleClick();
+      this.seeMessage();
     }
   }
 
   handleClick(e) {
     if (e) e.preventDefault();
+    e.target.className.includes("fa-cog")
+      ? this.archiveChat()
+      : this.seeMessage();
+  }
+
+  archiveChat() {
+    this.props.archiveChat(this.props.chatId, this.props.currentUserId, true);
+  }
+
+  seeMessage() {
     const userId = this.props.user.id;
     if (this.props.mostRecentMessage.id) {
       this.props.seeMessage(this.props.mostRecentMessage).then(() => {
         redirectToChat(this, userId);
-        this.removeBackgroundColor();
       });
     } else {
       redirectToChat(this, userId);
@@ -92,7 +101,7 @@ class UserSearchIndexItem extends React.Component {
             <p className={`truncate gray-text ${bold}`}>
               {this.props.mostRecentMessage["content"] || null}
             </p>
-            <i className="fa fa-cog" />
+            <i className="fa fa-cog" onClick={this.handleClick} />
           </li>
         </ul>
       </li>
