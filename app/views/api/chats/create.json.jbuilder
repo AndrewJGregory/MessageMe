@@ -1,1 +1,1 @@
-json.partial! 'api/chats/create', chat: @possible_chat
+json.partial! 'api/chats/create', chat: @chat, status: @status

@@ -27,3 +27,10 @@ export const createChat = (userIdOne, userIdTwo) => dispatch => {
     return chat;
   });
 };
+
+export const archiveChat = (chatId, userId, status) => dispatch => {
+  return chatUtil.archiveChat(chatId, userId, status).then(chat => {
+    dispatch(receiveChat(chat));
+    return chat;
+  });
+};

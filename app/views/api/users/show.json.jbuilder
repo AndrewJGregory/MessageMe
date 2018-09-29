@@ -5,8 +5,12 @@ json.users do
 end
 
 json.chats do
+  hash = {}
+  current_user.archive_chats.each do |archive_chat|
+    hash[archive_chat.id] = archive_chat.is_archived
+  end
   @most_recent_chats.each do |chat|
-    json.partial! 'api/chats/create', chat: chat
+    json.partial! 'api/chats/create', chat: chat, status: hash[chat.id]
   end
 end
 

@@ -13,7 +13,7 @@
 class ArchiveChat < ApplicationRecord
   validates :user_id, :chat_id, presence: true
   validates_uniqueness_of :user_id, scope: [:chat_id]
-
+  
   belongs_to :chat
   belongs_to :user
 end
