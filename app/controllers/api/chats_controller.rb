@@ -17,7 +17,7 @@ class Api::ChatsController < ApplicationController
   def update
     archive_chat = User.find(chat_params[:user_id]).archive_chats.find_by(chat_id: params[:id])
     archive_chat.is_archived = chat_params[:status]
-    archive_chat.save
+    archive_chat.save!
     @status = ActiveModel::Type::Boolean.new.cast(chat_params[:status])
     # converts "true" to true
     @chat = Chat.find(params[:id])
