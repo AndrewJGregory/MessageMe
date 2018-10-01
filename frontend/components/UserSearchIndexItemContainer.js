@@ -11,7 +11,7 @@ const mapStateToProps = (state, ownProps) => {
   const currentUserId = state.session.currentUser.id;
   const userId = ownProps.user.id;
   const mostRecentMessage = findMostRecentMessage(state, userId);
-  const { selectedUserIdx } = state.ui;
+  const { selectedUserIdx, searchQuery } = state.ui;
   const chatId = findChatId(state, userId, currentUserId);
   const isArchivedObj = state.entities.chats[chatId].isArchived || {};
   const isArchived = isArchivedObj[currentUserId];
@@ -20,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     mostRecentMessage,
     selectedUserIdx,
     chatId,
-    isArchived
+    isArchived,
+    searchQuery
   };
 };
 
