@@ -8,18 +8,16 @@ import { seeMessageBackend } from "../actions/message";
 import { findChatId } from "../util/chat";
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUserId = state.session.currentUser.id;
   const userId = ownProps.user.id;
-  const mostRecentMessage = findMostRecentMessage(state, userId);
-  const { selectedUserIdx, searchQuery } = state.ui;
+  const currentUserId = state.session.currentUser.id;
   const chatId = findChatId(state, userId, currentUserId);
   const isArchivedObj = state.entities.chats[chatId].isArchived || {};
   const isArchived = isArchivedObj[currentUserId];
+  const mostRecentMessage = findMostRecentMessage(state, userId);
+  const { selectedUserIdx, searchQuery } = state.ui;
   return {
-    currentUserId,
     mostRecentMessage,
     selectedUserIdx,
-    chatId,
     isArchived,
     searchQuery
   };

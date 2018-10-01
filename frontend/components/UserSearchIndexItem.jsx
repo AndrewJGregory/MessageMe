@@ -1,5 +1,6 @@
 import React from "react";
 import { redirectToChat } from "../util/chat";
+import ChatSettingsIconContainer from "./ChatSettingsIconContainer";
 
 class UserSearchIndexItem extends React.Component {
   constructor(props) {
@@ -34,25 +35,16 @@ class UserSearchIndexItem extends React.Component {
   }
 
   handleClick(e) {
-    if (e) e.preventDefault();
-    e.target.className.includes("fa-cog")
-      ? this.archiveChat()
-      : this.seeMessage();
-  }
-
-  archiveChat() {
-    this.props.archiveChat(this.props.chatId, this.props.currentUserId, true);
-  }
-
-  seeMessage() {
+    e.preventDefault();
     const userId = this.props.user.id;
-    if (this.props.mostRecentMessage.id) {
-      this.props.seeMessage(this.props.mostRecentMessage).then(() => {
+    if (!e.target.className.includes("fa-cog"))
+      if (this.props.mostRecentMessage.id) {
+        this.props.seeMessage(this.props.mostRecentMessage).then(() => {
+          redirectToChat(this, userId);
+        });
+      } else {
         redirectToChat(this, userId);
-      });
-    } else {
-      redirectToChat(this, userId);
-    }
+      }
     this.props.clearSearchQuery();
   }
 
@@ -102,7 +94,7 @@ class UserSearchIndexItem extends React.Component {
             <p className={`truncate gray-text ${bold}`}>
               {this.props.mostRecentMessage["content"] || null}
             </p>
-            <i className="fa fa-cog" onClick={this.handleClick} />
+            <ChatSettingsIconContainer userId={this.props.user.id} />
           </li>
         </ul>
       </li>
