@@ -23,7 +23,8 @@ class Main extends React.Component {
         const userId = this.props.match.params.userId
           ? this.props.match.params.userId
           : users[0].id;
-        redirectToChat(this, userId);
+        this.props.history.push(`/messages/${userId}`);
+        this.props.createChatAndFetchMessages(userId);
         const mostRecentMessage = findMostRecentMessage(state, userId);
         if (mostRecentMessage.id) this.props.seeMessage(mostRecentMessage);
       });
