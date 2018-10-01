@@ -15,9 +15,10 @@ export const createChatAndFetchMessages = otherUserId => (
 ) => {
   const state = getState();
   const currentUserId = state.session.currentUser.id;
-  dispatch(createChat(currentUserId, otherUserId)).then(chat => {
+  return dispatch(createChat(currentUserId, otherUserId)).then(chat => {
     let chatId = Object.keys(chat);
     dispatch(fetchMessages(chatId));
+    return chat;
   });
 };
 

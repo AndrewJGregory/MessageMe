@@ -29,5 +29,11 @@ export const findChatId = (state, userId, currentUserId) => {
 
 export const redirectToChat = (component, userId) => {
   component.props.history.push(`/messages/${userId}`);
-  component.props.createChatAndFetchMessages(userId);
+  component.props.createChatAndFetchMessages(userId).then(chat => {
+    const chatId = Object.keys(chat)[0];
+    const currentUserId = Object.values(Object.values(chat)[0]).filter(
+      id => id != userId && id != chatId && Number(id) === id
+    )[0];
+    component.props.archiveChat(chatId, currentUserId, false);
+  });
 };
