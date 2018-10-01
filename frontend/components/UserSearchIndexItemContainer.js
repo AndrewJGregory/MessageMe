@@ -13,8 +13,8 @@ const mapStateToProps = (state, ownProps) => {
   const mostRecentMessage = findMostRecentMessage(state, userId);
   const { selectedUserIdx } = state.ui;
   const chatId = findChatId(state, userId, currentUserId);
-  const isArchivedObj = state.entities.chats[chatId].isArchived;
-  const isArchived = isArchivedObj ? isArchivedObj[currentUserId] : false;
+  const isArchivedObj = state.entities.chats[chatId].isArchived || {};
+  const isArchived = isArchivedObj[currentUserId];
   return {
     currentUserId,
     mostRecentMessage,
