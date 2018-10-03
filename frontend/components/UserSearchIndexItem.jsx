@@ -5,9 +5,11 @@ import ChatSettingsIconContainer from "./ChatSettingsIconContainer";
 class UserSearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
+    this.state = { hovered: "" };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.userResult = React.createRef();
+    this.toggleBackgroundColor = this.toggleBackgroundColor.bind(this);
   }
 
   componentDidUpdate(prevProps) {
@@ -30,8 +32,13 @@ class UserSearchIndexItem extends React.Component {
     } else if (e.key === "ArrowUp") {
       this.props.setSelectedUserIdx(this.props.selectedUserIdx - 1);
     } else if (e.key === "Enter") {
-      this.seeMessage();
+      this.handleClick(e);
     }
+  }
+
+  toggleBackgroundColor() {
+    const hovered = this.state.hovered ? "" : "darker-burlywood";
+    this.setState({ hovered });
   }
 
   handleClick(e) {
@@ -70,10 +77,8 @@ class UserSearchIndexItem extends React.Component {
     if (this.props.isArchived && !this.props.searchQuery) return null;
     return (
       <li
-        className="clickable"
+        className={`clickable ${this.state.hovered}`}
         onClick={this.handleClick}
-        onMouseEnter={this.addBackgroundColor}
-        onMouseLeave={this.removeBackgroundColor}
       >
         <input
           ref={userResult => {
@@ -82,6 +87,8 @@ class UserSearchIndexItem extends React.Component {
           type="text"
           className="hidden-input"
           onKeyDown={this.handleKeyDown}
+          onFocus={this.toggleBackgroundColor}
+          onBlur={this.toggleBackgroundColor}
         />
         <ul className="user-search-result">
           <li>
