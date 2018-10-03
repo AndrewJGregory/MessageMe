@@ -2,18 +2,24 @@ import React from "react";
 import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
 
 class UserSearchIndex extends React.Component {
+  constructor(props) {
+    super(props);
+    this.shouldBeShown = this.shouldBeShown.bind(this);
+  }
   doesUsernameMatchQuery(username) {
     const regExp = new RegExp(`${this.props.searchQuery.toLowerCase()}`);
     return regExp.test(username.toLowerCase());
   }
 
+  shouldBeShown(user) {
+    return this.doesUsernameMatchQuery(user.username) && !user.isChatArchived;
+  }
+
   filterUserSearchResults() {
     let idx = 1;
-    const totalUsers = this.props.userResults.filter(user =>
-      this.doesUsernameMatchQuery(user.username)
-    ).length;
+    const totalUsers = this.props.userResults.filter(this.shouldBeShown).length;
     return this.props.userResults.reduce((users, user) => {
-      if (this.doesUsernameMatchQuery(user.username)) {
+      if (this.shouldBeShown(user)) {
         users.push(
           <UserSearchIndexItemContainer
             totalUsers={totalUsers}
