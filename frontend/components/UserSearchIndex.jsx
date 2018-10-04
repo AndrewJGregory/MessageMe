@@ -6,13 +6,19 @@ class UserSearchIndex extends React.Component {
     super(props);
     this.shouldBeShown = this.shouldBeShown.bind(this);
   }
+
   doesUsernameMatchQuery(username) {
     const regExp = new RegExp(`${this.props.searchQuery.toLowerCase()}`);
     return regExp.test(username.toLowerCase());
   }
 
   shouldBeShown(user) {
-    return this.doesUsernameMatchQuery(user.username) && !user.isChatArchived;
+    const matchesQuery = this.doesUsernameMatchQuery(user.username);
+    if (this.props.searchQuery) {
+      return matchesQuery;
+    } else {
+      return !user.isChatArchived;
+    }
   }
 
   filterUserSearchResults() {
