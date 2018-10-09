@@ -6,9 +6,12 @@ import { createMessage } from "../actions/message";
 const mapStateToProps = (state, ownProps) => {
   const userReceiverId = ownProps.match.params.userId;
   const userSenderId = state.session.currentUser.id;
+  const { selectedUserIdx } = state.ui;
+
   return {
     userReceiverId,
-    userSenderId
+    userSenderId,
+    selectedUserIdx
   };
 };
 
@@ -20,5 +23,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(MessageInput)
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  )(MessageInput)
 );

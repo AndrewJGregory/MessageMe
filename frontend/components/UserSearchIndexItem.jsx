@@ -53,6 +53,7 @@ class UserSearchIndexItem extends React.Component {
         redirectToChat(this, userId);
       }
     this.props.clearSearchQuery();
+    this.props.setSelectedUserIdx(-1);
   }
 
   formatTime() {

@@ -10,8 +10,7 @@ export default class MessageInput extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.match.params.userId !== prevProps.match.params.userId)
-      this.input.focus();
+    if (this.props.selectedUserIdx === -1) this.input.focus();
   }
 
   sendMessage(e) {
