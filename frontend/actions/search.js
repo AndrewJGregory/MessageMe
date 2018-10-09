@@ -4,7 +4,7 @@ import * as SearchUtil from "../util/search";
 export const receiveUserSearchResults = users => {
   return {
     type: RECEIVE_USER_SEARCH_RESULTS,
-    users
+    users,
   };
 };
 

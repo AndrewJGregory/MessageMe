@@ -20,13 +20,8 @@ const mapStateToProps = state => {
     userResults,
     currentUserId,
     searchQuery,
-    hasSearched
+    hasSearched,
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    null
-  )(UserSearchIndex)
-);
+export default withRouter(connect(mapStateToProps, null)(UserSearchIndex));

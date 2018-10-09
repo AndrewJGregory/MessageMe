@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import {
   receiveMessage,
   seeMessageBackend,
-  receiveMessagePayload
+  receiveMessagePayload,
 } from "../actions/message";
 import { receiveChat } from "../actions/chat";
 import { receiveUser } from "../actions/user";
@@ -22,13 +22,10 @@ const mapDispatchToProps = dispatch => {
     receiveUser: user => dispatch(receiveUser(user)),
     receiveChat: chat => dispatch(receiveChat(chat)),
     seeMessage: message => dispatch(seeMessageBackend(message)),
-    receiveMessagePayload: payload => dispatch(receiveMessagePayload(payload))
+    receiveMessagePayload: payload => dispatch(receiveMessagePayload(payload)),
   };
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(ChatWebSocket)
+  connect(mapStateToProps, mapDispatchToProps)(ChatWebSocket),
 );

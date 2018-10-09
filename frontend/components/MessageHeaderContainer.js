@@ -6,7 +6,7 @@ const mapStateToProps = (state, ownProps) => {
   const otherUser = state.entities.users[ownProps.match.params.userId];
   let username = otherUser ? otherUser["username"] : null;
   return {
-    username
+    username,
   };
 };
 

@@ -4,7 +4,7 @@ import { signOut } from "../actions/session";
 
 const mapDispatchToProps = dispatch => {
   return {
-    signOut: () => dispatch(signOut())
+    signOut: () => dispatch(signOut()),
   };
 };
 

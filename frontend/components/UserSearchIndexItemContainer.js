@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     mostRecentMessage,
     selectedUserIdx,
-    searchQuery
+    searchQuery,
   };
 };
 
@@ -24,13 +24,10 @@ const mapDispatchToProps = dispatch => {
     seeMessage: message => dispatch(seeMessageBackend(message)),
     setSelectedUserIdx: idx => dispatch(setSelectedUserIdx(idx)),
     archiveChat: (chatId, userId, status) =>
-      dispatch(archiveChat(chatId, userId, status))
+      dispatch(archiveChat(chatId, userId, status)),
   };
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(UserSearchIndexItem)
+  connect(mapStateToProps, mapDispatchToProps)(UserSearchIndexItem),
 );

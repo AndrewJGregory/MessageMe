@@ -8,18 +8,15 @@ const mapStateToProps = (state, ownProps) => {
   const chatId = findChatId(state, ownProps.userId, currentUserId);
   return {
     currentUserId,
-    chatId
+    chatId,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     archiveChat: (chatId, userId, status) =>
-      dispatch(archiveChat(chatId, userId, status))
+      dispatch(archiveChat(chatId, userId, status)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(ChatSettingsIcon);
+export default connect(mapStateToProps, mapDispatchToProps)(ChatSettingsIcon);

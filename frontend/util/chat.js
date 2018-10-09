@@ -2,7 +2,7 @@ export const createChat = (user_sender_id, user_receiver_id) => {
   return $.ajax({
     method: "POST",
     url: "/api/chats",
-    data: { chat: { user_sender_id, user_receiver_id } }
+    data: { chat: { user_sender_id, user_receiver_id } },
   });
 };
 
@@ -10,7 +10,7 @@ export const archiveChat = (chatId, user_id, status) => {
   return $.ajax({
     method: "PATCH",
     url: `/api/chats/${chatId}`,
-    data: { chat: { user_id, status } }
+    data: { chat: { user_id, status } },
   });
 };
 
@@ -32,7 +32,7 @@ export const redirectToChat = (component, userId) => {
   component.props.createChatAndFetchMessages(userId).then(chat => {
     const chatId = Object.keys(chat)[0];
     const currentUserId = Object.values(Object.values(chat)[0]).filter(
-      id => id != userId && id != chatId && Number(id) === id
+      id => id != userId && id != chatId && Number(id) === id,
     )[0];
     component.props.archiveChat(chatId, currentUserId, false);
   });

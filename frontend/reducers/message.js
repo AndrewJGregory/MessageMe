@@ -2,7 +2,7 @@ import {
   RECEIVE_MESSAGE,
   RECEIVE_MESSAGES,
   SEE_MESSAGE,
-  RECEIVE_MESSAGE_PAYLOAD
+  RECEIVE_MESSAGE_PAYLOAD,
 } from "../actions/message";
 import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
 

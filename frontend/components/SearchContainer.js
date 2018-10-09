@@ -5,7 +5,7 @@ import { createChatAndFetchMessages } from "../actions/chat";
 import {
   setSearchQuery,
   setSelectedUserIdx,
-  setHasSearched
+  setHasSearched,
 } from "../actions/ui";
 
 const mapStateToProps = state => {
@@ -14,7 +14,7 @@ const mapStateToProps = state => {
   return {
     userResults: Object.values(state.entities.users),
     searchQuery,
-    selectedUserIdx
+    selectedUserIdx,
   };
 };
 
@@ -24,11 +24,8 @@ const mapDispatchToProps = dispatch => {
     fetchUsers: query => dispatch(fetchUsers(query)),
     setSearchQuery: query => dispatch(setSearchQuery(query)),
     setSelectedUserIdx: idx => dispatch(setSelectedUserIdx(idx)),
-    setHasSearched: bool => dispatch(setHasSearched(bool))
+    setHasSearched: bool => dispatch(setHasSearched(bool)),
   };
 };
 
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Search);
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

@@ -4,21 +4,21 @@ export const createMessage = (content, user_sender_id, user_receiver_id) => {
   return $.ajax({
     url: "/api/messages",
     method: "POST",
-    data: { message: { content, user_sender_id, user_receiver_id } }
+    data: { message: { content, user_sender_id, user_receiver_id } },
   });
 };
 
 export const fetchMessages = chat_id => {
   return $.ajax({
     url: `/api/chats/${chat_id}`,
-    method: "GET"
+    method: "GET",
   });
 };
 
 export const seeMessage = message => {
   return $.ajax({
     url: `api/messages/${message.id}`,
-    method: "PATCH"
+    method: "PATCH",
   });
 };
 
@@ -38,11 +38,11 @@ export const findMessages = (state, userId, currentUserId, chatId) => {
     newMessage = null;
     if (message.chat_id == chatId && message.user_id == currentUserId) {
       newMessage = Object.assign({}, message, {
-        isCurrentUserMessage: true
+        isCurrentUserMessage: true,
       });
     } else if (message.chat_id == chatId && message.user_id == userId)
       newMessage = Object.assign({}, message, {
-        isCurrentUserMessage: false
+        isCurrentUserMessage: false,
       });
     if (newMessage) messages.push(newMessage);
   });
@@ -51,7 +51,7 @@ export const findMessages = (state, userId, currentUserId, chatId) => {
 
 export const sortByDate = messages => {
   return messages.sort(
-    (messageOne, messageTwo) => (messageOne.id < messageTwo.id ? -1 : 1)
+    (messageOne, messageTwo) => (messageOne.id < messageTwo.id ? -1 : 1),
   );
 };
 
@@ -64,7 +64,7 @@ export const sortByMostRecentlyMessaged = (state, users) => {
       state,
       userOne.id,
       currentUserId,
-      userOneChatId
+      userOneChatId,
     );
 
     const userTwoChatId = findChatId(state, userTwo.id, currentUserId);
@@ -72,7 +72,7 @@ export const sortByMostRecentlyMessaged = (state, users) => {
       state,
       userTwo.id,
       currentUserId,
-      userTwoChatId
+      userTwoChatId,
     );
 
     sortByDate(userOneMessages);

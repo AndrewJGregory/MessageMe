@@ -32,7 +32,7 @@ class UserSearchIndex extends React.Component {
             idx={idx++}
             user={user}
             key={user.id}
-          />
+          />,
         );
       }
       return users;

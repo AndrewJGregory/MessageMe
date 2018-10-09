@@ -9,7 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   return {
     currentUser: state.session.currentUser,
     buttonText,
-    errors
+    errors,
   };
 };
 
@@ -19,13 +19,8 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   return {
     submitForm: user => dispatch(formAction(user)),
     clearErrors: () => dispatch(clearErrors()),
-    loginAsGuest: () => dispatch(loginAsGuest())
+    loginAsGuest: () => dispatch(loginAsGuest()),
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(SignIn)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));

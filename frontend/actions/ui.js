@@ -6,26 +6,26 @@ export const SET_HAS_SEARCHED = "SET_HAS_SEARCHED";
 export const setSelectedUserIdx = selectedUserIdx => {
   return {
     type: SET_SELECTED_USER_IDX,
-    selectedUserIdx
+    selectedUserIdx,
   };
 };
 
 export const setSearchQuery = query => {
   return {
     type: SET_SEARCH_QUERY,
-    query
+    query,
   };
 };
 
 export const clearSearchQuery = () => {
   return {
-    type: CLEAR_SEARCH_QUERY
+    type: CLEAR_SEARCH_QUERY,
   };
 };
 
 export const setHasSearched = bool => {
   return {
     type: SET_HAS_SEARCHED,
-    bool
+    bool,
   };
 };

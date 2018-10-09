@@ -11,20 +11,17 @@ const mapStateToProps = (state, ownProps) => {
   return {
     userReceiverId,
     userSenderId,
-    selectedUserIdx
+    selectedUserIdx,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     createMessage: (content, userSenderId, userReceiverId) =>
-      dispatch(createMessage(content, userSenderId, userReceiverId))
+      dispatch(createMessage(content, userSenderId, userReceiverId)),
   };
 };
 
 export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(MessageInput)
+  connect(mapStateToProps, mapDispatchToProps)(MessageInput),
 );

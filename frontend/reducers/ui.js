@@ -2,12 +2,12 @@ import {
   SET_SEARCH_QUERY,
   CLEAR_SEARCH_QUERY,
   SET_SELECTED_USER_IDX,
-  SET_HAS_SEARCHED
+  SET_HAS_SEARCHED,
 } from "../actions/ui";
 const initialState = {
   searchQuery: "",
   selectedUserIdx: 0,
-  hasSearched: false
+  hasSearched: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -20,7 +20,7 @@ const uiReducer = (state = initialState, action) => {
       return Object.assign({}, state, newState);
     case SET_SELECTED_USER_IDX:
       return Object.assign({}, state, {
-        selectedUserIdx: action.selectedUserIdx
+        selectedUserIdx: action.selectedUserIdx,
       });
     case SET_HAS_SEARCHED:
       return Object.assign({}, state, { hasSearched: action.bool });

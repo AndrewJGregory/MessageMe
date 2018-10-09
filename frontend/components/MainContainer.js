@@ -8,7 +8,7 @@ import { seeMessageBackend } from "../actions/message";
 const mapStateToProps = state => {
   const currentUser = state.session.currentUser;
   return {
-    currentUser
+    currentUser,
   };
 };
 
@@ -19,13 +19,8 @@ const mapDispatchToProps = dispatch => {
     createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
     seeMessage: message => dispatch(seeMessageBackend(message)),
     archiveChat: (chatId, userId, status) =>
-      dispatch(archiveChat(chatId, userId, status))
+      dispatch(archiveChat(chatId, userId, status)),
   };
 };
 
-export default withRouter(
-  connect(
-    mapStateToProps,
-    mapDispatchToProps
-  )(Main)
-);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

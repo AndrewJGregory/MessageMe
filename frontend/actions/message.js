@@ -7,34 +7,34 @@ export const RECEIVE_MESSAGE_PAYLOAD = "RECEIVE_MESSAGE_PAYLOAD";
 export const receiveMessagePayload = payload => {
   return {
     type: RECEIVE_MESSAGE_PAYLOAD,
-    payload
+    payload,
   };
 };
 export const receiveMessage = message => {
   return {
     type: RECEIVE_MESSAGE,
-    message
+    message,
   };
 };
 
 const receiveMessages = messages => {
   return {
     type: RECEIVE_MESSAGES,
-    messages
+    messages,
   };
 };
 
 export const seeMessageFrontend = message => {
   return {
     type: SEE_MESSAGE,
-    message
+    message,
   };
 };
 
 export const createMessage = (
   content,
   user_sender_id,
-  user_receiver_id
+  user_receiver_id,
 ) => dispatch => {
   return messageUtil
     .createMessage(content, user_sender_id, user_receiver_id)

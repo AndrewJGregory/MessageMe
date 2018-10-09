@@ -6,7 +6,7 @@ import users from "./users";
 const entitiesReducer = combineReducers({
   chats,
   messages,
-  users
+  users,
 });
 
 export default entitiesReducer;

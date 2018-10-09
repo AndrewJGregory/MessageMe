@@ -6,7 +6,7 @@ import MessageInputContainer from "./MessageInputContainer";
 import { redirectToChat } from "../util/chat";
 import {
   sortByMostRecentlyMessaged,
-  findMostRecentMessage
+  findMostRecentMessage,
 } from "../util/message";
 
 class Main extends React.Component {
@@ -16,7 +16,7 @@ class Main extends React.Component {
       this.props.fetchUserSignInData(currentUserId).then(payload => {
         const state = {
           entities: payload,
-          session: { currentUser: this.props.currentUser }
+          session: { currentUser: this.props.currentUser },
         };
         const users = Object.values(payload.users);
         sortByMostRecentlyMessaged(state, users);

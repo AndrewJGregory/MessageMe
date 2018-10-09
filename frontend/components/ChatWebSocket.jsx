@@ -11,7 +11,7 @@ class ChatWebSocket extends React.Component {
       ] = nextProps.cableApp.cable.subscriptions.create(
         {
           channel: "ChatChannel",
-          chatId: nextProps.selfChatId
+          chatId: nextProps.selfChatId,
         },
         {
           received: payload => {
@@ -22,8 +22,8 @@ class ChatWebSocket extends React.Component {
             const shouldMessageBeSeen =
               isCurrentlyChattingWithUser && !message.is_seen;
             if (shouldMessageBeSeen) this.props.seeMessage(message);
-          }
-        }
+          },
+        },
       );
     }
   }

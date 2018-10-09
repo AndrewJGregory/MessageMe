@@ -9,13 +9,13 @@ export const CLEAR_SESSION_ERRORS = "CLEAR_SESSION_ERRORS";
 export const receiveSessionErrors = errors => {
   return {
     type: RECEIVE_SESSION_ERRORS,
-    errors
+    errors,
   };
 };
 export const receiveCurrentUser = user => {
   return {
     type: RECEIVE_CURRENT_USER,
-    user
+    user,
   };
 };
 
@@ -27,7 +27,7 @@ export const loginAsGuest = () => dispatch => {
 export const clearErrors = () => {
   return {
     type: CLEAR_SESSION_ERRORS,
-    errors: {}
+    errors: {},
   };
 };
 
@@ -39,7 +39,7 @@ export const signOut = () => dispatch => {
     errors => {
       dispatch(receiveSessionErrors(errors.responseJSON));
       return errors;
-    }
+    },
   );
 };
 
@@ -52,7 +52,7 @@ export const signIn = user => dispatch => {
     errors => {
       dispatch(receiveSessionErrors(errors.responseJSON));
       return errors;
-    }
+    },
   );
 };
 
@@ -65,6 +65,6 @@ export const signUp = user => dispatch => {
     errors => {
       dispatch(receiveSessionErrors(errors.responseJSON));
       return errors;
-    }
+    },
   );
 };

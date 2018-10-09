@@ -5,13 +5,13 @@ import { fetchMessages } from "./message";
 export const receiveChat = chat => {
   return {
     type: RECEIVE_CHAT,
-    chat
+    chat,
   };
 };
 
 export const createChatAndFetchMessages = otherUserId => (
   dispatch,
-  getState
+  getState,
 ) => {
   const state = getState();
   const currentUserId = state.session.currentUser.id;

@@ -7,7 +7,7 @@ class Search extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      textAlignment: ""
+      textAlignment: "",
     };
     this.submitSearch = this.submitSearch.bind(this);
     this.handleOnFocus = this.handleOnFocus.bind(this);
