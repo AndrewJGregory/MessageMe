@@ -2,6 +2,7 @@ export const CLEAR_SEARCH_QUERY = "CLEAR_SEARCH_QUERY";
 export const SET_SEARCH_QUERY = "SET_SEARCH_QUERY";
 export const SET_SELECTED_USER_IDX = "SET_SELECTED_USER_IDX";
 export const SET_HAS_SEARCHED = "SET_HAS_SEARCHED";
+export const SET_SELECTED_USER_ID = "SET_SELECTED_USER_ID";
 
 export const setSelectedUserIdx = selectedUserIdx => {
   return {
@@ -27,5 +28,12 @@ export const setHasSearched = bool => {
   return {
     type: SET_HAS_SEARCHED,
     bool,
+  };
+};
+
+export const setSelectedUserId = selectedUserId => {
+  return {
+    type: SET_SELECTED_USER_ID,
+    selectedUserId,
   };
 };

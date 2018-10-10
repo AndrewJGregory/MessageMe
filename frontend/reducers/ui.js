@@ -3,11 +3,15 @@ import {
   CLEAR_SEARCH_QUERY,
   SET_SELECTED_USER_IDX,
   SET_HAS_SEARCHED,
+  TOGGLE_DROPDOWN_MENU,
+  SET_SELECTED_USER_ID,
 } from "../actions/ui";
+
 const initialState = {
   searchQuery: "",
   selectedUserIdx: 0,
   hasSearched: false,
+  selectedUserId: 0,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -24,6 +28,10 @@ const uiReducer = (state = initialState, action) => {
       });
     case SET_HAS_SEARCHED:
       return Object.assign({}, state, { hasSearched: action.bool });
+    case SET_SELECTED_USER_ID:
+      return Object.assign({}, state, {
+        selectedUserId: action.selectedUserId,
+      });
     default:
       return state;
   }

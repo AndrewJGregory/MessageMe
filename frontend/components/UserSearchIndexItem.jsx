@@ -44,14 +44,13 @@ class UserSearchIndexItem extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const userId = this.props.user.id;
-    if (!e.target.className.includes("fa-cog"))
-      if (this.props.mostRecentMessage.id) {
-        this.props.seeMessage(this.props.mostRecentMessage).then(() => {
-          redirectToChat(this, userId);
-        });
-      } else {
+    if (this.props.mostRecentMessage.id) {
+      this.props.seeMessage(this.props.mostRecentMessage).then(() => {
         redirectToChat(this, userId);
-      }
+      });
+    } else {
+      redirectToChat(this, userId);
+    }
     this.props.clearSearchQuery();
     this.props.setSelectedUserIdx(-1);
   }

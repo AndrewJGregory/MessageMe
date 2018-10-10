@@ -1,22 +1,21 @@
 import { connect } from "react-redux";
 import ChatSettingsIcon from "./ChatSettingsIcon";
-import { findChatId } from "../util/chat";
-import { archiveChat } from "../actions/chat";
+import { setSelectedUserId } from "../actions/ui";
 
 const mapStateToProps = (state, ownProps) => {
-  const currentUserId = state.session.currentUser.id;
-  const chatId = findChatId(state, ownProps.userId, currentUserId);
+  const { selectedUserId } = state.ui;
   return {
-    currentUserId,
-    chatId,
+    selectedUserId,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
-    archiveChat: (chatId, userId, status) =>
-      dispatch(archiveChat(chatId, userId, status)),
+    setSelectedUserId: id => dispatch(setSelectedUserId(id)),
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ChatSettingsIcon);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+)(ChatSettingsIcon);
