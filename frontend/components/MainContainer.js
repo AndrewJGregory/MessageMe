@@ -4,6 +4,7 @@ import { fetchUserSignInData } from "../actions/user";
 import { withRouter } from "react-router-dom";
 import { createChatAndFetchMessages, archiveChat } from "../actions/chat";
 import { seeMessageBackend } from "../actions/message";
+import { setSelectedUserId } from "../actions/ui";
 
 const mapStateToProps = state => {
   const currentUser = state.session.currentUser;
@@ -20,7 +21,13 @@ const mapDispatchToProps = dispatch => {
     seeMessage: message => dispatch(seeMessageBackend(message)),
     archiveChat: (chatId, userId, status) =>
       dispatch(archiveChat(chatId, userId, status)),
+    closeDropdownMenu: () => dispatch(setSelectedUserId(-1)),
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(Main),
+);

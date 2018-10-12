@@ -32,7 +32,10 @@ class Main extends React.Component {
 
   render() {
     return (
-      <main className="main-container">
+      <main
+        className="main-container"
+        onClick={() => this.props.closeDropdownMenu()}
+      >
         <Sidebar />
         <div className="right-collection">
           <MessageHeaderContainer />
