@@ -1,0 +1,36 @@
+@import "base/colors.scss";
+
+.user-search-result li {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user-search-results {
+  li {
+    position: relative;
+    &:hover {
+      background-color: $darker-burlywood;
+      .fa-cog {
+        display: block !important;
+      }
+    }
+  }
+}
+
+.dropdown-menu {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  right: 0;
+  width: 100px;
+  height: 35px;
+  border-radius: 10px;
+  background-color: whitesmoke;
+  li {
+    &:hover {
+      background-color: whitesmoke;
+    }
+    border-radius: 10px;
+    padding: 5px;
+  }
+}

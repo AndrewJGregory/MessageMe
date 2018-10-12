@@ -69,20 +69,6 @@
   display: none !important;
 }
 
-.user-search-result li {
-  display: flex;
-  justify-content: space-between;
-}
-
-.user-search-results li {
-  &:hover {
-    background-color: $darker-burlywood;
-    .fa-cog {
-      display: block !important;
-    }
-  }
-}
-
 .darker-burlywood {
   background-color: $darker-burlywood;
 }
