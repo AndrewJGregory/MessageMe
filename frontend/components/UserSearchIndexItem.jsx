@@ -74,7 +74,6 @@ class UserSearchIndexItem extends React.Component {
   render() {
     const mostRecentMessageTime = this.formatTime();
     const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
-    if (this.props.isArchived && !this.props.searchQuery) return null;
     return (
       <li
         className={`clickable ${this.state.hovered}`}
