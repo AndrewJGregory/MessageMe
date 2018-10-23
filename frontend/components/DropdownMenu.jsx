@@ -14,8 +14,17 @@ class DropdownMenu extends React.Component {
 
   render() {
     return (
-      <ul className="dropdown-menu">
+      <ul className="dropdown-menu center">
         <li onClick={this.handleArchive}>Archive</li>
+        <li
+          onClick={e => {
+            e.stopPropagation();
+            this.props.openModal();
+            this.props.closeDropdownMenu();
+          }}
+        >
+          Delete
+        </li>
       </ul>
     );
   }

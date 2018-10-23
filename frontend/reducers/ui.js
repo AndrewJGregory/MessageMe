@@ -5,6 +5,8 @@ import {
   SET_HAS_SEARCHED,
   TOGGLE_DROPDOWN_MENU,
   SET_SELECTED_USER_ID,
+  OPEN_MODAL,
+  CLOSE_MODAL,
 } from "../actions/ui";
 
 const initialState = {
@@ -12,6 +14,7 @@ const initialState = {
   selectedUserIdx: 0,
   hasSearched: false,
   selectedUserId: 0,
+  isModelOpen: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -32,6 +35,9 @@ const uiReducer = (state = initialState, action) => {
       return Object.assign({}, state, {
         selectedUserId: action.selectedUserId,
       });
+    case OPEN_MODAL:
+    case CLOSE_MODAL:
+      return Object.assign({}, state, { isModalOpen: action.bool });
     default:
       return state;
   }

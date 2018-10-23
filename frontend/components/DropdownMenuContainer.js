@@ -2,6 +2,7 @@ import { connect } from "react-redux";
 import DropdownMenu from "./DropdownMenu";
 import { findChatId } from "../util/chat";
 import { archiveChat } from "../actions/chat";
+import { openModal, setSelectedUserId } from "../actions/ui";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
@@ -14,6 +15,8 @@ const mapDispatchToProps = dispatch => {
   return {
     archiveChat: (chatId, userId, status) =>
       dispatch(archiveChat(chatId, userId, status)),
+    openModal: () => dispatch(openModal()),
+    closeDropdownMenu: () => dispatch(setSelectedUserId(-1)),
   };
 };
 

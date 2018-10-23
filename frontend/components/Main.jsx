@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import MessageIndexContainer from "./MessageIndexContainer";
 import MessageHeaderContainer from "./MessageHeaderContainer";
 import MessageInputContainer from "./MessageInputContainer";
+import ModalContainer from "./ModalContainer";
 import { redirectToChat } from "../util/chat";
 import {
   sortByMostRecentlyMessaged,
@@ -34,8 +35,12 @@ class Main extends React.Component {
     return (
       <main
         className="main-container"
-        onClick={() => this.props.closeDropdownMenu()}
+        onClick={() => {
+          this.props.closeDropdownMenu();
+          this.props.closeModal();
+        }}
       >
+        <ModalContainer />
         <Sidebar />
         <div className="right-collection">
           <MessageHeaderContainer />
