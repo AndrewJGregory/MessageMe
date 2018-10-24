@@ -5,6 +5,8 @@ export const SET_HAS_SEARCHED = "SET_HAS_SEARCHED";
 export const SET_SELECTED_USER_ID = "SET_SELECTED_USER_ID";
 export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
+export const CLOSE_DROPDOWN_MENU = "CLOSE_DROPDOWN_MENU";
+export const OPEN_DROPDOWN_MENU = "OPEN_DROPDOWN_MENU";
 
 export const setSelectedUserIdx = selectedUserIdx => {
   return {
@@ -51,5 +53,19 @@ export const closeModal = () => {
   return {
     type: CLOSE_MODAL,
     bool: false,
+  };
+};
+
+export const closeDropdownMenu = () => {
+  return {
+    type: CLOSE_DROPDOWN_MENU,
+    bool: false,
+  };
+};
+
+export const openDropdownMenu = () => {
+  return {
+    type: OPEN_DROPDOWN_MENU,
+    bool: true,
   };
 };

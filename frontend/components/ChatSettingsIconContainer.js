@@ -1,17 +1,19 @@
 import { connect } from "react-redux";
 import ChatSettingsIcon from "./ChatSettingsIcon";
-import { setSelectedUserId } from "../actions/ui";
+import { setSelectedUserId, openDropdownMenu } from "../actions/ui";
 
 const mapStateToProps = (state, ownProps) => {
-  const { selectedUserId } = state.ui;
+  const { selectedUserId, isDropdownMenuOpen } = state.ui;
   return {
     selectedUserId,
+    isDropdownMenuOpen,
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     setSelectedUserId: id => dispatch(setSelectedUserId(id)),
+    openDropdownMenu: () => dispatch(openDropdownMenu()),
   };
 };
 

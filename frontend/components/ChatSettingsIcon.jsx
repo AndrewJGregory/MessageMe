@@ -1,8 +1,18 @@
 import React, { Fragment } from "react";
 import DropdownMenuContainer from "./DropdownMenuContainer";
+import PropTypes from "prop-types";
 
-const ChatSettingsIcon = ({ userId, setSelectedUserId, selectedUserId }) => {
-  const dropdown = userId === selectedUserId ? <DropdownMenuContainer /> : null;
+const ChatSettingsIcon = ({
+  userId,
+  setSelectedUserId,
+  selectedUserId,
+  isDropdownMenuOpen,
+  openDropdownMenu,
+}) => {
+  const dropdown =
+    isDropdownMenuOpen && userId === selectedUserId ? (
+      <DropdownMenuContainer />
+    ) : null;
   return (
     <Fragment>
       <i
@@ -10,11 +20,20 @@ const ChatSettingsIcon = ({ userId, setSelectedUserId, selectedUserId }) => {
         onClick={e => {
           e.stopPropagation();
           setSelectedUserId(userId);
+          openDropdownMenu();
         }}
       />
       {dropdown}
     </Fragment>
   );
+};
+
+ChatSettingsIcon.propTypes = {
+  isDropdownMenuOpen: PropTypes.bool,
+  setSelectedUserId: PropTypes.func,
+  openDropdownMenu: PropTypes.func,
+  userId: PropTypes.number,
+  selectedUserId: PropTypes.number,
 };
 
 export default ChatSettingsIcon;

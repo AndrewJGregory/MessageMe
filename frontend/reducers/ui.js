@@ -7,6 +7,8 @@ import {
   SET_SELECTED_USER_ID,
   OPEN_MODAL,
   CLOSE_MODAL,
+  OPEN_DROPDOWN_MENU,
+  CLOSE_DROPDOWN_MENU,
 } from "../actions/ui";
 
 const initialState = {
@@ -15,6 +17,7 @@ const initialState = {
   hasSearched: false,
   selectedUserId: 0,
   isModelOpen: false,
+  isDropdownMenuOpen: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -38,6 +41,9 @@ const uiReducer = (state = initialState, action) => {
     case OPEN_MODAL:
     case CLOSE_MODAL:
       return Object.assign({}, state, { isModalOpen: action.bool });
+    case OPEN_DROPDOWN_MENU:
+    case CLOSE_DROPDOWN_MENU:
+      return Object.assign({}, state, { isDropdownMenuOpen: action.bool });
     default:
       return state;
   }

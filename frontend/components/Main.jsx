@@ -9,6 +9,7 @@ import {
   sortByMostRecentlyMessaged,
   findMostRecentMessage,
 } from "../util/message";
+import PropTypes from "prop-types";
 
 class Main extends React.Component {
   componentDidMount() {
@@ -51,5 +52,16 @@ class Main extends React.Component {
     );
   }
 }
+
+Main.propTypes = {
+  fetchUserSignInData: PropTypes.func,
+  createChatAndFetchMessages: PropTypes.func,
+  seeMessage: PropTypes.func,
+  archiveChat: PropTypes.func,
+  closeDropdownMenu: PropTypes.func,
+  closeModal: PropTypes.func,
+  currentUser: PropTypes.object,
+  cableApp: PropTypes.object,
+};
 
 export default Main;
