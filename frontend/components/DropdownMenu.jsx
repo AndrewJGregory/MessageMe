@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class DropdownMenu extends React.Component {
   constructor(props) {
@@ -23,11 +24,19 @@ class DropdownMenu extends React.Component {
             this.props.closeDropdownMenu();
           }}
         >
-          Delete
+          {"Delete"}
         </li>
       </ul>
     );
   }
 }
+
+DropdownMenu.propTypes = {
+  archiveChat: PropTypes.func,
+  openModal: PropTypes.func,
+  closeDropdownMenu: PropTypes.func,
+  chatId: PropTypes.number,
+  currentUserId: PropTypes.number,
+};
 
 export default DropdownMenu;

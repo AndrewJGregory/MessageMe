@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resource :session, only: %i[create destroy]
     resources :users, only: %i[create show]
     resources :searches, only: [:create]
-    resources :chats, only: %i[create show update]
+    resources :chats, only: %i[create show update destroy]
     resources :messages, only: %i[create update]
   end
 

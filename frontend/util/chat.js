@@ -14,6 +14,13 @@ export const archiveChat = (chatId, user_id, status) => {
   });
 };
 
+export const deleteChat = id => {
+  return $.ajax({
+    method: "DELETE",
+    url: `/api/chats/${id}`,
+  });
+};
+
 export const findChatId = (state, userId, currentUserId) => {
   let chatId = 0;
   Object.values(state.entities.chats).forEach(chat => {

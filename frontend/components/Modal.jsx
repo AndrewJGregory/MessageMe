@@ -1,7 +1,13 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-const Modal = ({ isModalOpen, archiveChat, chatId, currentUserId }) => {
+const Modal = ({
+  isModalOpen,
+  archiveChat,
+  chatId,
+  currentUserId,
+  deleteChat,
+}) => {
   if (!isModalOpen) return null;
   return (
     <div className="modal">
@@ -12,7 +18,9 @@ const Modal = ({ isModalOpen, archiveChat, chatId, currentUserId }) => {
         </div>
         <ul>
           <li className="yellow clickable">{"Cancel"}</li>
-          <li className="red clickable">{"Delete"}</li>
+          <li className="red clickable" onClick={() => deleteChat(chatId)}>
+            {"Delete"}
+          </li>
           <li
             className="red clickable"
             onClick={() => archiveChat(chatId, currentUserId, true)}
@@ -30,6 +38,7 @@ Modal.propTypes = {
   currentUserId: PropTypes.number,
   chatId: PropTypes.number,
   archiveChat: PropTypes.func,
+  deleteChat: PropTypes.func,
 };
 
 export default Modal;

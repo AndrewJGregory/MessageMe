@@ -24,6 +24,11 @@ class Api::ChatsController < ApplicationController
     render 'api/chats/create'
   end
   
+  def destroy
+    @chat = Chat.find_by(id: params[:id])
+    @chat.destroy if @chat 
+  end
+
   private
 
   def chat_params
