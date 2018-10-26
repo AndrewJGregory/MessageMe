@@ -1,6 +1,7 @@
 import React from "react";
 import { redirectToChat } from "../util/chat";
 import ChatSettingsIconContainer from "./ChatSettingsIconContainer";
+import PropTypes from "prop-types";
 
 class UserSearchIndexItem extends React.Component {
   constructor(props) {
@@ -74,6 +75,10 @@ class UserSearchIndexItem extends React.Component {
   render() {
     const mostRecentMessageTime = this.formatTime();
     const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
+    const cog =
+      this.props.currentUserId === this.props.user.id ? null : (
+        <ChatSettingsIconContainer userId={this.props.user.id} />
+      );
     return (
       <li
         className={`clickable ${this.state.hovered}`}
@@ -100,12 +105,25 @@ class UserSearchIndexItem extends React.Component {
             <p className={`truncate gray-text ${bold}`}>
               {this.props.mostRecentMessage["content"] || null}
             </p>
-            <ChatSettingsIconContainer userId={this.props.user.id} />
+            {cog}
           </li>
         </ul>
       </li>
     );
   }
 }
+
+UserSearchIndexItem.propTypes = {
+  archiveChat: PropTypes.func,
+  createChatAndFetchMessages: PropTypes.func,
+  clearSearchQuery: PropTypes.func,
+  seeMessage: PropTypes.func,
+  setSelectedUserIdx: PropTypes.func,
+  currentUserId: PropTypes.number,
+  selectedUserIdx: PropTypes.number,
+  userId: PropTypes.number,
+  mostRecentMessage: PropTypes.object,
+  searchQuery: PropTypes.string,
+};
 
 export default UserSearchIndexItem;

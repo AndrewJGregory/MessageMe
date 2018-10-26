@@ -10,10 +10,12 @@ const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.user.id;
   const mostRecentMessage = findMostRecentMessage(state, userId);
   const { selectedUserIdx, searchQuery } = state.ui;
+  const currentUserId = state.session.currentUser.id;
   return {
     mostRecentMessage,
     selectedUserIdx,
     searchQuery,
+    currentUserId,
   };
 };
 
@@ -29,5 +31,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(UserSearchIndexItem),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(UserSearchIndexItem),
 );
