@@ -1,10 +1,29 @@
 import React from "react";
 import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
+import PropTypes from "prop-types";
+import { findMostRecentMessage } from "../util/message";
 
 class UserSearchIndex extends React.Component {
   constructor(props) {
     super(props);
     this.shouldBeShown = this.shouldBeShown.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.userResults.length - this.props.userResults.length === 1) {
+      const oldUsers = prevProps.userResults.filter(this.shouldBeShown);
+      const newUsers = this.props.userResults.filter(this.shouldBeShown);
+      let i = 0;
+      while (i < newUsers.length) {
+        if (newUsers[i].id !== oldUsers[i].id) break;
+        i++;
+      }
+      const userId = this.props.userResults[i].id;
+      this.props.history.push(`/messages/${userId}`);
+      this.props.createChatAndFetchMessages(userId);
+      const mostRecentMessage = findMostRecentMessage(this.props.state, userId);
+      if (mostRecentMessage.id) this.props.seeMessage(mostRecentMessage);
+    }
   }
 
   doesUsernameMatchQuery(username) {
@@ -57,5 +76,14 @@ class UserSearchIndex extends React.Component {
     );
   }
 }
+
+UserSearchIndex.propTypes = {
+  userResults: PropTypes.arrayOf(PropTypes.object),
+  hasSearched: PropTypes.bool,
+  currentUserId: PropTypes.number,
+  searchQuery: PropTypes.string,
+  createChatAndFetchMessages: PropTypes.func,
+  seeMessage: PropTypes.func,
+};
 
 export default UserSearchIndex;

@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import UserSearchIndex from "./UserSearchIndex";
 import { sortByMostRecentlyMessaged } from "../util/message";
 import { findChatId } from "../util/chat";
+import { createChatAndFetchMessages } from "../actions/chat";
+import { seeMessageBackend } from "../actions/message";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
@@ -21,7 +23,20 @@ const mapStateToProps = state => {
     currentUserId,
     searchQuery,
     hasSearched,
+    state,
   };
 };
 
-export default withRouter(connect(mapStateToProps, null)(UserSearchIndex));
+const mapDispatchToProps = dispatch => {
+  return {
+    createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
+    seeMessage: message => dispatch(seeMessageBackend(message)),
+  };
+};
+
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(UserSearchIndex),
+);
