@@ -1,7 +1,6 @@
 import React from "react";
 import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
 import PropTypes from "prop-types";
-import { findMostRecentMessage } from "../util/message";
 
 class UserSearchIndex extends React.Component {
   constructor(props) {
@@ -10,6 +9,8 @@ class UserSearchIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
+    // handle if the current chat is deleted. Must redirect to another chat,
+    // the next one in the sidebar
     if (prevProps.userResults.length - this.props.userResults.length === 1) {
       const oldUsers = prevProps.userResults.filter(this.shouldBeShown);
       const newUsers = this.props.userResults.filter(this.shouldBeShown);
@@ -20,9 +21,7 @@ class UserSearchIndex extends React.Component {
       }
       const userId = this.props.userResults[i].id;
       this.props.history.push(`/messages/${userId}`);
-      this.props.createChatAndFetchMessages(userId);
-      const mostRecentMessage = findMostRecentMessage(this.props.state, userId);
-      if (mostRecentMessage.id) this.props.seeMessage(mostRecentMessage);
+      this.props.redirectToChat(userId);
     }
   }
 
@@ -80,10 +79,7 @@ class UserSearchIndex extends React.Component {
 UserSearchIndex.propTypes = {
   userResults: PropTypes.arrayOf(PropTypes.object),
   hasSearched: PropTypes.bool,
-  currentUserId: PropTypes.number,
   searchQuery: PropTypes.string,
-  createChatAndFetchMessages: PropTypes.func,
-  seeMessage: PropTypes.func,
 };
 
 export default UserSearchIndex;

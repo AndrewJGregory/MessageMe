@@ -3,6 +3,8 @@ export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
 export const SEE_MESSAGE = "SEE_MESSAGE";
 export const RECEIVE_MESSAGE_PAYLOAD = "RECEIVE_MESSAGE_PAYLOAD";
+import { findMostRecentMessage } from "../util/message";
+import { createChatAndFetchMessages } from "../actions/chat";
 
 export const receiveMessagePayload = payload => {
   return {
@@ -55,4 +57,11 @@ export const seeMessageBackend = message => dispatch => {
     dispatch(seeMessageFrontend(message));
     return message;
   });
+};
+
+export const redirectToChat = userId => (dispatch, getState) => {
+  const state = getState();
+  createChatAndFetchMessages(userId);
+  const mostRecentMessage = findMostRecentMessage(state, userId);
+  if (mostRecentMessage.id) seeMessageBackend(mostRecentMessage);
 };

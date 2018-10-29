@@ -5,10 +5,7 @@ import MessageHeaderContainer from "./MessageHeaderContainer";
 import MessageInputContainer from "./MessageInputContainer";
 import ModalContainer from "./ModalContainer";
 import { redirectToChat } from "../util/chat";
-import {
-  sortByMostRecentlyMessaged,
-  findMostRecentMessage,
-} from "../util/message";
+import { sortByMostRecentlyMessaged } from "../util/message";
 import PropTypes from "prop-types";
 
 class Main extends React.Component {
@@ -26,9 +23,7 @@ class Main extends React.Component {
           ? this.props.match.params.userId
           : users[0].id;
         this.props.history.push(`/messages/${userId}`);
-        this.props.createChatAndFetchMessages(userId);
-        const mostRecentMessage = findMostRecentMessage(state, userId);
-        if (mostRecentMessage.id) this.props.seeMessage(mostRecentMessage);
+        this.props.redirectToChat(userId);
       });
   }
 
@@ -56,8 +51,6 @@ class Main extends React.Component {
 
 Main.propTypes = {
   fetchUserSignInData: PropTypes.func,
-  createChatAndFetchMessages: PropTypes.func,
-  seeMessage: PropTypes.func,
   archiveChat: PropTypes.func,
   closeDropdownMenu: PropTypes.func,
   closeModal: PropTypes.func,
