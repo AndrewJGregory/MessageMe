@@ -7,6 +7,7 @@ export const OPEN_MODAL = "OPEN_MODAL";
 export const CLOSE_MODAL = "CLOSE_MODAL";
 export const CLOSE_DROPDOWN_MENU = "CLOSE_DROPDOWN_MENU";
 export const OPEN_DROPDOWN_MENU = "OPEN_DROPDOWN_MENU";
+export const SET_SEARCH_FOCUS = "SET_SEARCH_FOCUS";
 
 export const setSelectedUserIdx = selectedUserIdx => {
   return {
@@ -67,5 +68,12 @@ export const openDropdownMenu = () => {
   return {
     type: OPEN_DROPDOWN_MENU,
     bool: true,
+  };
+};
+
+export const setSearchFocus = bool => {
+  return {
+    type: SET_SEARCH_FOCUS,
+    bool,
   };
 };

@@ -4,7 +4,7 @@ import { fetchUserSignInData } from "../actions/user";
 import { withRouter } from "react-router-dom";
 import { createChatAndFetchMessages, archiveChat } from "../actions/chat";
 import { seeMessageBackend } from "../actions/message";
-import { closeDropdownMenu, closeModal } from "../actions/ui";
+import { closeDropdownMenu, closeModal, setSearchFocus } from "../actions/ui";
 
 const mapStateToProps = state => {
   const currentUser = state.session.currentUser;
@@ -23,6 +23,7 @@ const mapDispatchToProps = dispatch => {
       dispatch(archiveChat(chatId, userId, status)),
     closeDropdownMenu: () => dispatch(closeDropdownMenu()),
     closeModal: () => dispatch(closeModal()),
+    setSearchFocus: bool => dispatch(setSearchFocus(bool)),
   };
 };
 

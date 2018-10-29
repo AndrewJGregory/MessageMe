@@ -39,6 +39,7 @@ class Main extends React.Component {
         onClick={() => {
           this.props.closeDropdownMenu();
           this.props.closeModal();
+          this.props.setSearchFocus(false);
         }}
       >
         <ModalContainer />
@@ -60,6 +61,7 @@ Main.propTypes = {
   archiveChat: PropTypes.func,
   closeDropdownMenu: PropTypes.func,
   closeModal: PropTypes.func,
+  setSearchFocus: PropTypes.func,
   currentUser: PropTypes.object,
   cableApp: PropTypes.object,
 };

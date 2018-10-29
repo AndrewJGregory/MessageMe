@@ -27,9 +27,12 @@ class UserSearchIndexItem extends React.Component {
     e.preventDefault();
     if (e.key === "ArrowDown") {
       const nextIdx = this.props.selectedUserIdx + 1;
-      if (nextIdx <= this.props.totalUsers)
+      if (nextIdx <= this.props.totalUsers) {
         this.props.setSelectedUserIdx(nextIdx);
-      else this.props.setSelectedUserIdx(0);
+      } else {
+        this.props.setSelectedUserIdx(0);
+        this.props.setSearchFocus(true);
+      }
     } else if (e.key === "ArrowUp") {
       this.props.setSelectedUserIdx(this.props.selectedUserIdx - 1);
     } else if (e.key === "Enter") {
@@ -119,6 +122,7 @@ UserSearchIndexItem.propTypes = {
   clearSearchQuery: PropTypes.func,
   seeMessage: PropTypes.func,
   setSelectedUserIdx: PropTypes.func,
+  setSearchFocus: PropTypes.func,
   currentUserId: PropTypes.number,
   selectedUserIdx: PropTypes.number,
   userId: PropTypes.number,

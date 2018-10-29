@@ -1,7 +1,7 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
 import UserSearchIndexContainer from "./UserSearchIndexContainer";
 import LogoutButtonContainer from "./LogoutButtonContainer";
+import PropTypes from "prop-types";
 
 class Search extends React.Component {
   constructor(props) {
@@ -10,19 +10,21 @@ class Search extends React.Component {
       textAlignment: "",
     };
     this.submitSearch = this.submitSearch.bind(this);
-    this.handleOnFocus = this.handleOnFocus.bind(this);
+    this.handleOnClick = this.handleOnClick.bind(this);
     this.searchBar = React.createRef();
   }
 
   componentDidUpdate(prevProps) {
-    this.props.selectedUserIdx === 0
+    this.props.selectedUserIdx === 0 && this.props.shouldSearchBeFocused
       ? this.searchBar.focus()
       : this.searchBar.blur();
   }
 
-  handleOnFocus(e) {
+  handleOnClick(e) {
     e.preventDefault();
+    e.stopPropagation();
     this.props.setSelectedUserIdx(0);
+    this.props.setSearchFocus(true);
   }
 
   submitSearch(e) {
@@ -36,6 +38,7 @@ class Search extends React.Component {
       this.props.setSearchQuery({ searchQuery });
     } else if (e.key === "ArrowDown") {
       this.props.setSelectedUserIdx(this.props.selectedUserIdx + 1);
+      this.props.setSearchFocus(false);
     } else if (isLetter) {
       this.props.setHasSearched(false);
       const letter = e.key;
@@ -62,7 +65,7 @@ class Search extends React.Component {
             value={this.props.searchQuery}
             placeholder="Search MessageMe"
             className="user-search-input"
-            onFocus={this.handleOnFocus}
+            onClick={this.handleOnClick}
           />
         </div>
         <div className="results-logout-btn-container">
@@ -76,4 +79,15 @@ class Search extends React.Component {
   }
 }
 
-export default withRouter(Search);
+Search.propTypes = {
+  userResults: PropTypes.arrayOf(PropTypes.object),
+  shouldSearchBeFocused: PropTypes.bool,
+  createChatAndFetchMessages: PropTypes.func,
+  searchUsers: PropTypes.func,
+  setSearchQuery: PropTypes.func,
+  setHasSearched: PropTypes.func,
+  setSearchFocus: PropTypes.func,
+  selectedUserIdx: PropTypes.number,
+  searchQuery: PropTypes.string,
+};
+export default Search;

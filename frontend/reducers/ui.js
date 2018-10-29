@@ -9,6 +9,7 @@ import {
   CLOSE_MODAL,
   OPEN_DROPDOWN_MENU,
   CLOSE_DROPDOWN_MENU,
+  SET_SEARCH_FOCUS,
 } from "../actions/ui";
 
 const initialState = {
@@ -18,6 +19,7 @@ const initialState = {
   selectedUserId: 0,
   isModelOpen: false,
   isDropdownMenuOpen: false,
+  shouldSearchBeFocused: false,
 };
 
 const uiReducer = (state = initialState, action) => {
@@ -44,6 +46,8 @@ const uiReducer = (state = initialState, action) => {
     case OPEN_DROPDOWN_MENU:
     case CLOSE_DROPDOWN_MENU:
       return Object.assign({}, state, { isDropdownMenuOpen: action.bool });
+    case SET_SEARCH_FOCUS:
+      return Object.assign({}, state, { shouldSearchBeFocused: action.bool });
     default:
       return state;
   }
