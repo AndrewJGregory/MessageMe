@@ -6,9 +6,8 @@ import { REMOVE_CHAT } from "../actions/chat";
 export default (state = {}, action) => {
   switch (action.type) {
     case RECEIVE_USER_SIGN_IN_DATA:
-      return Object.assign({}, state, action.payload.users);
     case RECEIVE_USER_SEARCH_RESULTS:
-      return Object.assign({}, state, action.users);
+      return Object.assign({}, state, action.payload.users);
     case RECEIVE_USER:
       return Object.assign({}, state, action.user);
     case RECEIVE_MESSAGE_PAYLOAD:

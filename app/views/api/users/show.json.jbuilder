@@ -5,12 +5,9 @@ json.users do
 end
 
 json.chats do
-  ids = @most_recent_chats.map(&:id)
-  archive_chats = ArchiveChat.where(user_id: current_user.id)
-  hash = {}
-  archive_chats.each { |archive_chat| hash[archive_chat.chat_id] = archive_chat.is_archived if ids.include?(archive_chat.chat_id) }
+  statuses = ArchiveChat.find_statuses(@most_recent_chats, current_user.id)
   @most_recent_chats.each do |chat|
-    json.partial! 'api/chats/create', chat: chat, status: hash[chat.id]
+    json.partial! 'api/chats/create', chat: chat, status: statuses[chat.id]
   end
 end
 

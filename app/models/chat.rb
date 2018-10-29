@@ -25,7 +25,12 @@ class Chat < ApplicationRecord
   def self.find_chat(user_id_one, user_id_two)
     result = Chat.where('user_id_one = ? AND user_id_two = ?', user_id_one, user_id_two)
     result = Chat.where('user_id_one = ? AND user_id_two = ?', user_id_two, user_id_one) if result.empty?
-    result.first
+    if result.first.nil?
+      chat = Chat.create(user_id_one: user_id_one, user_id_two: user_id_two)
+      return chat
+    else 
+      return result.first
+    end
   end
 
   def self.find_recent_messages(current_user_id)

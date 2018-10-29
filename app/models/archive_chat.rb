@@ -16,4 +16,12 @@ class ArchiveChat < ApplicationRecord
   
   belongs_to :chat
   belongs_to :user
+
+  def self.find_statuses(chats, current_user_id)
+    ids = chats.map(&:id)
+    archive_chats = ArchiveChat.where(user_id: current_user_id)
+    statuses = {}
+    archive_chats.each { |archive_chat| statuses[archive_chat.chat_id] = archive_chat.is_archived if ids.include?(archive_chat.chat_id) }
+    statuses
+  end
 end

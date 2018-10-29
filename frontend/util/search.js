@@ -1,4 +1,4 @@
-export const fetchUsers = query => {
+export const searchUsers = query => {
   return $.ajax({
     url: "api/searches",
     method: "POST",
