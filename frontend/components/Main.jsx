@@ -22,7 +22,10 @@ class Main extends React.Component {
         const userId = this.props.match.params.userId
           ? this.props.match.params.userId
           : users[0].id;
-        this.props.history.push(`/messages/${userId}`);
+        const newUrl = `/messages/${userId}`;
+        if (this.props.history.location.pathname !== newUrl) {
+          this.props.history.push(newUrl);
+        }
         this.props.redirectToChat(userId);
       });
   }
