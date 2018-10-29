@@ -1,8 +1,9 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
-import SignInContainer from "./SignInContainer.js";
-import MainContainer from "./MainContainer";
 import { AuthRoute, ProtectedRoute } from "../util/route";
+import { Route, Switch } from "react-router-dom";
+
+import MainContainer from "./MainContainer";
+import React from "react";
+import SignInContainer from "./SignInContainer.js";
 
 const App = ({ cableApp }) => {
   return (

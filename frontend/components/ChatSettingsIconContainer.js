@@ -1,6 +1,7 @@
-import { connect } from "react-redux";
+import { openDropdownMenu, setSelectedUserId } from "../actions/ui";
+
 import ChatSettingsIcon from "./ChatSettingsIcon";
-import { setSelectedUserId, openDropdownMenu } from "../actions/ui";
+import { connect } from "react-redux";
 
 const mapStateToProps = (state, ownProps) => {
   const { selectedUserId, isDropdownMenuOpen } = state.ui;

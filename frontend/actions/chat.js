@@ -1,6 +1,8 @@
 export const RECEIVE_CHAT = "RECEIVE_CHAT";
 export const REMOVE_CHAT = "REMOVE_CHAT";
+
 import * as chatUtil from "../util/chat";
+
 import { fetchMessages } from "./message";
 
 export const receiveChat = chat => {

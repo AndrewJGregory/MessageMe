@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
 import MessageHeader from "./MessageHeader";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
@@ -10,4 +10,9 @@ const mapStateToProps = (state, ownProps) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, null)(MessageHeader));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    null,
+  )(MessageHeader),
+);

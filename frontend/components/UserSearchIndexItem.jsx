@@ -1,7 +1,7 @@
-import React from "react";
-import { redirectToChat } from "../util/chat";
 import ChatSettingsIconContainer from "./ChatSettingsIconContainer";
 import PropTypes from "prop-types";
+import React from "react";
+import { redirectToChat } from "../util/chat";
 
 class UserSearchIndexItem extends React.Component {
   constructor(props) {

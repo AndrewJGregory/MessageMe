@@ -1,7 +1,7 @@
-import React from "react";
-import MessageIndexItem from "./MessageIndexItem";
 import ChatWebSocketContainer from "./ChatWebSocketContainer";
+import MessageIndexItem from "./MessageIndexItem";
 import PropTypes from "prop-types";
+import React from "react";
 
 class MessageIndex extends React.Component {
   constructor(props) {

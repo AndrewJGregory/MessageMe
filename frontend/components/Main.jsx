@@ -1,12 +1,12 @@
-import React from "react";
-import Sidebar from "./Sidebar";
-import MessageIndexContainer from "./MessageIndexContainer";
 import MessageHeaderContainer from "./MessageHeaderContainer";
+import MessageIndexContainer from "./MessageIndexContainer";
 import MessageInputContainer from "./MessageInputContainer";
 import ModalContainer from "./ModalContainer";
+import PropTypes from "prop-types";
+import React from "react";
+import Sidebar from "./Sidebar";
 import { redirectToChat } from "../util/chat";
 import { sortByMostRecentlyMessaged } from "../util/message";
-import PropTypes from "prop-types";
 
 class Main extends React.Component {
   componentDidMount() {

@@ -1,10 +1,11 @@
-import { connect } from "react-redux";
+import { archiveChat, createChatAndFetchMessages } from "../actions/chat";
+import { closeDropdownMenu, closeModal, setSearchFocus } from "../actions/ui";
+import { redirectToChat, seeMessageBackend } from "../actions/message";
+
 import Main from "./Main";
+import { connect } from "react-redux";
 import { fetchUserSignInData } from "../actions/user";
 import { withRouter } from "react-router-dom";
-import { createChatAndFetchMessages, archiveChat } from "../actions/chat";
-import { seeMessageBackend, redirectToChat } from "../actions/message";
-import { closeDropdownMenu, closeModal, setSearchFocus } from "../actions/ui";
 
 const mapStateToProps = state => {
   const currentUser = state.session.currentUser;

@@ -1,7 +1,7 @@
-import React from "react";
-import UserSearchIndexContainer from "./UserSearchIndexContainer";
 import LogoutButtonContainer from "./LogoutButtonContainer";
 import PropTypes from "prop-types";
+import React from "react";
+import UserSearchIndexContainer from "./UserSearchIndexContainer";
 
 class Search extends React.Component {
   constructor(props) {

@@ -1,10 +1,11 @@
-import { withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import { redirectToChat, seeMessageBackend } from "../actions/message";
+
 import UserSearchIndex from "./UserSearchIndex";
-import { sortByMostRecentlyMessaged } from "../util/message";
-import { findChatId } from "../util/chat";
+import { connect } from "react-redux";
 import { createChatAndFetchMessages } from "../actions/chat";
-import { seeMessageBackend, redirectToChat } from "../actions/message";
+import { findChatId } from "../util/chat";
+import { sortByMostRecentlyMessaged } from "../util/message";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;

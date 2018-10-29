@@ -1,5 +1,5 @@
-import { combineReducers } from "redux";
 import chats from "./chat";
+import { combineReducers } from "redux";
 import messages from "./message";
 import users from "./users";
 

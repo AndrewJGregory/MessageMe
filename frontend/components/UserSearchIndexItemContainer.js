@@ -1,14 +1,15 @@
-import { connect } from "react-redux";
-import UserSearchIndexItem from "./UserSearchIndexItem";
-import { findMostRecentMessage } from "../util/message";
-import { withRouter } from "react-router-dom";
-import { createChatAndFetchMessages, archiveChat } from "../actions/chat";
+import { archiveChat, createChatAndFetchMessages } from "../actions/chat";
 import {
   clearSearchQuery,
-  setSelectedUserIdx,
   setSearchFocus,
+  setSelectedUserIdx,
 } from "../actions/ui";
+
+import UserSearchIndexItem from "./UserSearchIndexItem";
+import { connect } from "react-redux";
+import { findMostRecentMessage } from "../util/message";
 import { seeMessageBackend } from "../actions/message";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.user.id;

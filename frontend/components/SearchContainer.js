@@ -1,14 +1,16 @@
-import { connect } from "react-redux";
-import Search from "./Search";
-import { searchUsers } from "../actions/search";
-import { createChatAndFetchMessages } from "../actions/chat";
 import {
-  setSearchQuery,
-  setSelectedUserIdx,
   setHasSearched,
   setSearchFocus,
+  setSearchQuery,
+  setSelectedUserIdx,
 } from "../actions/ui";
+
+import Search from "./Search";
+import { connect } from "react-redux";
+import { createChatAndFetchMessages } from "../actions/chat";
+import { searchUsers } from "../actions/search";
 import { withRouter } from "react-router-dom";
+
 const mapStateToProps = state => {
   const searchQuery = state.ui.searchQuery;
   const { selectedUserIdx, shouldSearchBeFocused } = state.ui;

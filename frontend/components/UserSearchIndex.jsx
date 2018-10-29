@@ -1,6 +1,6 @@
+import PropTypes from "prop-types";
 import React from "react";
 import UserSearchIndexItemContainer from "./UserSearchIndexItemContainer";
-import PropTypes from "prop-types";
 
 class UserSearchIndex extends React.Component {
   constructor(props) {
