@@ -1,6 +1,7 @@
 import React from "react";
 import MessageIndexItem from "./MessageIndexItem";
 import ChatWebSocketContainer from "./ChatWebSocketContainer";
+import PropTypes from "prop-types";
 
 class MessageIndex extends React.Component {
   constructor(props) {
@@ -13,16 +14,14 @@ class MessageIndex extends React.Component {
     const hasChatChanged =
       nextProps.match.params.userId !== this.props.match.params.userId;
     const hasZeroMessages =
-      nextProps.messages.length === 0 &&
-      this.props.messages.length === 0 &&
-      this.props.chatId === nextProps.chatId;
-
-    if (hasChatChanged) {
-      this.setState({ isLoading: true });
-    }
+      nextProps.messages.length === 0 && this.props.messages.length === 0;
 
     if (hasReceivedMessages || hasZeroMessages) {
       this.setState({ isLoading: false });
+    }
+
+    if (hasChatChanged) {
+      this.setState({ isLoading: true });
     }
   }
 
@@ -53,5 +52,11 @@ class MessageIndex extends React.Component {
     );
   }
 }
+
+MessageIndex.propTypes = {
+  chatId: PropTypes.number,
+  userId: PropTypes.number,
+  messages: PropTypes.arrayOf(PropTypes.object),
+};
 
 export default MessageIndex;
