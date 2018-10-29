@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import React from "react";
 
 export default class SignIn extends React.Component {
@@ -98,3 +99,12 @@ export default class SignIn extends React.Component {
     );
   }
 }
+
+SignIn.propTypes = {
+  currentUser: PropTypes.object,
+  buttonText: PropTypes.string,
+  errors: PropTypes.object,
+  submitForm: PropTypes.func,
+  clearErrors: PropTypes.func,
+  loginAsGuest: PropTypes.func,
+};

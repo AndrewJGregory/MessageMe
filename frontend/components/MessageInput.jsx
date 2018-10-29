@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 export default class MessageInput extends React.Component {
@@ -63,3 +64,10 @@ export default class MessageInput extends React.Component {
     );
   }
 }
+
+MessageInput.propTypes = {
+  userReceiverId: PropTypes.string,
+  userSenderId: PropTypes.number,
+  selectedUserIdx: PropTypes.number,
+  createMessage: PropTypes.func,
+};

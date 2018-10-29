@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 const MessageHeader = ({ username }) => {
@@ -6,6 +7,10 @@ const MessageHeader = ({ username }) => {
       <h2 className="message-header__username">{username}</h2>
     </div>
   );
+};
+
+MessageHeader.propTypes = {
+  username: PropTypes.string,
 };
 
 export default MessageHeader;

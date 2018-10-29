@@ -2,6 +2,7 @@ import { AuthRoute, ProtectedRoute } from "../util/route";
 import { Route, Switch } from "react-router-dom";
 
 import MainContainer from "./MainContainer";
+import PropTypes from "prop-types";
 import React from "react";
 import SignInContainer from "./SignInContainer.js";
 
@@ -24,6 +25,10 @@ const App = ({ cableApp }) => {
       </Switch>
     </main>
   );
+};
+
+App.propTypes = {
+  cableApp: PropTypes.object,
 };
 
 export default App;

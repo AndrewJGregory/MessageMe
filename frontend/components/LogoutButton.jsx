@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 const LogoutButton = ({ signOut }) => {
@@ -6,6 +7,10 @@ const LogoutButton = ({ signOut }) => {
       Log Out
     </button>
   );
+};
+
+LogoutButton.propTypes = {
+  signOut: PropTypes.func,
 };
 
 export default LogoutButton;

@@ -90,4 +90,5 @@ Search.propTypes = {
   selectedUserIdx: PropTypes.number,
   searchQuery: PropTypes.string,
 };
+
 export default Search;
