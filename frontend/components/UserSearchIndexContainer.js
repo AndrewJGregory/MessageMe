@@ -14,7 +14,8 @@ const mapStateToProps = state => {
   const { hasSearched } = state.ui;
   userResults.forEach(user => {
     const chatId = findChatId(state, user.id, currentUserId);
-    const isArchivedObj = state.entities.chats[chatId].isArchived || {};
+    const isArchivedObj =
+      state.entities.chats || state.entities.chats[chatId].isArchived || {};
     const isArchived = isArchivedObj[currentUserId];
     user["isChatArchived"] = isArchived;
   });
