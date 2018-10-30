@@ -62,7 +62,7 @@ class Search extends React.Component {
             }}
             type="text"
             onKeyDown={this.submitSearch}
-            value={this.props.searchQuery}
+            defaultValue={this.props.searchQuery}
             placeholder="Search MessageMe"
             className="user-search-input"
             onClick={this.handleOnClick}
