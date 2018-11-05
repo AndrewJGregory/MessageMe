@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
-
+  before_action :require_login
   helper_method :logged_in?, :current_user
+
   def logged_in?
     !!current_user
   end
@@ -20,6 +21,6 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    redirect_to new_session_url unless logged_in?
+    redirect_to root_url unless logged_in? || request.fullpath == '/'
   end
 end
