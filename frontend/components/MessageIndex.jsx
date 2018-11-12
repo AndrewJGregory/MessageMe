@@ -7,6 +7,7 @@ class MessageIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
+    this.bottom = React.createRef();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -23,6 +24,10 @@ class MessageIndex extends React.Component {
     if (hasChatChanged) {
       this.setState({ isLoading: true });
     }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.messages.length > prevProps.messages.length) this.bottom.current.scrollIntoView();
   }
 
   render() {
@@ -43,6 +48,7 @@ class MessageIndex extends React.Component {
     return (
       <section className="messages scrollable">
         <ul>{messages}</ul>
+        <div ref={this.bottom} />
         <div className="loader-container center">
           <div className={`${isLoadingClass}`} />
           <h6>{content}</h6>
