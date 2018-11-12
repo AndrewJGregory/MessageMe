@@ -6,9 +6,6 @@ import UserSearchIndexContainer from "./UserSearchIndexContainer";
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      textAlignment: "",
-    };
     this.submitSearch = this.submitSearch.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.searchBar = React.createRef();
@@ -45,10 +42,6 @@ class Search extends React.Component {
       const searchQuery = this.props.searchQuery.concat(letter);
       this.props.setSearchQuery({ searchQuery });
     }
-  }
-
-  componentWillUnmount() {
-    this.props.setSearchQuery({ searchQuery: "" });
   }
 
   render() {
