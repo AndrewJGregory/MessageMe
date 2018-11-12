@@ -1,12 +1,13 @@
-import React from "react";
-import MessageIndexItem from "./MessageIndexItem";
 import ChatWebSocketContainer from "./ChatWebSocketContainer";
+import MessageIndexItem from "./MessageIndexItem";
 import PropTypes from "prop-types";
+import React from "react";
 
 class MessageIndex extends React.Component {
   constructor(props) {
     super(props);
     this.state = { isLoading: true };
+    this.bottom = React.createRef();
   }
 
   componentWillReceiveProps(nextProps) {
@@ -16,13 +17,17 @@ class MessageIndex extends React.Component {
     const hasZeroMessages =
       nextProps.messages.length === 0 && this.props.messages.length === 0;
 
-    if (hasReceivedMessages || hasZeroMessages) {
-      this.setState({ isLoading: false });
-    }
-
     if (hasChatChanged) {
       this.setState({ isLoading: true });
     }
+
+    if (hasReceivedMessages || hasZeroMessages) {
+      this.setState({ isLoading: false });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.messages.length > prevProps.messages.length) this.bottom.current.scrollIntoView();
   }
 
   render() {
@@ -43,6 +48,7 @@ class MessageIndex extends React.Component {
     return (
       <section className="messages scrollable">
         <ul>{messages}</ul>
+        <div ref={this.bottom} />
         <div className="loader-container center">
           <div className={`${isLoadingClass}`} />
           <h6>{content}</h6>

@@ -1,11 +1,12 @@
 import {
   RECEIVE_MESSAGE,
   RECEIVE_MESSAGES,
-  SEE_MESSAGE,
   RECEIVE_MESSAGE_PAYLOAD,
+  SEE_MESSAGE,
 } from "../actions/message";
-import { REMOVE_CHAT } from "../actions/chat";
+
 import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
+import { REMOVE_CHAT } from "../actions/chat";
 
 const messageReducer = (state = {}, action) => {
   switch (action.type) {

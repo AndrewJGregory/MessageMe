@@ -7,12 +7,12 @@ var devPlugins = []; // if using any plugins for development
 
 var prodPlugins = [
   new webpack.DefinePlugin({
-    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV)
-  })
+    "process.env.NODE_ENV": JSON.stringify(process.env.NODE_ENV),
+  }),
 ];
 
 plugins = plugins.concat(
-  process.env.NODE_ENV === "production" ? prodPlugins : devPlugins
+  process.env.NODE_ENV === "production" ? prodPlugins : devPlugins,
 );
 
 module.exports = {
@@ -20,23 +20,23 @@ module.exports = {
   entry: "./frontend/MessageMe.jsx",
   output: {
     path: path.resolve(__dirname, "app", "assets", "javascripts"),
-    filename: "bundle.js"
+    filename: "bundle.js",
   },
   resolve: {
-    extensions: [".js", ".jsx", "*"]
+    extensions: [".js", ".jsx", "*"],
   },
   plugins: plugins,
   module: {
-    loaders: [
+    rules: [
       {
         test: /\.jsx?$/,
         exclude: /(node_modules|bower_components)/,
         loader: "babel-loader",
         query: {
-          presets: ["react", "env"]
-        }
-      }
-    ]
+          presets: ["react", "env"],
+        },
+      },
+    ],
   },
-  devtool: "source-map"
+  devtool: "source-map",
 };

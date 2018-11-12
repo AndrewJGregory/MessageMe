@@ -1,10 +1,12 @@
 import * as messageUtil from "../util/message";
+
+import { createChatAndFetchMessages } from "../actions/chat";
+import { findMostRecentMessage } from "../util/message";
+
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
 export const SEE_MESSAGE = "SEE_MESSAGE";
 export const RECEIVE_MESSAGE_PAYLOAD = "RECEIVE_MESSAGE_PAYLOAD";
-import { findMostRecentMessage } from "../util/message";
-import { createChatAndFetchMessages } from "../actions/chat";
 
 export const receiveMessagePayload = payload => {
   return {

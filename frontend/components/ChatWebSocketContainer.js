@@ -1,14 +1,15 @@
-import { connect } from "react-redux";
-import ChatWebSocket from "./ChatWebSocket";
-import { withRouter } from "react-router-dom";
 import {
   receiveMessage,
-  seeMessageBackend,
   receiveMessagePayload,
+  seeMessageBackend,
 } from "../actions/message";
+
+import ChatWebSocket from "./ChatWebSocket";
+import { connect } from "react-redux";
+import { findChatId } from "../util/chat";
 import { receiveChat } from "../actions/chat";
 import { receiveUser } from "../actions/user";
-import { findChatId } from "../util/chat";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
   const currentUserId = state.session.currentUser.id;
@@ -27,5 +28,8 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default withRouter(
-  connect(mapStateToProps, mapDispatchToProps)(ChatWebSocket),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(ChatWebSocket),
 );

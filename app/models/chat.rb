@@ -35,12 +35,23 @@ class Chat < ApplicationRecord
 
   def self.find_recent_messages(current_user_id)
     recent_messages = []
+    most_recent_chat = nil
+    most_recent_message = nil
     [{ user_id_one: current_user_id }, { user_id_two: current_user_id }].each do |hash|
       Chat.includes(:messages).where(hash).each do |chat|
         last_message = chat.messages.sort_by(&:id).last
-        recent_messages << last_message unless last_message.nil?
+        unless last_message.nil?
+          recent_messages << last_message 
+          most_recent_message = last_message if most_recent_message.nil?
+          most_recent_chat = chat if most_recent_chat.nil?
+          if last_message.created_at > most_recent_message.created_at
+            most_recent_chat = chat 
+            most_recent_message = last_message
+          end
+        end
       end
     end
+    recent_messages += most_recent_chat.messages unless most_recent_chat.nil?
     recent_messages
   end
 

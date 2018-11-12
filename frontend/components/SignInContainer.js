@@ -1,7 +1,9 @@
-import { connect } from "react-redux";
+import { clearErrors, loginAsGuest, signIn, signUp } from "../actions/session";
+
 import SignIn from "./SignIn";
-import { signIn, signUp, clearErrors, loginAsGuest } from "../actions/session";
+import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+
 const mapStateToProps = (state, ownProps) => {
   const buttonText =
     ownProps.match.params.category === "signin" ? "sign in" : "sign up";
@@ -23,4 +25,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SignIn));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  )(SignIn),
+);

@@ -1,4 +1,5 @@
 export const RECEIVE_USER_SEARCH_RESULTS = "RECEIVE_USER_SEARCH_RESULTS";
+
 import * as SearchUtil from "../util/search";
 
 export const receiveUserSearchResults = payload => {

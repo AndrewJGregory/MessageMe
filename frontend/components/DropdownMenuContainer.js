@@ -1,8 +1,9 @@
-import { connect } from "react-redux";
+import { closeDropdownMenu, openModal, setSelectedUserId } from "../actions/ui";
+
 import DropdownMenu from "./DropdownMenu";
-import { findChatId } from "../util/chat";
 import { archiveChat } from "../actions/chat";
-import { openModal, setSelectedUserId, closeDropdownMenu } from "../actions/ui";
+import { connect } from "react-redux";
+import { findChatId } from "../util/chat";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;

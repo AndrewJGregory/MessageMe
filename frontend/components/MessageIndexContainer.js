@@ -1,8 +1,9 @@
-import { connect } from "react-redux";
-import MessageIndex from "./MessageIndex";
-import { withRouter } from "react-router-dom";
-import { findChatId } from "../util/chat";
 import { findMessages, sortByDate } from "../util/message";
+
+import MessageIndex from "./MessageIndex";
+import { connect } from "react-redux";
+import { findChatId } from "../util/chat";
+import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
   const userId = parseInt(ownProps.match.params.userId);
@@ -18,4 +19,9 @@ const mapStateToProps = (state, ownProps) => {
   return { messages, chatId };
 };
 
-export default withRouter(connect(mapStateToProps, null)(MessageIndex));
+export default withRouter(
+  connect(
+    mapStateToProps,
+    null,
+  )(MessageIndex),
+);

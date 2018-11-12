@@ -1,5 +1,5 @@
-import { connect } from "react-redux";
 import LogoutButton from "./LogoutButton";
+import { connect } from "react-redux";
 import { signOut } from "../actions/session";
 
 const mapDispatchToProps = dispatch => {
@@ -8,4 +8,7 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(null, mapDispatchToProps)(LogoutButton);
+export default connect(
+  null,
+  mapDispatchToProps,
+)(LogoutButton);

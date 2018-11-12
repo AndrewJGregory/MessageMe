@@ -1,7 +1,8 @@
 import { RECEIVE_CHAT, REMOVE_CHAT } from "../actions/chat";
-import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
+
 import { RECEIVE_MESSAGE_PAYLOAD } from "../actions/message";
 import { RECEIVE_USER_SEARCH_RESULTS } from "../actions/search";
+import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
 
 const chatReducer = (state = {}, action) => {
   switch (action.type) {

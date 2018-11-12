@@ -1,14 +1,11 @@
-import React from "react";
-import UserSearchIndexContainer from "./UserSearchIndexContainer";
 import LogoutButtonContainer from "./LogoutButtonContainer";
 import PropTypes from "prop-types";
+import React from "react";
+import UserSearchIndexContainer from "./UserSearchIndexContainer";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      textAlignment: "",
-    };
     this.submitSearch = this.submitSearch.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
     this.searchBar = React.createRef();
@@ -47,10 +44,6 @@ class Search extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.props.setSearchQuery({ searchQuery: "" });
-  }
-
   render() {
     return (
       <div className="search">
@@ -62,7 +55,7 @@ class Search extends React.Component {
             }}
             type="text"
             onKeyDown={this.submitSearch}
-            value={this.props.searchQuery}
+            defaultValue={this.props.searchQuery}
             placeholder="Search MessageMe"
             className="user-search-input"
             onClick={this.handleOnClick}
@@ -90,4 +83,5 @@ Search.propTypes = {
   selectedUserIdx: PropTypes.number,
   searchQuery: PropTypes.string,
 };
+
 export default Search;

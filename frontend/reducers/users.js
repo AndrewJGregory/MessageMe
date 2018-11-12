@@ -1,6 +1,7 @@
-import { RECEIVE_USER_SEARCH_RESULTS } from "../actions/search";
-import { RECEIVE_USER_SIGN_IN_DATA, RECEIVE_USER } from "../actions/user";
+import { RECEIVE_USER, RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
+
 import { RECEIVE_MESSAGE_PAYLOAD } from "../actions/message";
+import { RECEIVE_USER_SEARCH_RESULTS } from "../actions/search";
 import { REMOVE_CHAT } from "../actions/chat";
 
 export default (state = {}, action) => {

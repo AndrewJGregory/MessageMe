@@ -1,7 +1,8 @@
-import { connect } from "react-redux";
-import Modal from "./Modal";
-import { findChatId } from "../util/chat";
 import { archiveChat, deleteChat } from "../actions/chat";
+
+import Modal from "./Modal";
+import { connect } from "react-redux";
+import { findChatId } from "../util/chat";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;

@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import React from "react";
 
 class ChatWebSocket extends React.Component {
@@ -32,5 +33,14 @@ class ChatWebSocket extends React.Component {
     return <div id="web-socket" />;
   }
 }
+
+ChatWebSocket.propTypes = {
+  selfChatId: PropTypes.number,
+  receiveMessage: PropTypes.func,
+  receiveUser: PropTypes.func,
+  receiveChat: PropTypes.func,
+  seeMessage: PropTypes.func,
+  receiveMessagePayload: PropTypes.func,
+};
 
 export default ChatWebSocket;
