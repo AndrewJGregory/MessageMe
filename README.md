@@ -6,12 +6,11 @@ MessageMe is a single page web app inspired by Facebook Messenger. Built with Ru
 
 ### Finished
 
-- Search all available users
+- [Frontend vs backend user search](/readme_docs/user_search.md)
 - Direct, real time messaging
 - Sort messages by most recently messaged on initial login / refresh
 - "Seeing" a message
 - Using the arrow keys to switch between user search results, hitting enter to "click" on the user
-- Frontend vs backend user search
 - Archive a chat
 - Delete a chat
 
