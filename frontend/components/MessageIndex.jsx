@@ -17,12 +17,12 @@ class MessageIndex extends React.Component {
     const hasZeroMessages =
       nextProps.messages.length === 0 && this.props.messages.length === 0;
 
-    if (hasReceivedMessages || hasZeroMessages) {
-      this.setState({ isLoading: false });
-    }
-
     if (hasChatChanged) {
       this.setState({ isLoading: true });
+    }
+
+    if (hasReceivedMessages || hasZeroMessages) {
+      this.setState({ isLoading: false });
     }
   }
 
