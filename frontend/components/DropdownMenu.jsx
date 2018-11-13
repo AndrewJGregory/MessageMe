@@ -10,7 +10,9 @@ class DropdownMenu extends React.Component {
   handleArchive(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.props.archiveChat(this.props.chatId, this.props.currentUserId, true);
+    this.props
+      .archiveChat(this.props.chatId, this.props.currentUserId, true)
+      .then(this.props.closeDropdownMenu.bind(this));
   }
 
   render() {
