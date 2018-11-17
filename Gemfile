@@ -30,7 +30,6 @@ gem 'redis', '~> 3.0'
 gem 'bcrypt', '~> 3.1.7'
 gem 'faker'
 gem 'font-awesome-rails'
-gem 'jquery-rails'
 gem 'rack-cors'
 
 # Use Capistrano for deployment
