@@ -1,22 +1,21 @@
+import _fetch from "./fetch";
+
 export const signIn = user => {
-  return $.ajax({
-    url: "/api/session",
+  return _fetch("/api/session", {
     method: "POST",
-    data: { user },
+    body: JSON.stringify({ user }),
   });
 };
 
 export const signUp = user => {
-  return $.ajax({
-    url: "/api/users",
+  return _fetch("/api/users", {
     method: "POST",
-    data: { user },
+    body: JSON.stringify({ user }),
   });
 };
 
 export const signOut = () => {
-  return $.ajax({
-    url: "/api/session",
+  return _fetch("/api/session", {
     method: "DELETE",
   });
 };

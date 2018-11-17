@@ -1,23 +1,22 @@
+import _fetch from "./fetch";
+
 export const createChat = (user_sender_id, user_receiver_id) => {
-  return $.ajax({
+  return _fetch("/api/chats", {
     method: "POST",
-    url: "/api/chats",
-    data: { chat: { user_sender_id, user_receiver_id } },
+    body: JSON.stringify({ chat: { user_sender_id, user_receiver_id } }),
   });
 };
 
 export const archiveChat = (chatId, user_id, status) => {
-  return $.ajax({
+  return _fetch(`/api/chats/${chatId}`, {
     method: "PATCH",
-    url: `/api/chats/${chatId}`,
-    data: { chat: { user_id, status } },
+    body: JSON.stringify({ chat: { user_id, status } }),
   });
 };
 
 export const deleteChat = id => {
-  return $.ajax({
+  return _fetch(`/api/chats/${id}`, {
     method: "DELETE",
-    url: `/api/chats/${id}`,
   });
 };
 

@@ -1,23 +1,21 @@
+import _fetch from "./fetch";
 import { findChatId } from "../util/chat";
 
 export const createMessage = (content, user_sender_id, user_receiver_id) => {
-  return $.ajax({
-    url: "/api/messages",
+  return _fetch("/api/messages", {
     method: "POST",
-    data: { message: { content, user_sender_id, user_receiver_id } },
+    body: JSON.stringify({
+      message: { content, user_sender_id, user_receiver_id },
+    }),
   });
 };
 
 export const fetchMessages = chat_id => {
-  return $.ajax({
-    url: `/api/chats/${chat_id}`,
-    method: "GET",
-  });
+  return _fetch(`/api/chats/${chat_id}`);
 };
 
 export const seeMessage = message => {
-  return $.ajax({
-    url: `api/messages/${message.id}`,
+  return _fetch(`/api/messages/${message.id}`, {
     method: "PATCH",
   });
 };
@@ -50,8 +48,8 @@ export const findMessages = (state, userId, currentUserId, chatId) => {
 };
 
 export const sortByDate = messages => {
-  return messages.sort(
-    (messageOne, messageTwo) => (messageOne.id < messageTwo.id ? -1 : 1),
+  return messages.sort((messageOne, messageTwo) =>
+    messageOne.id < messageTwo.id ? -1 : 1,
   );
 };
 

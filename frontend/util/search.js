@@ -1,7 +1,8 @@
+import _fetch from "./fetch";
+
 export const searchUsers = query => {
-  return $.ajax({
-    url: "api/searches",
+  return _fetch("/api/searches", {
     method: "POST",
-    data: { search: { query } },
+    body: JSON.stringify({ search: { query } }),
   });
 };

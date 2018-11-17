@@ -1,6 +1,5 @@
+import _fetch from "./fetch";
+
 export const fetchUserSignInData = currentUserId => {
-  return $.ajax({
-    method: "GET",
-    url: `/api/users/${currentUserId}`,
-  });
+  return _fetch(`/api/users/${currentUserId}`);
 };
