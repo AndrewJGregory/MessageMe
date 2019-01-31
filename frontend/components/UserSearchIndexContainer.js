@@ -1,9 +1,8 @@
-import { redirectToChat, seeMessageBackend } from "../actions/message";
-
 import UserSearchIndex from "./UserSearchIndex";
 import { connect } from "react-redux";
 import { createChatAndFetchMessages } from "../actions/chat";
 import { findChatId } from "../util/chat";
+import { redirectToChat } from "../actions/message";
 import { sortByMostRecentlyMessaged } from "../util/message";
 import { withRouter } from "react-router-dom";
 
@@ -15,8 +14,7 @@ const mapStateToProps = state => {
   const { hasSearched } = state.ui;
   userResults.forEach(user => {
     const chatId = findChatId(state, user.id, currentUserId);
-    const isArchivedObj =
-      state.entities.chats[chatId].isArchived || {};
+    const isArchivedObj = state.entities.chats[chatId].isArchived || {};
     const isArchived = Boolean(isArchivedObj[currentUserId]);
     user["isChatArchived"] = isArchived;
   });

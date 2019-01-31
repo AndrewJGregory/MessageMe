@@ -1,10 +1,10 @@
 import { archiveChat, createChatAndFetchMessages } from "../actions/chat";
 import { closeDropdownMenu, closeModal, setSearchFocus } from "../actions/ui";
-import { redirectToChat, seeMessageBackend } from "../actions/message";
 
 import Main from "./Main";
 import { connect } from "react-redux";
 import { fetchUserSignInData } from "../actions/user";
+import { redirectToChat } from "../actions/message";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = state => {
