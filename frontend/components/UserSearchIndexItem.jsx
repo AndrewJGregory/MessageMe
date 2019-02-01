@@ -49,7 +49,7 @@ class UserSearchIndexItem extends React.Component {
     e.preventDefault();
     const userId = this.props.user.id;
     if (this.props.mostRecentMessage.id) {
-      this.props.seeMessage(this.props.mostRecentMessage).then(() => {
+      this.props.seeMessage(this.props.mostRecentMessage.id).then(() => {
         redirectToChat(this, userId);
       });
     } else {

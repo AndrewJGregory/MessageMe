@@ -54,8 +54,8 @@ export const fetchMessages = chatId => dispatch => {
   });
 };
 
-export const seeMessageBackend = message => dispatch => {
-  return messageUtil.seeMessage(message).then(message => {
+export const seeMessageBackend = messageId => dispatch => {
+  return messageUtil.seeMessage(messageId).then(message => {
     dispatch(recieveMessageStatus(message));
   });
 };
@@ -64,5 +64,5 @@ export const redirectToChat = userId => (dispatch, getState) => {
   const state = getState();
   createChatAndFetchMessages(userId);
   const mostRecentMessage = findMostRecentMessage(state, userId);
-  if (mostRecentMessage.id) seeMessageBackend(mostRecentMessage);
+  if (mostRecentMessage.id) seeMessageBackend(mostRecentMessage.id);
 };

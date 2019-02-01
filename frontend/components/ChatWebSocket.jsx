@@ -22,7 +22,7 @@ class ChatWebSocket extends React.Component {
               this.props.match.params.userId == Object.keys(payload.user)[0];
             const shouldMessageBeSeen =
               isCurrentlyChattingWithUser && !message.is_seen;
-            if (shouldMessageBeSeen) this.props.seeMessage(message);
+            if (shouldMessageBeSeen) this.props.seeMessage(message.id);
           },
         },
       );
