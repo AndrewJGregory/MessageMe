@@ -57,7 +57,6 @@ export const fetchMessages = chatId => dispatch => {
 export const seeMessageBackend = message => dispatch => {
   return messageUtil.seeMessage(message).then(message => {
     dispatch(recieveMessageStatus(message));
-    return message;
   });
 };
 
