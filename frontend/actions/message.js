@@ -5,7 +5,7 @@ import { findMostRecentMessage } from "../util/message";
 
 export const RECEIVE_MESSAGE = "RECEIVE_MESSAGE";
 export const RECEIVE_MESSAGES = "RECEIVE_MESSAGES";
-export const SEE_MESSAGE = "SEE_MESSAGE";
+export const RECEIVE_MESSAGE_STATUS = "RECEIVE_MESSAGE_STATUS";
 export const RECEIVE_MESSAGE_PAYLOAD = "RECEIVE_MESSAGE_PAYLOAD";
 
 export const receiveMessagePayload = payload => {
@@ -28,9 +28,9 @@ const receiveMessages = messages => {
   };
 };
 
-export const seeMessageFrontend = message => {
+export const recieveMessageStatus = message => {
   return {
-    type: SEE_MESSAGE,
+    type: RECEIVE_MESSAGE_STATUS,
     message,
   };
 };
@@ -56,7 +56,7 @@ export const fetchMessages = chatId => dispatch => {
 
 export const seeMessageBackend = message => dispatch => {
   return messageUtil.seeMessage(message).then(message => {
-    dispatch(seeMessageFrontend(message));
+    dispatch(recieveMessageStatus(message));
     return message;
   });
 };

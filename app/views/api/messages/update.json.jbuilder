@@ -1,0 +1,1 @@
+json.extract! @message, :id, :is_seen

@@ -15,7 +15,7 @@ class Api::MessagesController < ApplicationController
     @message = Message.find(params[:id])
     @message.is_seen = true
     @message.save!
-    render 'api/messages/create'
+    render 'api/messages/update'
   end
 
   private
