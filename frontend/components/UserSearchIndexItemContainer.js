@@ -8,7 +8,7 @@ import {
 import UserSearchIndexItem from "./UserSearchIndexItem";
 import { connect } from "react-redux";
 import { findMostRecentMessage } from "../util/message";
-import { seeMessageBackend } from "../actions/message";
+import { setMessageStatus } from "../actions/message";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
@@ -28,7 +28,8 @@ const mapDispatchToProps = dispatch => {
   return {
     createChatAndFetchMessages: id => dispatch(createChatAndFetchMessages(id)),
     clearSearchQuery: () => dispatch(clearSearchQuery()),
-    seeMessage: message => dispatch(seeMessageBackend(message)),
+    setMessageStatus: (messageId, status) =>
+      dispatch(setMessageStatus(messageId, status)),
     setSelectedUserIdx: idx => dispatch(setSelectedUserIdx(idx)),
     archiveChat: (chatId, userId, status) =>
       dispatch(archiveChat(chatId, userId, status)),

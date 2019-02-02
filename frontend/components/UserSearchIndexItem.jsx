@@ -49,9 +49,11 @@ class UserSearchIndexItem extends React.Component {
     e.preventDefault();
     const userId = this.props.user.id;
     if (this.props.mostRecentMessage.id) {
-      this.props.seeMessage(this.props.mostRecentMessage.id).then(() => {
-        redirectToChat(this, userId);
-      });
+      this.props
+        .setMessageStatus(this.props.mostRecentMessage.id, true)
+        .then(() => {
+          redirectToChat(this, userId);
+        });
     } else {
       redirectToChat(this, userId);
     }
@@ -120,7 +122,7 @@ UserSearchIndexItem.propTypes = {
   archiveChat: PropTypes.func,
   createChatAndFetchMessages: PropTypes.func,
   clearSearchQuery: PropTypes.func,
-  seeMessage: PropTypes.func,
+  setMessageStatus: PropTypes.func,
   setSelectedUserIdx: PropTypes.func,
   setSearchFocus: PropTypes.func,
   currentUserId: PropTypes.number,

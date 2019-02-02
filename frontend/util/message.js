@@ -14,9 +14,10 @@ export const fetchMessages = chat_id => {
   return _fetch(`/api/chats/${chat_id}`);
 };
 
-export const seeMessage = messageId => {
+export const setMessageStatus = (messageId, status) => {
   return _fetch(`/api/messages/${messageId}`, {
     method: "PATCH",
+    body: JSON.stringify({ message: { status } }),
   });
 };
 

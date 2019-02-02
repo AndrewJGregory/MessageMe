@@ -13,7 +13,7 @@ class Api::MessagesController < ApplicationController
 
   def update
     @message = Message.find(params[:id])
-    @message.is_seen = true
+    @message.is_seen = message_params[:status]
     @message.save!
     render 'api/messages/update'
   end
@@ -21,6 +21,6 @@ class Api::MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content, :user_sender_id, :user_receiver_id)
+    params.require(:message).permit(:content, :user_sender_id, :user_receiver_id, :status)
   end
 end

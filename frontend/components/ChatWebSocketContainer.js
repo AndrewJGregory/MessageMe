@@ -1,7 +1,7 @@
 import {
   receiveMessage,
   receiveMessagePayload,
-  seeMessageBackend,
+  setMessageStatus,
 } from "../actions/message";
 
 import ChatWebSocket from "./ChatWebSocket";
@@ -22,7 +22,8 @@ const mapDispatchToProps = dispatch => {
     receiveMessage: message => dispatch(receiveMessage(message)),
     receiveUser: user => dispatch(receiveUser(user)),
     receiveChat: chat => dispatch(receiveChat(chat)),
-    seeMessage: message => dispatch(seeMessageBackend(message)),
+    setMessageStatus: (messageId, status) =>
+      dispatch(setMessageStatus(messageId, status)),
     receiveMessagePayload: payload => dispatch(receiveMessagePayload(payload)),
   };
 };
