@@ -54,3 +54,7 @@ input {
 .bold {
   font-weight: 900;
 }
+
+::-webkit-scrollbar {
+  width: 0px; /* remove scrollbar space */
+}
