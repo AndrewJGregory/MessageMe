@@ -4,40 +4,35 @@ import React from "react";
 class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
-    this.handleArchive = this.handleArchive.bind(this);
-    this.closeDropdownMenu = this.props.closeDropdownMenu.bind(this);
+    this.handleClick = this.handleClick.bind(this);
   }
 
-  handleArchive(e) {
-    e.preventDefault();
+  handleClick(e) {
     e.stopPropagation();
-    this.props
-      .archiveChat(this.props.chatId, this.props.currentUserId, true)
-      .then(this.closeDropdownMenu);
+    let choice = e.target.innerText;
+    if (choice === "Mark as Unread") choice = "MarkAsUnread";
+    this[`handle${choice}`]();
+    this.props.closeDropdownMenu();
+  }
+
+  handleArchive() {
+    this.props.archiveChat(this.props.chatId, this.props.currentUserId, true);
+  }
+
+  handleDelete() {
+    this.props.openModal();
+  }
+
+  handleMarkAsUnread() {
+    this.props.setMessageStatus(this.props.mostRecentMessageId, false);
   }
 
   render() {
     return (
-      <ul className="dropdown-menu center">
-        <li onClick={this.handleArchive}>Archive</li>
-        <li
-          onClick={e => {
-            e.stopPropagation();
-            this.props.openModal();
-            this.closeDropdownMenu();
-          }}
-        >
-          {"Delete"}
-        </li>
-        <li
-          onClick={e => {
-            e.stopPropagation();
-            this.props.setMessageStatus(this.props.mostRecentMessageId, false);
-            this.closeDropdownMenu();
-          }}
-        >
-          {"Mark as Unread"}
-        </li>
+      <ul className="dropdown-menu center" onClick={this.handleClick}>
+        <li>{"Archive"}</li>
+        <li>{"Delete"}</li>
+        <li>{"Mark as Unread"}</li>
       </ul>
     );
   }
