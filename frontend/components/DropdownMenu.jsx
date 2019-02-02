@@ -5,6 +5,7 @@ class DropdownMenu extends React.Component {
   constructor(props) {
     super(props);
     this.handleArchive = this.handleArchive.bind(this);
+    this.closeDropdownMenu = this.props.closeDropdownMenu.bind(this);
   }
 
   handleArchive(e) {
@@ -12,7 +13,7 @@ class DropdownMenu extends React.Component {
     e.stopPropagation();
     this.props
       .archiveChat(this.props.chatId, this.props.currentUserId, true)
-      .then(this.props.closeDropdownMenu.bind(this));
+      .then(this.closeDropdownMenu);
   }
 
   render() {
@@ -23,10 +24,19 @@ class DropdownMenu extends React.Component {
           onClick={e => {
             e.stopPropagation();
             this.props.openModal();
-            this.props.closeDropdownMenu();
+            this.closeDropdownMenu();
           }}
         >
           {"Delete"}
+        </li>
+        <li
+          onClick={e => {
+            e.stopPropagation();
+            this.props.setMessageStatus(this.props.mostRecentMessageId, false);
+            this.closeDropdownMenu();
+          }}
+        >
+          {"Mark as Unread"}
         </li>
       </ul>
     );
@@ -37,8 +47,10 @@ DropdownMenu.propTypes = {
   archiveChat: PropTypes.func,
   openModal: PropTypes.func,
   closeDropdownMenu: PropTypes.func,
+  setMessageStatus: PropTypes.func,
   chatId: PropTypes.number,
   currentUserId: PropTypes.number,
+  mostRecentMessageId: PropTypes.number,
 };
 
 export default DropdownMenu;
