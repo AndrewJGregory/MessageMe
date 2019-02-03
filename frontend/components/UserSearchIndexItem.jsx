@@ -41,7 +41,7 @@ class UserSearchIndexItem extends React.Component {
   }
 
   toggleBackgroundColor() {
-    const hovered = this.state.hovered ? "" : "darker-burlywood";
+    const hovered = this.state.hovered ? "" : "lightgray";
     this.setState({ hovered });
   }
 
