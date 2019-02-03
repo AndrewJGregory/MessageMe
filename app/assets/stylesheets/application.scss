@@ -78,3 +78,9 @@ input {
 .hidden {
   display: none !important;
 }
+
+.fa-edit {
+  color: whitesmoke !important;
+  // hide new message icon until implemented
+  // keep it in HTML for positioning of MessageMe header and cog icon
+}

@@ -3,8 +3,16 @@
   height: 100vh;
 }
 
+.sidebar-header-container {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0 10px 0;
+  i {
+    color: blue;
+  }
+}
+
 .sidebar__header {
-  height: 10%;
   font-family: "Questrial", sans-serif;
 }
 
