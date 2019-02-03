@@ -6,7 +6,7 @@ import { redirectToChat } from "../util/chat";
 class UserSearchIndexItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { hovered: "" };
+    this.state = { hoveredClass: "" };
     this.handleClick = this.handleClick.bind(this);
     this.handleKeyDown = this.handleKeyDown.bind(this);
     this.userResult = React.createRef();
@@ -41,8 +41,8 @@ class UserSearchIndexItem extends React.Component {
   }
 
   toggleBackgroundColor() {
-    const hovered = this.state.hovered ? "" : "lightgray";
-    this.setState({ hovered });
+    const hoveredClass = this.state.hoveredClass ? "" : "lightgray";
+    this.setState({ hoveredClass });
   }
 
   handleClick(e) {
@@ -86,7 +86,7 @@ class UserSearchIndexItem extends React.Component {
       );
     return (
       <li
-        className={`clickable ${this.state.hovered}`}
+        className={`clickable ${this.state.hoveredClass}`}
         onClick={this.handleClick}
       >
         <input
