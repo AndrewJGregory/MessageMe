@@ -17,7 +17,7 @@ const ChatSettingsIcon = ({
   return (
     <Fragment>
       <i
-        className="fa fa-cog"
+        className="fa fa-cog small hidden"
         onClick={e => {
           e.stopPropagation();
           setSelectedUserId(userId);

@@ -58,3 +58,23 @@ input {
 ::-webkit-scrollbar {
   width: 0px; /* remove scrollbar space */
 }
+
+.fa-cog {
+  color: gray;
+}
+
+.small {
+  font-size: 14px !important;
+}
+
+.medium {
+  font-size: 24px !important;
+}
+
+.lightgray {
+  background-color: lightgray;
+}
+
+.hidden {
+  display: none !important;
+}

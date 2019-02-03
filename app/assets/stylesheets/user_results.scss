@@ -37,13 +37,3 @@
     font-size: 12px;
   }
 }
-
-.hidden {
-  &:hover {
-    background-color: gray !important;
-  }
-  // shame: need to let the last chat options dropdown menu go on top of the element that comes underneath it.
-  // without this hidden li, the menu gets cut off. temporary fix until something better
-  // the lack of a background color provides a better UI because the hover effect indicates a user to be
-  // clicked on
-}
