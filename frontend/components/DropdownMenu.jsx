@@ -29,7 +29,7 @@ class DropdownMenu extends React.Component {
 
   render() {
     return (
-      <ul className="dropdown-menu center" onClick={this.handleClick}>
+      <ul className="dropdown-menu" onClick={this.handleClick}>
         <li>{"Archive"}</li>
         <li>{"Delete"}</li>
         <li>{"Mark as Unread"}</li>
