@@ -22,6 +22,8 @@
   height: 66px;
   background-color: whitesmoke;
   z-index: 2;
+  box-shadow: 5px 5px 5px grey;
+  border: 1px solid gray;
   li {
     &:hover {
       background: blue;
