@@ -17,10 +17,10 @@
   height: 35px;
   input {
     border: 0;
-    background-color: black;
+    background-color: lightgray;
     text-align: center;
     width: 90%;
-    color: white;
+    color: darkgray;
     font-size: 14px;
     box-sizing: border-box;
     height: 100%;
@@ -43,14 +43,14 @@
 
 .fa-search {
   width: 10%;
-  background-color: black;
-  color: yellow;
+  background-color: lightgray;
+  color: darkgray;
   padding: 5px;
 }
 
 .search {
   height: 90%;
-  background-color: burlywood;
+  background-color: whitesmoke;
 }
 
 .gray-text {
@@ -67,8 +67,4 @@
   font-size: 14px !important;
   color: gray;
   display: none !important;
-}
-
-.darker-burlywood {
-  background-color: $darker-burlywood;
 }
