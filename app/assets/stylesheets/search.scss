@@ -54,7 +54,7 @@
 }
 
 .gray-text {
-  padding-bottom: 1px; // prevents cutoff of the letter "y"
+  padding-bottom: 8px; // prevents cutoff of the letter "y" and if the username has a "g"
   color: gray;
   font-size: 14px;
 }
