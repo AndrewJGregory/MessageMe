@@ -4,7 +4,7 @@
 }
 
 .session-main {
-  background-color: burlywood;
+  background-color: whitesmoke;
 }
 
 .message-me-header {
@@ -23,9 +23,8 @@
     margin: 10px 0;
     border: 0;
     text-transform: capitalize;
-    &:hover {
-      background-color: yellow;
-    }
+    background-color: blue;
+    color: whitesmoke;
   }
 
   input {
