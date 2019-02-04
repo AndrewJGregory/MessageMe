@@ -7,7 +7,7 @@ export default () => {
     <div className="sidebar-header-container">
       <i className="fa fa-cog medium" />
       <div className="sidebar__header">MessageMe</div>
-      <i class="fa fa-edit" />
+      <i className="fa fa-edit" />
     </div>
   );
 };
