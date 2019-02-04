@@ -1,3 +1,4 @@
+import FooterLinks from "./FooterLinks";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import React from "react";
@@ -94,6 +95,7 @@ export default class SignIn extends React.Component {
               guest demo
             </button>
           </div>
+          <FooterLinks />
         </div>
       </main>
     );

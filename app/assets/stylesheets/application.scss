@@ -93,3 +93,12 @@ input {
     width: 100%;
   }
 }
+
+.footer-links,
+.footer-text-container {
+  display: flex;
+  justify-content: space-around;
+  li {
+    padding: 20px;
+  }
+}
