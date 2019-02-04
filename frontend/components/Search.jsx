@@ -1,4 +1,3 @@
-import LogoutButtonContainer from "./LogoutButtonContainer";
 import PropTypes from "prop-types";
 import React from "react";
 import UserSearchIndexContainer from "./UserSearchIndexContainer";
@@ -63,9 +62,6 @@ class Search extends React.Component {
         </div>
         <div className="results-logout-btn-container">
           <UserSearchIndexContainer />
-          <div className="logout-btn-container">
-            <LogoutButtonContainer />
-          </div>
         </div>
       </div>
     );
