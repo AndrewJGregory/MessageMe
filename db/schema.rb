@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180929204759) do
+ActiveRecord::Schema.define(version: 20190204234828) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,8 +21,8 @@ ActiveRecord::Schema.define(version: 20180929204759) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "is_archived", default: false
-    t.index ["user_id"], name: "index_archive_chats_on_user_id"
     t.index ["chat_id"], name: "index_archive_chats_on_chat_id"
+    t.index ["user_id"], name: "index_archive_chats_on_user_id"
   end
 
   create_table "chats", force: :cascade do |t|
@@ -40,7 +40,6 @@ ActiveRecord::Schema.define(version: 20180929204759) do
     t.integer "chat_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_seen", default: false
     t.index ["user_id"], name: "index_messages_on_user_id"
   end
 
