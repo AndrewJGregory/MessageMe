@@ -9,7 +9,6 @@ import {
   SET_SEARCH_QUERY,
   SET_SELECTED_USER_ID,
   SET_SELECTED_USER_IDX,
-  TOGGLE_DROPDOWN_MENU,
 } from "../actions/ui";
 
 const initialState = {
