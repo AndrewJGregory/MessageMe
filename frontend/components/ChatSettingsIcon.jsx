@@ -1,7 +1,7 @@
 import React, { Fragment } from "react";
 
-import DropdownMenuContainer from "./DropdownMenuContainer";
 import PropTypes from "prop-types";
+import UserDropdownMenuContainer from "./UserDropdownMenuContainer";
 
 const ChatSettingsIcon = ({
   userId,
@@ -12,7 +12,7 @@ const ChatSettingsIcon = ({
 }) => {
   const dropdown =
     dropdownMenuType === "user" && userId === selectedUserId ? (
-      <DropdownMenuContainer />
+      <UserDropdownMenuContainer />
     ) : null;
   return (
     <Fragment>

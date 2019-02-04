@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-class DropdownMenu extends React.Component {
+class UserDropdownMenu extends React.Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -38,7 +38,7 @@ class DropdownMenu extends React.Component {
   }
 }
 
-DropdownMenu.propTypes = {
+UserDropdownMenu.propTypes = {
   archiveChat: PropTypes.func,
   openModal: PropTypes.func,
   closeDropdownMenu: PropTypes.func,
@@ -48,4 +48,4 @@ DropdownMenu.propTypes = {
   mostRecentMessageId: PropTypes.number,
 };
 
-export default DropdownMenu;
+export default UserDropdownMenu;

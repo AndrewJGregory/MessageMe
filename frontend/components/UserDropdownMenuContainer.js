@@ -1,6 +1,6 @@
 import { closeDropdownMenu, openModal, setSelectedUserId } from "../actions/ui";
 
-import DropdownMenu from "./DropdownMenu";
+import UserDropdownMenu from "./UserDropdownMenu";
 import { archiveChat } from "../actions/chat";
 import { connect } from "react-redux";
 import { findChatId } from "../util/chat";
@@ -29,4 +29,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-)(DropdownMenu);
+)(UserDropdownMenu);
