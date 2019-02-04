@@ -60,14 +60,14 @@ export const closeModal = () => {
 export const closeDropdownMenu = () => {
   return {
     type: CLOSE_DROPDOWN_MENU,
-    bool: false,
+    dropdownMenuType: null,
   };
 };
 
-export const openDropdownMenu = () => {
+export const openDropdownMenu = dropdownMenuType => {
   return {
     type: OPEN_DROPDOWN_MENU,
-    bool: true,
+    dropdownMenuType,
   };
 };
 

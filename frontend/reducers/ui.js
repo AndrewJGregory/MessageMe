@@ -19,6 +19,7 @@ const initialState = {
   selectedUserId: 0,
   isModelOpen: false,
   isDropdownMenuOpen: false,
+  dropdownMenuType: null,
   shouldSearchBeFocused: false,
 };
 
@@ -45,7 +46,7 @@ const uiReducer = (state = initialState, action) => {
       return Object.assign({}, state, { isModalOpen: action.bool });
     case OPEN_DROPDOWN_MENU:
     case CLOSE_DROPDOWN_MENU:
-      return Object.assign({}, state, { isDropdownMenuOpen: action.bool });
+      return Object.assign({}, state, action);
     case SET_SEARCH_FOCUS:
       return Object.assign({}, state, { shouldSearchBeFocused: action.bool });
     default:

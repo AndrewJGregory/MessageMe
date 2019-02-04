@@ -7,11 +7,11 @@ const ChatSettingsIcon = ({
   userId,
   setSelectedUserId,
   selectedUserId,
-  isDropdownMenuOpen,
+  dropdownMenuType,
   openDropdownMenu,
 }) => {
   const dropdown =
-    isDropdownMenuOpen && userId === selectedUserId ? (
+    dropdownMenuType === "user" && userId === selectedUserId ? (
       <DropdownMenuContainer />
     ) : null;
   return (
@@ -21,7 +21,7 @@ const ChatSettingsIcon = ({
         onClick={e => {
           e.stopPropagation();
           setSelectedUserId(userId);
-          openDropdownMenu();
+          openDropdownMenu("user");
         }}
       />
       {dropdown}
@@ -30,7 +30,7 @@ const ChatSettingsIcon = ({
 };
 
 ChatSettingsIcon.propTypes = {
-  isDropdownMenuOpen: PropTypes.bool,
+  dropdownMenuType: PropTypes.string,
   setSelectedUserId: PropTypes.func,
   openDropdownMenu: PropTypes.func,
   userId: PropTypes.number,

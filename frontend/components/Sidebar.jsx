@@ -1,11 +1,11 @@
 import React from "react";
 import SearchContainer from "./SearchContainer";
-import SidebarHeader from "./SidebarHeader";
+import SidebarHeaderContainer from "./SidebarHeaderContainer";
 
 const Sidebar = () => {
   return (
     <aside className="sidebar">
-      <SidebarHeader />
+      <SidebarHeaderContainer />
       <SearchContainer />
     </aside>
   );
