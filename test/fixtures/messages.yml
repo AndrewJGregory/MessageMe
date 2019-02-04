@@ -2,13 +2,12 @@
 #
 # Table name: messages
 #
-#  id         :integer          not null, primary key
+#  id         :bigint(8)        not null, primary key
 #  content    :text             not null
 #  user_id    :integer          not null
 #  chat_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  is_seen    :boolean          default(FALSE)
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
