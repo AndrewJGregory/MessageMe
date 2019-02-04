@@ -20,7 +20,7 @@
     border: 0;
     background-color: lightgray;
     text-align: center;
-    width: 90%;
+    width: 100%;
     color: darkgray;
     font-size: 14px;
     box-sizing: border-box;
@@ -43,7 +43,8 @@
 }
 
 .fa-search {
-  width: 10%;
+  position: absolute;
+  left: 0;
   background-color: lightgray;
   color: darkgray;
   padding: 5px;
