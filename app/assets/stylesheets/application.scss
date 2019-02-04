@@ -84,3 +84,12 @@ input {
   // hide new message icon until implemented
   // keep it in HTML for positioning of MessageMe header and cog icon
 }
+
+@media only screen and (max-width: 766px) {
+  .sidebar {
+    display: none;
+  }
+  .right-collection {
+    width: 100%;
+  }
+}
