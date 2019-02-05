@@ -19,6 +19,7 @@ class Api::UsersController < ApplicationController
       @most_recent_messages = Chat.find_recent_messages(@user.id)
       @most_recently_messaged_users = Chat.find_recently_messaged_users(@user.id, @most_recent_messages).push(@user)
       @most_recent_chats = @most_recent_messages.map(&:chat) << self_chat
+      @message_statuses = MessageStatus.where(message_id: @most_recent_messages.map(&:id))
       render 'api/users/show'
     else
       render json: {}

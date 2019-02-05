@@ -20,3 +20,9 @@ else
     end
   end
 end
+
+json.message_statuses do 
+  @message_statuses.each do |status|
+    json.partial! 'api/message_statuses/show', status: status
+  end
+end
