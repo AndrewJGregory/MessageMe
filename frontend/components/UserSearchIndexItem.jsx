@@ -79,7 +79,7 @@ class UserSearchIndexItem extends React.Component {
 
   render() {
     const mostRecentMessageTime = this.formatTime();
-    const bold = this.props.mostRecentMessage.is_seen ? "" : "bold";
+    const bold = this.props.messageStatus ? "" : "bold";
     const cog =
       this.props.currentUserId === this.props.user.id ? null : (
         <ChatSettingsIconContainer userId={this.props.user.id} />
@@ -130,6 +130,7 @@ UserSearchIndexItem.propTypes = {
   userId: PropTypes.number,
   mostRecentMessage: PropTypes.object,
   searchQuery: PropTypes.string,
+  messageStatus: PropTypes.bool,
 };
 
 export default UserSearchIndexItem;

@@ -85,3 +85,10 @@ export const sortByMostRecentlyMessaged = (state, users) => {
       : -1;
   });
 };
+
+export const findMessageStatus = (state, message) => {
+  return Object.values(state.message_statuses).find(
+    status =>
+      status.message_id === message.id && status.user_id === message.user_id,
+  );
+};
