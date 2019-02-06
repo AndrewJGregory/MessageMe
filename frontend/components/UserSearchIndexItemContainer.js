@@ -14,7 +14,7 @@ import { withRouter } from "react-router-dom";
 const mapStateToProps = (state, ownProps) => {
   const userId = ownProps.user.id;
   const mostRecentMessage = findMostRecentMessage(state, userId);
-  const messageStatus = findMessageStatus(state, mostRecentMessage).is_seen;
+  const messageStatus = findMessageStatus(state, mostRecentMessage);
   const { selectedUserIdx, searchQuery } = state.ui;
   const currentUserId = state.session.currentUser.id;
   return {
