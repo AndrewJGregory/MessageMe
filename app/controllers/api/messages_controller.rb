@@ -1,10 +1,12 @@
 class Api::MessagesController < ApplicationController
   def create
-    user_id = message_params[:user_sender_id]
-    @chat = Chat.find_chat(message_params[:user_sender_id], message_params[:user_receiver_id])
-    content = message_params[:content]
-    @message = Message.new(user_id: user_id, chat_id: @chat.id, content: content)
+    user_sender_id, user_receiver_id, content = message_params.values_at(:user_sender_id, :user_receiver_id, :content)
+    @chat = Chat.find_chat(user_sender_id, user_receiver_id)
+    @message = Message.new(user_id: user_sender_id, chat_id: @chat.id, content: content)
     if @message.save
+      sender_status = MessageStatus.create(message_id: @message.id, user_id: user_sender_id, is_seen: true)
+      receiver_status = MessageStatus.create(message_id: @message.id, user_id: user_receiver_id, is_seen: false)
+      @statuses = [sender_status, receiver_status]
       render 'api/messages/create'
     else
       render json: @message.errors, status: 422
