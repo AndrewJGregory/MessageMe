@@ -1,18 +1,20 @@
 import { closeDropdownMenu, openModal, setSelectedUserId } from "../actions/ui";
+import { findMessageStatus, findMostRecentMessage } from "../util/message";
 
 import UserDropdownMenu from "./UserDropdownMenu";
 import { archiveChat } from "../actions/chat";
 import { connect } from "react-redux";
 import { findChatId } from "../util/chat";
-import { findMostRecentMessage } from "../util/message";
 import { setMessageStatus } from "../actions/message";
 
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
   const { selectedUserId } = state.ui;
   const chatId = findChatId(state, selectedUserId, currentUserId);
-  const mostRecentMessageId = findMostRecentMessage(state, selectedUserId).id;
-  return { currentUserId, chatId, mostRecentMessageId };
+  const mostRecentMessage = findMostRecentMessage(state, selectedUserId);
+  const mostRecentMessageStatusId = findMessageStatus(state, mostRecentMessage)
+    .id;
+  return { currentUserId, mostRecentMessageStatusId };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -21,8 +23,8 @@ const mapDispatchToProps = dispatch => {
       dispatch(archiveChat(chatId, userId, status)),
     openModal: () => dispatch(openModal()),
     closeDropdownMenu: () => dispatch(closeDropdownMenu()),
-    setMessageStatus: (messageId, status) =>
-      dispatch(setMessageStatus(messageId, status)),
+    setMessageStatus: (messageStatusId, status) =>
+      dispatch(setMessageStatus(messageStatusId, status)),
   };
 };
 

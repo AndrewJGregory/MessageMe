@@ -24,7 +24,7 @@ class UserDropdownMenu extends React.Component {
   }
 
   handleMarkAsUnread() {
-    this.props.setMessageStatus(this.props.mostRecentMessageId, false);
+    this.props.setMessageStatus(this.props.mostRecentMessageStatusId, false);
   }
 
   render() {
@@ -45,7 +45,7 @@ UserDropdownMenu.propTypes = {
   setMessageStatus: PropTypes.func,
   chatId: PropTypes.number,
   currentUserId: PropTypes.number,
-  mostRecentMessageId: PropTypes.number,
+  mostRecentMessageStatusId: PropTypes.number,
 };
 
 export default UserDropdownMenu;
