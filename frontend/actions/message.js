@@ -28,10 +28,10 @@ const receiveMessages = messages => {
   };
 };
 
-export const recieveMessageStatus = message => {
+export const recieveMessageStatus = messageStatus => {
   return {
     type: RECEIVE_MESSAGE_STATUS,
-    message,
+    messageStatus,
   };
 };
 
@@ -54,10 +54,12 @@ export const fetchMessages = chatId => dispatch => {
   });
 };
 
-export const setMessageStatus = (messageId, status) => dispatch => {
-  return messageUtil.setMessageStatus(messageId, status).then(message => {
-    dispatch(recieveMessageStatus(message));
-  });
+export const setMessageStatus = (messageStatusId, status) => dispatch => {
+  return messageUtil
+    .setMessageStatus(messageStatusId, status)
+    .then(messageStatus => {
+      dispatch(recieveMessageStatus(messageStatus));
+    });
 };
 
 export const redirectToChat = userId => (dispatch, getState) => {

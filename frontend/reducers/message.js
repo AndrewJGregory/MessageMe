@@ -2,7 +2,6 @@ import {
   RECEIVE_MESSAGE,
   RECEIVE_MESSAGES,
   RECEIVE_MESSAGE_PAYLOAD,
-  RECEIVE_MESSAGE_STATUS,
 } from "../actions/message";
 
 import { RECEIVE_USER_SIGN_IN_DATA } from "../actions/user";
@@ -27,9 +26,6 @@ const messageReducer = (state = {}, action) => {
         }
       }
       return newMessages;
-    case RECEIVE_MESSAGE_STATUS:
-      messages[action.message.id].is_seen = action.message.is_seen;
-      return messages;
     default:
       return state;
   }
