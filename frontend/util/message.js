@@ -14,10 +14,10 @@ export const fetchMessages = chat_id => {
   return _fetch(`/api/chats/${chat_id}`);
 };
 
-export const setMessageStatus = (messageId, status) => {
-  return _fetch(`/api/messages/${messageId}`, {
+export const setMessageStatus = (messageStatusId, is_seen) => {
+  return _fetch(`/api/message_statuses/${messageStatusId}`, {
     method: "PATCH",
-    body: JSON.stringify({ message: { status } }),
+    body: JSON.stringify({ message: { is_seen } }),
   });
 };
 
