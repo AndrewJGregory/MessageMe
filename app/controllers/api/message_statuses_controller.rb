@@ -1,4 +1,4 @@
-class MessageStatusesController < ApplicationController
+class Api::MessageStatusesController < ApplicationController
   def update
     @status = MessageStatus.find(params[:id])
     @status.is_seen = message_status_params[:is_seen]
