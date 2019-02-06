@@ -48,9 +48,9 @@ class UserSearchIndexItem extends React.Component {
   handleClick(e) {
     e.preventDefault();
     const userId = this.props.user.id;
-    if (this.props.mostRecentMessage.id) {
+    if (this.props.messageStatus.id) {
       this.props
-        .setMessageStatus(this.props.mostRecentMessage.id, true)
+        .setMessageStatus(this.props.messageStatus.id, true)
         .then(() => {
           redirectToChat(this, userId);
         });
@@ -79,7 +79,7 @@ class UserSearchIndexItem extends React.Component {
 
   render() {
     const mostRecentMessageTime = this.formatTime();
-    const bold = this.props.messageStatus ? "" : "bold";
+    const bold = this.props.messageStatus.is_seen ? "" : "bold";
     const cog =
       this.props.currentUserId === this.props.user.id ? null : (
         <ChatSettingsIconContainer userId={this.props.user.id} />
@@ -130,7 +130,7 @@ UserSearchIndexItem.propTypes = {
   userId: PropTypes.number,
   mostRecentMessage: PropTypes.object,
   searchQuery: PropTypes.string,
-  messageStatus: PropTypes.bool,
+  messageStatus: PropTypes.object,
 };
 
 export default UserSearchIndexItem;
