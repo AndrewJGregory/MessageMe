@@ -17,7 +17,7 @@ export const fetchMessages = chat_id => {
 export const setMessageStatus = (messageStatusId, is_seen) => {
   return _fetch(`/api/message_statuses/${messageStatusId}`, {
     method: "PATCH",
-    body: JSON.stringify({ message: { is_seen } }),
+    body: JSON.stringify({ message_status: { is_seen } }),
   });
 };
 
@@ -91,5 +91,5 @@ export const findMessageStatus = (state, message) => {
     status =>
       status.message_id === message.id && status.user_id === message.user_id,
   );
-  return typeof messageStatus === "undefined" ? false : messageStatus.is_seen;
+  return typeof messageStatus === "undefined" ? {} : messageStatus;
 };
