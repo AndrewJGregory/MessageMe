@@ -28,11 +28,15 @@ class UserDropdownMenu extends React.Component {
   }
 
   render() {
+    const markAsUnread =
+      this.props.mostRecentMessageStatusId > 0 ? (
+        <li>{"Mark as Unread"}</li>
+      ) : null;
     return (
       <ul className="dropdown-menu" onClick={this.handleClick}>
         <li>{"Archive"}</li>
         <li>{"Delete"}</li>
-        <li>{"Mark as Unread"}</li>
+        {markAsUnread}
       </ul>
     );
   }

@@ -12,8 +12,8 @@ const mapStateToProps = state => {
   const { selectedUserId } = state.ui;
   const chatId = findChatId(state, selectedUserId, currentUserId);
   const mostRecentMessage = findMostRecentMessage(state, selectedUserId);
-  const mostRecentMessageStatusId = findMessageStatus(state, mostRecentMessage)
-    .id;
+  const mostRecentMessageStatusId =
+    findMessageStatus(state, mostRecentMessage).id || -1;
   return { currentUserId, mostRecentMessageStatusId };
 };
 
