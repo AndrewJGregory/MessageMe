@@ -14,10 +14,11 @@ export const receiveMessagePayload = payload => {
     payload,
   };
 };
-export const receiveMessage = message => {
+
+export const receiveMessage = payload => {
   return {
     type: RECEIVE_MESSAGE,
-    message,
+    payload,
   };
 };
 
