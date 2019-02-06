@@ -12,6 +12,7 @@ class Api::ChatsController < ApplicationController
 
   def show
     @messages = Chat.find(params[:id]).messages
+    @most_recent_message_statuses = @messages.reduce { |most_recent_message, message| most_recent_message.id > message.id ? most_recent_message : message }.statuses
   end
 
   def update

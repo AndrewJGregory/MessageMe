@@ -11,13 +11,11 @@ const messageReducer = (state = {}, action) => {
   const messages = Object.assign({}, state);
   switch (action.type) {
     case RECEIVE_MESSAGE:
-      return Object.assign({}, state, action.payload.message);
-    case RECEIVE_MESSAGES:
-      return Object.assign({}, state, action.messages);
-    case RECEIVE_USER_SIGN_IN_DATA:
-      return Object.assign({}, state, action.payload.messages);
     case RECEIVE_MESSAGE_PAYLOAD:
       return Object.assign({}, state, action.payload.message);
+    case RECEIVE_MESSAGES:
+    case RECEIVE_USER_SIGN_IN_DATA:
+      return Object.assign({}, state, action.payload.messages);
     case REMOVE_CHAT:
       const newMessages = {};
       for (let id in messages) {

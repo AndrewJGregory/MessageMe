@@ -22,10 +22,10 @@ export const receiveMessage = payload => {
   };
 };
 
-const receiveMessages = messages => {
+const receiveMessages = payload => {
   return {
     type: RECEIVE_MESSAGES,
-    messages,
+    payload,
   };
 };
 
@@ -49,9 +49,8 @@ export const createMessage = (
 };
 
 export const fetchMessages = chatId => dispatch => {
-  return messageUtil.fetchMessages(chatId).then(messages => {
-    dispatch(receiveMessages(messages));
-    return messages;
+  return messageUtil.fetchMessages(chatId).then(payload => {
+    dispatch(receiveMessages(payload));
   });
 };
 
