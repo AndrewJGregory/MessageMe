@@ -17,7 +17,7 @@ class Message < ApplicationRecord
   has_many :message_statuses
   alias_attribute :statuses, :message_statuses
   after_save :create_statuses
-  after_save :broadcast_message
+  after_commit :broadcast_message, on: :create
 
   def create_statuses
     user_ids = [self.chat.user_id_one, self.chat.user_id_two] # does this query twice?

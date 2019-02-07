@@ -26,13 +26,16 @@ all_users = User.all
 guest_id = guest.id
 
 ### BEGIN MESSAGES ###
-Message.skip_callback(:save, :after, :broadcast_message)
+Message.skip_callback(:save, :after_create_commit, :broadcast_message)
 messages.each_with_index do |message, idx|
   random_user_id = all_users.sample.id
   user_id = idx.even? ? random_user_id : guest_id
-  chat = Chat.create(user_id_one: guest_id, user_id_two: random_user_id)
-  message_id = Message.create(content: message, user_id: user_id, chat_id: chat.id).id
-  MessageStatus.create(message_id: message_id, user_id: user_id)
+  chat = Chat.new(user_id_one: guest_id, user_id_two: user_id)
+  if chat.save
+    message_id = Message.create!(content: message, user_id: user_id, chat_id: chat.id).id
+    sender_message_status = MessageStatus.find_by(message_id: message_id, user_id: user_id)
+    sender_message_status.update(is_seen: true)
+  end
 end
-Message.set_callback(:save, :after, :broadcast_message)
+Message.set_callback(:save, :after_create_commit, :broadcast_message)
 ### END MESSAGES ###
