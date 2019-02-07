@@ -6,11 +6,11 @@
 .user-search-results {
   li {
     position: relative;
-    &:hover {
-      background-color: lightgray;
-      .fa-cog {
-        display: block !important;
-      }
+  }
+  .clickable:hover {
+    background-color: lightgray;
+    .fa-cog {
+      display: block !important;
     }
   }
 }
