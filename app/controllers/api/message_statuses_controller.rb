@@ -1,6 +1,7 @@
 class Api::MessageStatusesController < ApplicationController
   def update
     @status = MessageStatus.find(params[:id])
+    # @status.update(is_seen: message_status_params[:is_seen])
     @status.is_seen = message_status_params[:is_seen]
     @status.save!
     render 'api/message_statuses/show'

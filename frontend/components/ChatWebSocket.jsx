@@ -20,10 +20,9 @@ class ChatWebSocket extends React.Component {
             const message = Object.values(payload.message)[0];
             const isCurrentlyChattingWithUser =
               this.props.match.params.userId == Object.keys(payload.user)[0];
-            const shouldMessageBeSeen =
-              isCurrentlyChattingWithUser && !message.is_seen;
-            if (shouldMessageBeSeen) {
-              this.props.setMessageStatus(message.id, true);
+            if (isCurrentlyChattingWithUser) {
+              const messageStatusId = Object.keys(payload.message_status)[0];
+              this.props.setMessageStatus(messageStatusId, true);
             }
           },
         },

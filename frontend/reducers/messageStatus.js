@@ -1,6 +1,7 @@
 import {
   RECEIVE_MESSAGE,
   RECEIVE_MESSAGES,
+  RECEIVE_MESSAGE_PAYLOAD,
   RECEIVE_MESSAGE_STATUS,
 } from "../actions/message";
 
@@ -12,6 +13,8 @@ const messageStatusReducer = (state = {}, action) => {
     case RECEIVE_MESSAGE:
     case RECEIVE_MESSAGES:
       return Object.assign({}, state, action.payload.message_statuses);
+    case RECEIVE_MESSAGE_PAYLOAD:
+      return Object.assign({}, state, action.payload.message_status);
     case RECEIVE_MESSAGE_STATUS:
       return Object.assign({}, state, action.messageStatus);
     default:

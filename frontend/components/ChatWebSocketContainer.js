@@ -22,8 +22,8 @@ const mapDispatchToProps = dispatch => {
     receiveMessage: message => dispatch(receiveMessage(message)),
     receiveUser: user => dispatch(receiveUser(user)),
     receiveChat: chat => dispatch(receiveChat(chat)),
-    setMessageStatus: (messageId, status) =>
-      dispatch(setMessageStatus(messageId, status)),
+    setMessageStatus: (messageStatusId, status) =>
+      dispatch(setMessageStatus(messageStatusId, status)),
     receiveMessagePayload: payload => dispatch(receiveMessagePayload(payload)),
   };
 };

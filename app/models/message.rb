@@ -16,7 +16,13 @@ class Message < ApplicationRecord
   belongs_to :user
   has_many :message_statuses
   alias_attribute :statuses, :message_statuses
+  after_save :create_statuses
   after_save :broadcast_message
+
+  def create_statuses
+    user_ids = [self.chat.user_id_one, self.chat.user_id_two] # does this query twice?
+    user_ids.each { |user_id| MessageStatus.create(user_id: user_id, message_id: self.id) }
+  end
 
   def broadcast_message
     MessageBroadcastJob.perform_now(self)

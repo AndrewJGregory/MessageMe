@@ -4,8 +4,8 @@ class Api::MessagesController < ApplicationController
     @chat = Chat.find_chat(user_sender_id, user_receiver_id)
     @message = Message.new(user_id: user_sender_id, chat_id: @chat.id, content: content)
     if @message.save
-      sender_status = MessageStatus.create(message_id: @message.id, user_id: user_sender_id, is_seen: true)
-      receiver_status = MessageStatus.create(message_id: @message.id, user_id: user_receiver_id, is_seen: false)
+      sender_status = MessageStatus.find_by(message_id: @message.id, user_id: user_sender_id)
+      receiver_status = MessageStatus.find_by(message_id: @message.id, user_id: user_receiver_id)
       @statuses = [sender_status, receiver_status]
       render 'api/messages/create'
     else
