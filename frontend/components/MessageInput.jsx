@@ -27,11 +27,11 @@ export default class MessageInput extends React.Component {
   updateMessage(e) {
     e.preventDefault();
     const lastChar = e.target.value[e.target.value.length - 1];
-    if (lastChar === "\n") {
+    if (lastChar === "\n" && this.state.content.trim()) {
       this.sendMessage(e);
     } else {
       const content = e.target.value;
-      this.setState({ content });
+      if (content.trim()) this.setState({ content });
     }
   }
 
