@@ -89,7 +89,8 @@ export const sortByMostRecentlyMessaged = (state, users) => {
 export const findMessageStatus = (state, message) => {
   const messageStatus = Object.values(state.entities.messageStatuses).find(
     status =>
-      status.message_id === message.id && status.user_id === message.user_id,
+      status.message_id === message.id &&
+      status.user_id === state.session.currentUser.id,
   );
   return typeof messageStatus === "undefined" ? {} : messageStatus;
 };
