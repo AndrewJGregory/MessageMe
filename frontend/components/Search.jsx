@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 import UserSearchIndexContainer from "./UserSearchIndexContainer";
+import { getValidLetters } from "../util/message";
 
 class Search extends React.Component {
   constructor(props) {
@@ -35,10 +36,9 @@ class Search extends React.Component {
     } else if (e.key === "ArrowDown") {
       this.props.setSelectedUserIdx(this.props.selectedUserIdx + 1);
       this.props.setSearchFocus(false);
-    } else if (isLetter) {
+    } else if (isLetter && getValidLetters().has(e.key)) {
       this.props.setHasSearched(false);
-      const letter = e.key;
-      const searchQuery = this.props.searchQuery.concat(letter);
+      const searchQuery = this.props.searchQuery.concat(e.key);
       this.props.setSearchQuery({ searchQuery });
     }
   }
