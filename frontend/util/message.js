@@ -95,11 +95,12 @@ export const findMessageStatus = (state, message) => {
   return typeof messageStatus === "undefined" ? {} : messageStatus;
 };
 
-export const getValidLetters = () => {
-  const VALID_LETTERS = new Set();
+export const getValidInput = () => {
+  const VALID_INPUT = new Set();
+  VALID_INPUT.add(" ");
   for (let i = 97; i < 123; i++) {
-    VALID_LETTERS.add(String.fromCharCode(i));
-    VALID_LETTERS.add(String.fromCharCode(i).toUpperCase());
+    VALID_INPUT.add(String.fromCharCode(i));
+    VALID_INPUT.add(String.fromCharCode(i).toUpperCase());
   }
-  return VALID_LETTERS;
+  return VALID_INPUT;
 };
