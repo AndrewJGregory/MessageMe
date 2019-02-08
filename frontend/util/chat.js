@@ -33,13 +33,16 @@ export const findChatId = (state, userId, currentUserId) => {
   return chatId;
 };
 
-export const redirectToChat = (component, userId) => {
-  component.props.history.push(`/messages/${userId}`);
-  component.props.createChatAndFetchMessages(userId).then(chat => {
+export const redirectToChat = ({ props }, userId) => {
+  const newUrl = `/messages/${userId}`;
+  if (props.history.location.pathname !== newUrl) {
+    props.history.push(newUrl);
+  }
+  props.createChatAndFetchMessages(userId).then(chat => {
     const chatId = Object.keys(chat)[0];
     const currentUserId = Object.values(Object.values(chat)[0]).filter(
       id => id != userId && id != chatId && Number(id) === id,
     )[0];
-    component.props.archiveChat(chatId, currentUserId, false);
+    props.archiveChat(chatId, currentUserId, false);
   });
 };
