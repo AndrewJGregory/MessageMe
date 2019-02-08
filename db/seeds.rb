@@ -26,7 +26,7 @@ all_users = User.all
 guest_id = guest.id
 
 ### BEGIN MESSAGES ###
-Message.skip_callback(:save, :after_create_commit, :broadcast_message)
+Message.skip_callback(:create, :after, :broadcast_message, raise: false)
 messages.each_with_index do |message, idx|
   random_user_id = all_users.sample.id
   user_id = idx.even? ? random_user_id : guest_id
@@ -37,5 +37,5 @@ messages.each_with_index do |message, idx|
     sender_message_status.update(is_seen: true)
   end
 end
-Message.set_callback(:save, :after_create_commit, :broadcast_message)
+Message.set_callback(:create, :after, :broadcast_message, raise: false)
 ### END MESSAGES ###
