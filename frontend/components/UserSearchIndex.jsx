@@ -70,7 +70,6 @@ class UserSearchIndex extends React.Component {
     return (
       <ul className="user-search-results scrollable">
         {users.length === 0 ? altContent : users}
-        <li className="hidden" />
       </ul>
     );
   }

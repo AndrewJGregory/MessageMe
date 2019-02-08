@@ -13,11 +13,15 @@
       display: block !important;
     }
   }
+  li:first-child .dropdown-menu {
+    bottom: 0;
+  }
 }
 
 .dropdown-menu {
   position: absolute;
   right: 0;
+  bottom: 28px;
   width: 100px;
   height: auto;
   background-color: whitesmoke;
