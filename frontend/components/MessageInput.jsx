@@ -18,7 +18,7 @@ export default class MessageInput extends React.Component {
     e.preventDefault();
     const { userReceiverId, userSenderId } = this.props;
     this.props
-      .createMessage(this.state.content, userSenderId, userReceiverId)
+      .createMessage(this.state.content.trim(), userSenderId, userReceiverId)
       .then(() => {
         this.setState({ content: "" });
       });
@@ -31,7 +31,7 @@ export default class MessageInput extends React.Component {
       this.sendMessage(e);
     } else {
       const content = e.target.value;
-      if (content.trim()) this.setState({ content });
+      if (content) this.setState({ content });
     }
   }
 
