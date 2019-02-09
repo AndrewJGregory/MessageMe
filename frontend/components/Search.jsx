@@ -1,13 +1,14 @@
 import PropTypes from "prop-types";
 import React from "react";
 import UserSearchIndexContainer from "./UserSearchIndexContainer";
-import { getValidLetters } from "../util/message";
+import { getValidInput } from "../util/message";
 
 class Search extends React.Component {
   constructor(props) {
     super(props);
     this.submitSearch = this.submitSearch.bind(this);
     this.handleOnClick = this.handleOnClick.bind(this);
+    this.updateSearchInput = this.updateSearchInput.bind(this);
     this.searchBar = React.createRef();
   }
 
@@ -26,19 +27,16 @@ class Search extends React.Component {
 
   submitSearch(e) {
     e.preventDefault();
-    const isLetter = e.key.length === 1;
-    if (e.key === "Enter") {
-      this.props.searchUsers(this.props.searchQuery);
+    this.props.searchUsers(this.props.searchQuery).then(() => {
       this.props.setHasSearched(true);
-    } else if (e.key === "Backspace") {
-      const searchQuery = this.props.searchQuery.slice(0, -1);
-      this.props.setSearchQuery({ searchQuery });
-    } else if (e.key === "ArrowDown") {
-      this.props.setSelectedUserIdx(this.props.selectedUserIdx + 1);
-      this.props.setSearchFocus(false);
-    } else if (isLetter && getValidLetters().has(e.key)) {
+    });
+  }
+
+  updateSearchInput(e) {
+    e.preventDefault();
+    if (getValidInput().has(e.target.value)) {
       this.props.setHasSearched(false);
-      const searchQuery = this.props.searchQuery.concat(e.key);
+      const searchQuery = this.props.searchQuery.concat(e.target.value);
       this.props.setSearchQuery({ searchQuery });
     }
   }
@@ -46,19 +44,22 @@ class Search extends React.Component {
   render() {
     return (
       <div className="search">
-        <div className="user-search-input-container">
+        <div className="user-search-input-container" tabIndex="0">
           <i className="fa fa-search" />
-          <input
-            ref={searchBar => {
-              this.searchBar = searchBar;
-            }}
-            type="text"
-            onKeyDown={this.submitSearch}
-            defaultValue={this.props.searchQuery}
-            placeholder="Search MessageMe"
-            className="user-search-input"
-            onClick={this.handleOnClick}
-          />
+          <form onSubmit={this.submitSearch}>
+            <input
+              ref={searchBar => {
+                this.searchBar = searchBar;
+              }}
+              type="text"
+              onChange={this.updateSearchInput}
+              // onKeyPress={this.submitSearch}
+              defaultValue={this.props.searchQuery}
+              placeholder="Search MessageMe"
+              className="user-search-input"
+              onClick={this.handleOnClick}
+            />
+          </form>
         </div>
         <div className="results-logout-btn-container">
           <UserSearchIndexContainer />

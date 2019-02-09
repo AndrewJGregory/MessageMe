@@ -25,16 +25,18 @@ class UserSearchIndexItem extends React.Component {
 
   handleKeyDown(e) {
     e.preventDefault();
-    if (e.key === "ArrowDown") {
-      const nextIdx = this.props.selectedUserIdx + 1;
+    if (e.key === "Tab") {
+      // handle going from search bar to the first user
+      // first user is highlighted because of tabIndex, so if the idx is 0 and tab is hit
+      // needs to focus on the second user
+      const nextIdx =
+        this.props.selectedUserIdx === 0 ? 2 : this.props.selectedUserIdx + 1;
       if (nextIdx <= this.props.totalUsers) {
         this.props.setSelectedUserIdx(nextIdx);
       } else {
         this.props.setSelectedUserIdx(0);
         this.props.setSearchFocus(true);
       }
-    } else if (e.key === "ArrowUp") {
-      this.props.setSelectedUserIdx(this.props.selectedUserIdx - 1);
     } else if (e.key === "Enter") {
       this.handleClick(e);
     }
