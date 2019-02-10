@@ -56,10 +56,18 @@
   background-color: whitesmoke;
 }
 
-.gray-text {
+.gray-text,
+.blue-text {
   padding-bottom: 8px; // prevents cutoff of the letter "y" and if the username has a "g"
-  color: gray;
   font-size: 14px;
+}
+
+.gray-text {
+  color: gray;
+}
+
+.blue-text {
+  color: blue;
 }
 
 .most-recent-time {

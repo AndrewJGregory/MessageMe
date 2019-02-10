@@ -81,7 +81,14 @@ class UserSearchIndexItem extends React.Component {
 
   render() {
     const mostRecentMessageTime = this.formatTime();
-    const bold = this.props.messageStatus.is_seen ? "" : "bold";
+    let boldClass, colorClass;
+    if (this.props.messageStatus.is_seen) {
+      boldClass = "";
+      colorClass = "gray";
+    } else {
+      boldClass = "bold";
+      colorClass = "blue";
+    }
     const cog =
       this.props.currentUserId === this.props.user.id ? null : (
         <ChatSettingsIconContainer userId={this.props.user.id} />
@@ -104,12 +111,12 @@ class UserSearchIndexItem extends React.Component {
         <ul className="user-search-result">
           <li>
             <div>{this.props.user.username}</div>
-            <div className="most-recent-time gray-text">
+            <div className={`most-recent-time ${colorClass}-text`}>
               {mostRecentMessageTime}
             </div>
           </li>
           <li>
-            <p className={`truncate gray-text ${bold}`}>
+            <p className={`truncate gray-text ${boldClass}`}>
               {this.props.mostRecentMessage["content"] || null}
             </p>
             {cog}
