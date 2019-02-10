@@ -31,9 +31,9 @@ body,
   overflow: hidden;
 }
 
-.fa-bolt {
+#fa-bolt {
   color: blue;
-  font-size: 200px !important;
+  font-size: 200px;
 }
 
 .clickable {
@@ -92,6 +92,14 @@ input {
   }
   .right-collection {
     width: 100%;
+  }
+}
+
+@media only screen and (max-height: 401px) {
+  .footer-container,
+  .message-me-header,
+  #fa-bolt {
+    display: none !important;
   }
 }
 

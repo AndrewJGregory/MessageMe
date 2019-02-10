@@ -60,7 +60,7 @@ export default class SignIn extends React.Component {
     return (
       <main className="session-main center">
         <div className="image-and-form-container center">
-          <i className="fa fa-bolt" />
+          <i id="fa-bolt" className="fa fa-bolt" />
           <h3 className="message-me-header">MessageMe</h3>
           <div className="form-container center">
             <h3 className="error">{this.props.errors.username}</h3>
