@@ -31,7 +31,7 @@ export default class MessageInput extends React.Component {
       this.sendMessage(e);
     } else {
       const content = e.target.value;
-      if (content) this.setState({ content });
+      this.setState({ content });
     }
   }
 
