@@ -16,6 +16,8 @@ const mapStateToProps = (state, ownProps) => {
   const mostRecentMessage = findMostRecentMessage(state, userId);
   const messageStatus = findMessageStatus(state, mostRecentMessage);
   const { selectedUserIdx, searchQuery } = state.ui;
+  const currentUserChatClass =
+    userId === +ownProps.match.params.userId ? "lightgray" : "";
   const currentUserId = state.session.currentUser.id;
   return {
     mostRecentMessage,
@@ -23,6 +25,7 @@ const mapStateToProps = (state, ownProps) => {
     searchQuery,
     currentUserId,
     messageStatus,
+    currentUserChatClass,
   };
 };
 

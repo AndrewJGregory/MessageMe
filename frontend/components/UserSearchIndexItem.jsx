@@ -95,7 +95,9 @@ class UserSearchIndexItem extends React.Component {
       );
     return (
       <li
-        className={`clickable ${this.state.hoveredClass}`}
+        className={`clickable ${this.state.hoveredClass} ${
+          this.props.currentUserChatClass
+        }`}
         onClick={this.handleClick}
       >
         <input
@@ -140,6 +142,7 @@ UserSearchIndexItem.propTypes = {
   mostRecentMessage: PropTypes.object,
   searchQuery: PropTypes.string,
   messageStatus: PropTypes.object,
+  currentUserChatClass: PropTypes.string,
 };
 
 export default UserSearchIndexItem;
