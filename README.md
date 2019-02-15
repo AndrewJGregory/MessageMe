@@ -10,14 +10,14 @@ MessageMe is a single page web app inspired by Facebook Messenger. Built with Ru
 - Direct, real time messaging
 - Sort messages by most recently messaged on initial login / refresh
 - "Seeing" a message
-- Using the arrow keys to switch between user search results, hitting enter to "click" on the user
+- Using tab to switch between user search results, hitting enter to "click" on the user
 - Archive a chat
 - Delete a chat
+- Mark most recent message as unread
 
 ### TODO
 
 - Search messages
-- Mark most recent message as unread
 - Hover effect for messages that shows timestamp
 - Forgot password
 - Last active time
