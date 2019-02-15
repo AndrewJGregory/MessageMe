@@ -77,6 +77,7 @@ export default class SignIn extends React.Component {
                 <i
                   onClick={this.toggleInputType}
                   className={`fa ${eyeClass} clickable`}
+                  id={eyeClass}
                 />
               </div>
               <input
