@@ -19,6 +19,11 @@ const FooterLinks = () => {
             <i className="fa fa-2x fa-globe" aria-hidden="true" />
           </a>
         </li>
+        <li>
+          <a href="https://angel.co/andrew-gregory-ajg">
+            <i className="fa fa-2x fa-angellist" />
+          </a>
+        </li>
       </ul>
       <div className="footer-text-container">
         <h3 className="footer-text">
