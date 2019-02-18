@@ -10,7 +10,7 @@ const MessageHeader = ({ username }) => {
 };
 
 MessageHeader.propTypes = {
-  username: PropTypes.string.isRequired,
+  username: PropTypes.string,
 };
 
 export default MessageHeader;
