@@ -76,9 +76,9 @@ class UserSearchIndex extends React.Component {
 }
 
 UserSearchIndex.propTypes = {
-  userResults: PropTypes.arrayOf(PropTypes.object),
-  hasSearched: PropTypes.bool,
-  searchQuery: PropTypes.string,
+  userResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+  hasSearched: PropTypes.bool.isRequired,
+  searchQuery: PropTypes.string.isRequired,
 };
 
 export default UserSearchIndex;

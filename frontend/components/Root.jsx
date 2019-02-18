@@ -13,8 +13,8 @@ const Root = ({ store, cableApp }) => (
 );
 
 Root.propTypes = {
-  store: PropTypes.object,
-  cableApp: PropTypes.object,
+  store: PropTypes.object.isRequired,
+  cableApp: PropTypes.object.isRequired,
 };
 
 export default Root;

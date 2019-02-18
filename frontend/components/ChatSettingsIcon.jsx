@@ -30,11 +30,11 @@ const ChatSettingsIcon = ({
 };
 
 ChatSettingsIcon.propTypes = {
-  dropdownMenuType: PropTypes.string,
-  setSelectedUserId: PropTypes.func,
-  openDropdownMenu: PropTypes.func,
-  userId: PropTypes.number,
-  selectedUserId: PropTypes.number,
+  dropdownMenuType: PropTypes.string.isRequired,
+  setSelectedUserId: PropTypes.func.isRequired,
+  openDropdownMenu: PropTypes.func.isRequired,
+  userId: PropTypes.number.isRequired,
+  selectedUserId: PropTypes.number.isRequired,
 };
 
 export default ChatSettingsIcon;

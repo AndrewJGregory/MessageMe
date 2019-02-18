@@ -69,15 +69,15 @@ class Search extends React.Component {
 }
 
 Search.propTypes = {
-  userResults: PropTypes.arrayOf(PropTypes.object),
-  shouldSearchBeFocused: PropTypes.bool,
-  createChatAndFetchMessages: PropTypes.func,
-  searchUsers: PropTypes.func,
-  setSearchQuery: PropTypes.func,
-  setHasSearched: PropTypes.func,
-  setSearchFocus: PropTypes.func,
-  selectedUserIdx: PropTypes.number,
-  searchQuery: PropTypes.string,
+  userResults: PropTypes.arrayOf(PropTypes.object).isRequired,
+  shouldSearchBeFocused: PropTypes.bool.isRequired,
+  createChatAndFetchMessages: PropTypes.func.isRequired,
+  searchUsers: PropTypes.func.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
+  setHasSearched: PropTypes.func.isRequired,
+  setSearchFocus: PropTypes.func.isRequired,
+  selectedUserIdx: PropTypes.number.isRequired,
+  searchQuery: PropTypes.string.isRequired,
 };
 
 export default Search;

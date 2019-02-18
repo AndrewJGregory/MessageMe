@@ -104,10 +104,10 @@ export default class SignIn extends React.Component {
 }
 
 SignIn.propTypes = {
-  currentUser: PropTypes.object,
-  buttonText: PropTypes.string,
-  errors: PropTypes.object,
-  submitForm: PropTypes.func,
-  clearErrors: PropTypes.func,
-  loginAsGuest: PropTypes.func,
+  currentUser: PropTypes.object.isRequired,
+  buttonText: PropTypes.string.isRequired,
+  errors: PropTypes.object.isRequired,
+  submitForm: PropTypes.func.isRequired,
+  clearErrors: PropTypes.func.isRequired,
+  loginAsGuest: PropTypes.func.isRequired,
 };

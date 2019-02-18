@@ -130,19 +130,19 @@ class UserSearchIndexItem extends React.Component {
 }
 
 UserSearchIndexItem.propTypes = {
-  archiveChat: PropTypes.func,
-  createChatAndFetchMessages: PropTypes.func,
-  clearSearchQuery: PropTypes.func,
-  setMessageStatus: PropTypes.func,
-  setSelectedUserIdx: PropTypes.func,
-  setSearchFocus: PropTypes.func,
-  currentUserId: PropTypes.number,
-  selectedUserIdx: PropTypes.number,
+  archiveChat: PropTypes.func.isRequired,
+  createChatAndFetchMessages: PropTypes.func.isRequired,
+  clearSearchQuery: PropTypes.func.isRequired,
+  setMessageStatus: PropTypes.func.isRequired,
+  setSelectedUserIdx: PropTypes.func.isRequired,
+  setSearchFocus: PropTypes.func.isRequired,
+  currentUserId: PropTypes.number.isRequired,
+  selectedUserIdx: PropTypes.number.isRequired,
   userId: PropTypes.number,
-  mostRecentMessage: PropTypes.object,
-  searchQuery: PropTypes.string,
-  messageStatus: PropTypes.object,
-  currentUserChatClass: PropTypes.string,
+  mostRecentMessage: PropTypes.object.isRequired,
+  searchQuery: PropTypes.string.isRequired,
+  messageStatus: PropTypes.object.isRequired,
+  currentUserChatClass: PropTypes.string.isRequired,
 };
 
 export default UserSearchIndexItem;

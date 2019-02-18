@@ -27,7 +27,8 @@ class MessageIndex extends React.Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.messages.length > prevProps.messages.length) this.bottom.current.scrollIntoView();
+    if (this.props.messages.length > prevProps.messages.length)
+      this.bottom.current.scrollIntoView();
   }
 
   render() {
@@ -60,8 +61,8 @@ class MessageIndex extends React.Component {
 }
 
 MessageIndex.propTypes = {
-  chatId: PropTypes.number,
-  messages: PropTypes.arrayOf(PropTypes.object),
+  chatId: PropTypes.number.isRequired,
+  messages: PropTypes.arrayOf(PropTypes.object).isRequired,
 };
 
 export default MessageIndex;

@@ -23,8 +23,8 @@ const SidebarHeader = ({ openDropdownMenu, dropdownMenuType }) => {
 };
 
 SidebarHeader.propTypes = {
-  openDropdownMenu: PropTypes.func,
-  dropdownMenuType: PropTypes.string,
+  openDropdownMenu: PropTypes.func.isRequired,
+  dropdownMenuType: PropTypes.string.isRequired,
 };
 
 export default SidebarHeader;

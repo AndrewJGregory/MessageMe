@@ -43,13 +43,13 @@ class UserDropdownMenu extends React.Component {
 }
 
 UserDropdownMenu.propTypes = {
-  archiveChat: PropTypes.func,
-  openModal: PropTypes.func,
-  closeDropdownMenu: PropTypes.func,
-  setMessageStatus: PropTypes.func,
-  chatId: PropTypes.number,
-  currentUserId: PropTypes.number,
-  mostRecentMessageStatusId: PropTypes.number,
+  archiveChat: PropTypes.func.isRequired,
+  openModal: PropTypes.func.isRequired,
+  closeDropdownMenu: PropTypes.func.isRequired,
+  setMessageStatus: PropTypes.func.isRequired,
+  chatId: PropTypes.number.isRequired,
+  currentUserId: PropTypes.number.isRequired,
+  mostRecentMessageStatusId: PropTypes.number.isRequired,
 };
 
 export default UserDropdownMenu;

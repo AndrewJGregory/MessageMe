@@ -36,12 +36,12 @@ class ChatWebSocket extends React.Component {
 }
 
 ChatWebSocket.propTypes = {
-  selfChatId: PropTypes.number,
-  receiveMessage: PropTypes.func,
-  receiveUser: PropTypes.func,
-  receiveChat: PropTypes.func,
-  setMessageStatus: PropTypes.func,
-  receiveMessagePayload: PropTypes.func,
+  selfChatId: PropTypes.number.isRequired,
+  receiveMessage: PropTypes.func.isRequired,
+  receiveUser: PropTypes.func.isRequired,
+  receiveChat: PropTypes.func.isRequired,
+  setMessageStatus: PropTypes.func.isRequired,
+  receiveMessagePayload: PropTypes.func.isRequired,
 };
 
 export default ChatWebSocket;

@@ -12,7 +12,7 @@ const HeaderDropdownMenu = ({ signOut }) => {
 };
 
 HeaderDropdownMenu.propTypes = {
-  signOut: PropTypes.func,
+  signOut: PropTypes.func.isRequired,
 };
 
 export default HeaderDropdownMenu;

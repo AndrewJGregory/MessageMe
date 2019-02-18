@@ -53,13 +53,13 @@ class Main extends React.Component {
 }
 
 Main.propTypes = {
-  fetchUserSignInData: PropTypes.func,
-  archiveChat: PropTypes.func,
-  closeDropdownMenu: PropTypes.func,
-  closeModal: PropTypes.func,
-  setSearchFocus: PropTypes.func,
-  currentUser: PropTypes.object,
-  cableApp: PropTypes.object,
+  fetchUserSignInData: PropTypes.func.isRequired,
+  archiveChat: PropTypes.func.isRequired,
+  closeDropdownMenu: PropTypes.func.isRequired,
+  closeModal: PropTypes.func.isRequired,
+  setSearchFocus: PropTypes.func.isRequired,
+  currentUser: PropTypes.object.isRequired,
+  cableApp: PropTypes.object.isRequired,
 };
 
 export default Main;

@@ -28,7 +28,7 @@ const App = ({ cableApp }) => {
 };
 
 App.propTypes = {
-  cableApp: PropTypes.object,
+  cableApp: PropTypes.object.isRequired,
 };
 
 export default App;

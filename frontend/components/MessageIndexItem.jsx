@@ -6,8 +6,8 @@ const MessageIndexItem = ({ message, type }) => {
 };
 
 MessageIndexItem.propTypes = {
-  message: PropTypes.object,
-  type: PropTypes.string,
+  message: PropTypes.object.isRequired,
+  type: PropTypes.string.isRequired,
 };
 
 export default MessageIndexItem;

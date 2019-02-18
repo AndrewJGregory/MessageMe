@@ -34,11 +34,11 @@ const Modal = ({
 };
 
 Modal.propTypes = {
-  isModalOpen: PropTypes.bool,
-  currentUserId: PropTypes.number,
-  chatId: PropTypes.number,
-  archiveChat: PropTypes.func,
-  deleteChat: PropTypes.func,
+  isModalOpen: PropTypes.bool.isRequired,
+  currentUserId: PropTypes.number.isRequired,
+  chatId: PropTypes.number.isRequired,
+  archiveChat: PropTypes.func.isRequired,
+  deleteChat: PropTypes.func.isRequired,
 };
 
 export default Modal;
