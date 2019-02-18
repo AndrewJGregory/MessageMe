@@ -4,8 +4,8 @@ import { createMessage } from "../actions/message";
 import { withRouter } from "react-router-dom";
 
 const mapStateToProps = (state, ownProps) => {
-  const userReceiverId = ownProps.match.params.userId;
-  const userSenderId = state.session.currentUser.id;
+  const userReceiverId = parseInt(ownProps.match.params.userId) || -1;
+  const userSenderId = parseInt(state.session.currentUser.id);
   const { selectedUserIdx } = state.ui;
 
   return {

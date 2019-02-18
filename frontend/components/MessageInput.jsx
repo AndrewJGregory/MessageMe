@@ -66,7 +66,7 @@ export default class MessageInput extends React.Component {
 }
 
 MessageInput.propTypes = {
-  userReceiverId: PropTypes.string.isRequired,
+  userReceiverId: PropTypes.number.isRequired,
   userSenderId: PropTypes.number.isRequired,
   selectedUserIdx: PropTypes.number.isRequired,
   createMessage: PropTypes.func.isRequired,
