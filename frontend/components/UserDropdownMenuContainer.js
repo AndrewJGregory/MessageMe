@@ -14,7 +14,7 @@ const mapStateToProps = state => {
   const mostRecentMessage = findMostRecentMessage(state, selectedUserId);
   const mostRecentMessageStatusId =
     findMessageStatus(state, mostRecentMessage).id || -1;
-  return { currentUserId, mostRecentMessageStatusId };
+  return { currentUserId, mostRecentMessageStatusId, chatId };
 };
 
 const mapDispatchToProps = dispatch => {
