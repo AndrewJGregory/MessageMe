@@ -61,7 +61,6 @@ class MessageIndex extends React.Component {
 
 MessageIndex.propTypes = {
   chatId: PropTypes.number,
-  userId: PropTypes.number,
   messages: PropTypes.arrayOf(PropTypes.object),
 };
 
