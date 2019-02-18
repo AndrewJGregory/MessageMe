@@ -16,7 +16,7 @@ const initialState = {
   selectedUserIdx: 0,
   hasSearched: false,
   selectedUserId: 0,
-  isModelOpen: false,
+  isModalOpen: false,
   isDropdownMenuOpen: false,
   dropdownMenuType: null,
   shouldSearchBeFocused: false,
