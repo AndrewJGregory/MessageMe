@@ -5,9 +5,8 @@ json.users do
 end
 
 json.chats do
-  statuses = ArchiveChat.find_statuses(@most_recent_chats, current_user.id)
   @most_recent_chats.each do |chat|
-    json.partial! 'api/chats/create', chat: chat, status: statuses[chat.id]
+    json.partial! 'api/chats/create', chat: chat
   end
 end
 
@@ -26,3 +25,9 @@ json.message_statuses do
     json.partial! 'api/message_statuses/show', status: status
   end
 end
+
+json.archive_chats do 
+  @archive_chats.each do |archive_chat|
+    json.partial! 'api/archive_chats/show', archive_chat: archive_chat
+  end
+end 
