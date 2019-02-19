@@ -9,14 +9,16 @@ import { withRouter } from "react-router-dom";
 const mapStateToProps = state => {
   const currentUserId = state.session.currentUser.id;
   const userResults = Object.values(state.entities.users);
+  const archiveChats = Object.values(state.entities.archiveChats);
   const searchQuery = state.ui.searchQuery;
   sortByMostRecentlyMessaged(state, userResults);
   const { hasSearched } = state.ui;
   userResults.forEach(user => {
     const chatId = findChatId(state, user.id, currentUserId);
-    const isArchivedObj = state.entities.chats[chatId].isArchived || {};
-    const isArchived = Boolean(isArchivedObj[currentUserId]);
-    user["isChatArchived"] = isArchived;
+    const archiveChat = archiveChats.find(
+      archiveChat => archiveChat.chat_id === chatId,
+    );
+    user["isChatArchived"] = Boolean(archiveChat) && archiveChat.is_archived;
   });
   return {
     userResults,
