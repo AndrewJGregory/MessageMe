@@ -34,10 +34,10 @@ class Search extends React.Component {
 
   updateSearchInput(e) {
     e.preventDefault();
-    if (getValidInput().has(e.target.value)) {
+    const lastChar = e.target.value[e.target.value.length - 1];
+    if (getValidInput().has(lastChar) || lastChar === undefined) {
       this.props.setHasSearched(false);
-      const searchQuery = this.props.searchQuery.concat(e.target.value);
-      this.props.setSearchQuery({ searchQuery });
+      this.props.setSearchQuery({ searchQuery: e.target.value });
     }
   }
 
@@ -53,7 +53,7 @@ class Search extends React.Component {
               }}
               type="text"
               onChange={this.updateSearchInput}
-              defaultValue={this.props.searchQuery}
+              value={this.props.searchQuery}
               placeholder="Search MessageMe"
               className="user-search-input"
               onClick={this.handleOnClick}
