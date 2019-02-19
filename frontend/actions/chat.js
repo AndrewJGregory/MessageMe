@@ -5,10 +5,10 @@ import * as chatUtil from "../util/chat";
 
 import { fetchMessages } from "./message";
 
-export const receiveChat = chat => {
+export const receiveChat = payload => {
   return {
     type: RECEIVE_CHAT,
-    chat,
+    payload,
   };
 };
 
@@ -40,9 +40,9 @@ export const createChat = (userIdOne, userIdTwo) => dispatch => {
 };
 
 export const archiveChat = (chatId, userId, status) => dispatch => {
-  return chatUtil.archiveChat(chatId, userId, status).then(chat => {
-    dispatch(receiveChat(chat));
-    return chat;
+  return chatUtil.archiveChat(chatId, userId, status).then(payload => {
+    dispatch(receiveChat(payload));
+    return payload;
   });
 };
 
