@@ -38,6 +38,7 @@ class Main extends React.Component {
           this.props.closeDropdownMenu();
           this.props.closeModal();
           this.props.setSearchFocus(false);
+          this.props.clearSearchQuery();
         }}
       >
         <ModalContainer />
@@ -56,6 +57,7 @@ Main.propTypes = {
   fetchUserSignInData: PropTypes.func.isRequired,
   archiveChat: PropTypes.func.isRequired,
   closeDropdownMenu: PropTypes.func.isRequired,
+  clearSearchQuery: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   setSearchFocus: PropTypes.func.isRequired,
   currentUser: PropTypes.object.isRequired,

@@ -1,5 +1,10 @@
 import { archiveChat, createChatAndFetchMessages } from "../actions/chat";
-import { closeDropdownMenu, closeModal, setSearchFocus } from "../actions/ui";
+import {
+  clearSearchQuery,
+  closeDropdownMenu,
+  closeModal,
+  setSearchFocus,
+} from "../actions/ui";
 
 import Main from "./Main";
 import { connect } from "react-redux";
@@ -24,6 +29,7 @@ const mapDispatchToProps = dispatch => {
     closeModal: () => dispatch(closeModal()),
     setSearchFocus: bool => dispatch(setSearchFocus(bool)),
     redirectToChat: userId => dispatch(redirectToChat(userId)),
+    clearSearchQuery: () => dispatch(clearSearchQuery()),
   };
 };
 
